@@ -521,46 +521,67 @@ html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'DM Sans'
 #deck3 .ti-d   { color: var(--d3); }
 #deck3 .ti-c   { border-color: var(--d3); }
 
-/* ═══ GITHUB PAGE ════════════════════════════════════════════ */
-#gh-page { background: var(--paper); overflow-y: auto; }
-.gh-wrap { max-width: 800px; margin: 0 auto; padding: 4vh 4vw; position:relative; z-index:1; }
-.step-card {
-  background: var(--cream); border: 1.5px solid var(--border);
-  border-left: 4px solid var(--amber);
-  border-radius: 0 8px 8px 0;
-  padding: 1.1em 1.3em; margin-bottom: 1em;
-}
-.step-head { display:flex; align-items:center; gap:.6em; margin-bottom:.65em; }
-.step-num {
-  background: var(--gold); color: #fff;
-  width: 28px; height: 28px; border-radius: 50%;
-  display:flex; align-items:center; justify-content:center;
-  font-weight:700; font-size:14px; flex-shrink:0;
-}
-.step-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--ink); }
-.step-body { font-size:13px; color:var(--body); line-height:1.7; display:flex; flex-direction:column; gap:.45em; }
-.step-body code { background:var(--parchment); border:1px solid var(--border); padding:.1em .4em; border-radius:3px; font-size:12px; color:var(--gold); font-family:monospace; }
-.note { background:var(--linen); border:1px solid var(--border); border-radius:4px; padding:.55em .75em; font-size:11.5px; color:var(--muted); margin-top:.3em; }
-.trouble-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75em; margin-top:.3em; }
-.tr-card { background:var(--linen); border:1px solid var(--border); border-radius:5px; padding:.6em .8em; font-size:12px; }
-.tr-card strong { color:var(--gold); display:block; margin-bottom:.2em; }
-
 /* ═══ FIXED GITHUB BTN ═══════════════════════════════════════ */
-#gh-btn {
-  position:fixed; bottom:14px; right:14px; z-index:200;
-  background:var(--gold); color:#fff; border:none; border-radius:5px;
-  padding:.45em 1em; font-family:'DM Sans',sans-serif;
-  font-size:11px; font-weight:700; letter-spacing:.06em;
-  cursor:pointer; text-transform:uppercase;
-  box-shadow:0 3px 14px rgba(155,106,28,.35);
-  transition:all .2s;
-}
-#gh-btn:hover { background:var(--amber); }
+
+
 
 @media(max-width:768px){
-  .aud-grid,.g2,.g3,.g23,.cover-grid,.trouble-grid { grid-template-columns:1fr; }
+  .aud-grid,.g2,.g3,.g23,.cover-grid,
   .tl { flex-direction:column; }
 }
+
+/* ═══ PERSISTENT DECK SWITCHER ════════════════════════════ */
+#deck-switcher {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 44px; z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  background: rgba(250,247,242,.97);
+  border-bottom: 1.5px solid var(--border);
+  backdrop-filter: blur(10px);
+  gap: .6em;
+}
+#deck-switcher.visible { display: flex; }
+.ds-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(12px,1.2vw,15px);
+  font-weight: 700; color: var(--gold);
+  white-space: nowrap; flex-shrink: 0;
+}
+.ds-tabs { display: flex; gap: .4em; flex: 1; justify-content: center; flex-wrap: wrap; }
+.ds-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(9px,.88vw,11.5px);
+  font-weight: 600; letter-spacing: .04em;
+  padding: .32em .85em; border-radius: 3px;
+  border: 1.5px solid var(--border);
+  cursor: pointer; transition: all .2s;
+  background: var(--cream); color: var(--muted);
+  white-space: nowrap;
+}
+.ds-tab:hover { border-color: var(--gold); color: var(--gold); }
+.ds-tab.active { color: #fff; border-color: transparent; }
+.ds-tab.d1 { }
+.ds-tab.d1.active { background: var(--d1); }
+.ds-tab.d2 { }
+.ds-tab.d2.active { background: var(--d2); }
+.ds-tab.d3 { }
+.ds-tab.d3.active { background: var(--d3); }
+.ds-home {
+  font-size: clamp(9px,.88vw,11px); font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  border: 1.5px solid var(--border); border-radius: 3px;
+  padding: .3em .75em; cursor: pointer;
+  background: var(--cream); color: var(--muted);
+  transition: all .2s; white-space: nowrap; flex-shrink: 0;
+}
+.ds-home:hover { border-color: var(--amber); color: var(--gold); }
+
+/* Push deck content down when switcher visible */
+.deck.show { padding-top: 44px; }
+
 </style>
 </head>
 <body>
@@ -629,6 +650,19 @@ html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'DM Sans'
   </div>
   <div class="wb lg"></div>
 </div>
+
+
+<!-- ████ PERSISTENT DECK SWITCHER ████ -->
+<div id="deck-switcher">
+  <div class="ds-brand">GALING LIKHA 2026</div>
+  <div class="ds-tabs">
+    <button class="ds-tab d1" onclick="openDeck('d1')">🏛️ Government &amp; LGUs</button>
+    <button class="ds-tab d2" onclick="openDeck('d2')">🧵 Weavers &amp; Designers</button>
+    <button class="ds-tab d3" onclick="openDeck('d3')">🤝 Partners &amp; Investors</button>
+  </div>
+  <button class="ds-home" onclick="closeDeck()">⌂ Home</button>
+</div>
+
 
 <!-- ████████████ DECK 1: GOVERNMENT ████████████ -->
 <div class="deck" id="d1">
@@ -1037,130 +1071,37 @@ html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'DM Sans'
 
 </div><!-- /d3 -->
 
-<!-- ████████████ GITHUB GUIDE ████████████ -->
-<div class="page" id="gh-page">
-  <div class="wb lg"></div>
-  <div class="gh-wrap" style="position:relative;z-index:1">
-    <button onclick="showHub()" style="background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:.4em .9em;border-radius:4px;cursor:pointer;font-size:13px;margin-bottom:1.3em;font-family:'DM Sans',sans-serif;font-weight:600">← Back to Presentations</button>
-
-    <div class="wb sm" style="margin-bottom:.8em;border-radius:3px"></div>
-    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,42px);color:var(--ink);margin-bottom:.3em;">Deploy to GitHub Pages</h1>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:1.3em;line-height:1.7;">Host your Amazing Weaves presentation free at <strong style="color:var(--gold)">yourname.github.io</strong> — no server, no hosting cost, shareable worldwide in any browser.</p>
-
-    <div class="step-card">
-      <div class="step-head"><div class="step-num">1</div><div class="step-title">Create a Free GitHub Account</div></div>
-      <div class="step-body">
-        <div>→ Open <code>github.com</code> in your browser and click <strong>Sign up</strong></div>
-        <div>→ Choose a username — this becomes your public web address: <code>yourusername.github.io</code></div>
-        <div>→ Verify your email address to activate your account</div>
-        <div class="note">💡 <strong>Tip:</strong> Use your organization name as the username (e.g. <code>amazingweaves2026</code>) to get the URL <code>amazingweaves2026.github.io</code> — cleaner for sharing with LGUs and partners.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-head"><div class="step-num">2</div><div class="step-title">Create a New Repository</div></div>
-      <div class="step-body">
-        <div>→ Click the <strong>+</strong> icon at the top right → select <strong>New repository</strong></div>
-        <div>→ In the <strong>Repository name</strong> field, type exactly: your username + <code>.github.io</code></div>
-        <div style="background:var(--linen);border:1px solid var(--border);border-radius:4px;padding:.6em .9em;font-family:monospace;font-size:13px;color:var(--gold);">Example: amazingweaves2026.github.io</div>
-        <div>→ Set visibility to <strong>Public</strong></div>
-        <div>→ Check the box: <strong>"Add a README file"</strong></div>
-        <div>→ Click <strong>Create repository</strong></div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-head"><div class="step-num">3</div><div class="step-title">Upload Your HTML File as index.html</div></div>
-      <div class="step-body">
-        <div>→ Inside your new repository, click <strong>Add file</strong> → <strong>Upload files</strong></div>
-        <div>→ Drag and drop <code>GalingLikha_AmazingWeaves_2026.html</code> into the upload area</div>
-        <div>→ <strong>Critical:</strong> Before uploading, rename the file to exactly <code>index.html</code> (lowercase, no spaces)</div>
-        <div>→ Scroll down to the commit section, add a message: <em>"Add Amazing Weaves presentation"</em></div>
-        <div>→ Click <strong>Commit changes</strong></div>
-        <div class="note">💡 The file must be named <strong>index.html</strong> — this tells GitHub Pages to serve it automatically as your homepage when someone visits your URL.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-head"><div class="step-num">4</div><div class="step-title">Enable GitHub Pages</div></div>
-      <div class="step-body">
-        <div>→ In your repository, click <strong>Settings</strong> (top menu bar)</div>
-        <div>→ In the left sidebar, scroll down to find <strong>Pages</strong> and click it</div>
-        <div>→ Under <strong>Source</strong>, select <strong>Deploy from a branch</strong></div>
-        <div>→ Branch: select <strong>main</strong> &nbsp;·&nbsp; Folder: select <strong>/ (root)</strong></div>
-        <div>→ Click <strong>Save</strong></div>
-        <div>→ Wait 1–3 minutes, then refresh the page — you will see a green banner:</div>
-        <div style="background:var(--linen);border:1.5px solid var(--d3);border-radius:4px;padding:.65em .9em;font-family:monospace;font-size:13px;color:var(--d3);font-weight:600;">✅ Your site is live at https://amazingweaves2026.github.io</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-head"><div class="step-num">5</div><div class="step-title">Share Your Link with Stakeholders</div></div>
-      <div class="step-body">
-        <div>→ Your presentation is now live at: <code>https://yourusername.github.io</code></div>
-        <div>→ Share this URL by email, SMS, WhatsApp, or social media — it works on <strong>any device, any browser, no app needed</strong></div>
-        <div>→ Works perfectly on mobile phones — important for LGU officers in the field</div>
-        <div>→ To update: upload a new <code>index.html</code>, commit → site updates in ~1 minute</div>
-        <div class="note">💡 <strong>Optional custom domain:</strong> You can connect a domain like <code>amazingweaves2026.ph</code> by going to Settings → Pages → Custom domain, then updating your DNS A records at your registrar to point to: <code>185.199.108.153</code>, <code>185.199.109.153</code>, <code>185.199.110.153</code>, <code>185.199.111.153</code></div>
-      </div>
-    </div>
-
-    <div class="step-card" style="border-left-color:var(--d3)">
-      <div class="step-head"><div class="step-num" style="background:var(--d3)">6</div><div class="step-title">Create a QR Code for Events &amp; Printed Materials</div></div>
-      <div class="step-body">
-        <div>→ Go to <code>qr-code-generator.com</code> or <code>qrcode-monkey.com</code></div>
-        <div>→ Paste your GitHub Pages URL into the URL field</div>
-        <div>→ Customize colors to match Amazing Weaves (gold: <code>#9B6A1C</code>, purple: <code>#5C2D7A</code>)</div>
-        <div>→ Download as <strong>PNG</strong> (for digital use) or <strong>SVG</strong> (for printing)</div>
-        <div>→ Include the QR code in LGU briefing materials, event banners, posters, and ASEAN Trade Show booth displays</div>
-        <div>→ Attendees scan with their phone camera → the full interactive presentation opens instantly</div>
-      </div>
-    </div>
-
-    <div class="step-card" style="border-left-color:var(--border)">
-      <div class="step-head"><div class="step-num" style="background:var(--muted)">?</div><div class="step-title">Troubleshooting</div></div>
-      <div class="trouble-grid">
-        <div class="tr-card"><strong>Site not showing?</strong>Wait 3–5 minutes after enabling Pages. Hard-refresh with Ctrl+Shift+R (or Cmd+Shift+R on Mac).</div>
-        <div class="tr-card"><strong>Blank white page?</strong>Make sure the file is named exactly <code style="color:var(--gold)">index.html</code> — lowercase, no spaces, no other extension.</div>
-        <div class="tr-card"><strong>Fonts not loading?</strong>The presentation needs internet access to load Google Fonts. Once visited, fonts are cached for offline use.</div>
-        <div class="tr-card"><strong>Need to update?</strong>Upload a new <code style="color:var(--gold)">index.html</code>, write any commit message, click Commit — site updates in about 1 minute.</div>
-        <div class="tr-card"><strong>Repository name wrong?</strong>It must match your username exactly: <code style="color:var(--gold)">username.github.io</code>. Delete and recreate if needed.</div>
-        <div class="tr-card"><strong>Share by email?</strong>Just paste the full URL: <code style="color:var(--gold)">https://yourusername.github.io</code> — no login needed to view.</div>
-      </div>
-    </div>
-
-    <div class="wb lg" style="margin-top:1.2em;border-radius:4px"></div>
-  </div>
-</div>
-
-<!-- Fixed GitHub button -->
-<button onclick="toggleGuide()" id="gh-btn">📂 GitHub Deploy Guide</button>
 
 <script>
 let cDeck = null;
 const dState = {};
 
 function openDeck(id) {
+  // Hide hub, hide all decks first
   document.getElementById('hub').classList.remove('show');
+  ['d1','d2','d3'].forEach(did => {
+    const deck = document.getElementById(did);
+    if (did !== id && deck) deck.classList.remove('show');
+  });
   const d = document.getElementById(id);
   d.classList.add('show');
   cDeck = id;
   initDeck(id);
-  document.getElementById('gh-btn').style.display = 'none';
+  // Show and update switcher
+  const sw = document.getElementById('deck-switcher');
+  sw.classList.add('visible');
+  sw.querySelectorAll('.ds-tab').forEach(t => {
+    t.classList.toggle('active', t.classList.contains(id));
+  });
 }
 function closeDeck() {
   if (cDeck) { document.getElementById(cDeck).classList.remove('show'); cDeck = null; }
+  document.getElementById('deck-switcher').classList.remove('visible');
   showHub();
 }
 function showHub() {
   document.getElementById('hub').classList.add('show');
-  document.getElementById('gh-page').classList.remove('show');
-  document.getElementById('gh-btn').style.display = '';
-}
-function toggleGuide() {
-  const g = document.getElementById('gh-page'), h = document.getElementById('hub');
-  if (g.classList.contains('show')) { g.classList.remove('show'); h.classList.add('show'); }
-  else { h.classList.remove('show'); g.classList.add('show'); }
+  
 }
 
 function initDeck(id) {
