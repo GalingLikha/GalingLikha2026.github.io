@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galing Likha · Amazing Weaves 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS ═══════════════════════════════════════════════════ */
+:root {
+  /* Light palette — warm linen base */
+  --paper:   #FAF7F2;
+  --linen:   #F3EDE2;
+  --parchment: #EDE4D3;
+  --cream:   #FDF9F3;
+  --border:  #D9CDB8;
+
+  /* Rich textile accent colours */
+  --gold:    #9B6A1C;
+  --amber:   #C4892A;
+  --amberlt: #E8B254;
+  --weave:   #5C2D7A;
+  --weavelt: #7B3FA8;
+  --terra:   #8B3A1A;
+  --sage:    #3D6B4F;
+  --sagelt:  #5A9068;
+  --pinya:   #B85C38;   /* piña fiber — warm rust */
+  --yakan:   #1A5C8A;   /* yakan blue */
+  --inaul:   #6B2D5A;   /* inaul deep magenta */
+
+  /* Text */
+  --ink:     #1A1208;
+  --body:    #2C2218;
+  --muted:   #6B5C44;
+  --light-t: #9B8B74;
+
+  /* Deck accent colours */
+  --d1: #1A4A7A;   /* gov — deep indigo blue */
+  --d1l: #2A6AAA;
+  --d1bg: #F0F5FC;
+  --d2: #5C2D7A;   /* creators — weave purple */
+  --d2l: #7B3FA8;
+  --d2bg: #F5F0FA;
+  --d3: #1A5A32;   /* partners — forest green */
+  --d3l: #2A7A4A;
+  --d3bg: #F0F7F2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); }
+
+/* ═══ TEXTILE WEAVE BAND ════════════════════════════════════ */
+.wb {
+  height: 7px; flex-shrink: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold)   0,var(--gold)   7.5%,
+    var(--weave)  7.5%,var(--weave)  15%,
+    var(--amber)  15%,var(--amber)  22.5%,
+    var(--terra)  22.5%,var(--terra)  30%,
+    var(--gold)   30%,var(--gold)   37.5%,
+    var(--yakan)  37.5%,var(--yakan)  45%,
+    var(--pinya)  45%,var(--pinya)  52.5%,
+    var(--inaul)  52.5%,var(--inaul)  60%,
+    var(--sage)   60%,var(--sage)   67.5%,
+    var(--gold)   67.5%,var(--gold)   75%,
+    var(--weave)  75%,var(--weave)  82.5%,
+    var(--amber)  82.5%,var(--amber)  90%,
+    var(--terra)  90%,var(--terra)  100%
+  );
+}
+.wb.lg { height: 12px; }
+.wb.sm { height: 4px; }
+
+/* ═══ PIÑA TEXTURE — subtle woven crosshatch ═══════════════ */
+.pina-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0, transparent 11px,
+      rgba(155,106,28,.06) 11px, rgba(155,106,28,.06) 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0, transparent 11px,
+      rgba(155,106,28,.06) 11px, rgba(155,106,28,.06) 12px
+    );
+}
+
+/* ═══ YAKAN DIAMOND MOTIF ═══════════════════════════════════ */
+.yakan-border {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0, transparent 8px,
+    rgba(26,92,138,.12) 8px, rgba(26,92,138,.12) 9px
+  ),
+  repeating-linear-gradient(
+    -45deg,
+    transparent 0, transparent 8px,
+    rgba(26,92,138,.12) 8px, rgba(26,92,138,.12) 9px
+  );
+}
+
+/* ═══ INAUL STRIPE ACCENT ═══════════════════════════════════ */
+.inaul-stripe {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--inaul)  0, var(--inaul)  3px,
+    transparent   3px, transparent 12px,
+    var(--pinya)  12px, var(--pinya) 15px,
+    transparent   15px, transparent 24px
+  );
+  height: 6px;
+}
+
+/* ═══ PAGE SYSTEM ════════════════════════════════════════════ */
+.page {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s ease;
+  z-index: 1;
+}
+.page.show { opacity: 1; pointer-events: all; z-index: 5; }
+
+/* ═══ HUB ════════════════════════════════════════════════════ */
+#hub { background: var(--paper); overflow-y: auto; }
+
+.hub-wrap {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; padding: 3vh 4vw 2vh;
+  position: relative; z-index: 1;
+}
+
+.hub-kicker {
+  font-size: clamp(9px,.9vw,11px);
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--amber); font-weight: 600;
+  margin-bottom: .5em; text-align: center;
+}
+
+.hub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px,5.5vw,72px);
+  font-weight: 700; line-height: .92;
+  color: var(--ink); text-align: center;
+  margin-bottom: .2em;
+}
+.hub-title em { color: var(--weave); font-style: italic; }
+.hub-title span { font-size: .5em; color: var(--amber); letter-spacing: .04em; }
+
+.hub-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(13px,1.5vw,18px);
+  font-style: italic; color: var(--muted);
+  text-align: center; margin-bottom: .6em;
+}
+
+.hub-rule {
+  width: 55%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: .5em auto 1em;
+}
+
+.hub-intro {
+  font-size: clamp(11px,1.1vw,13.5px);
+  color: var(--body); text-align: center;
+  max-width: 700px; line-height: 1.7;
+  margin-bottom: 1.4em;
+}
+
+/* Audience cards */
+.aud-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.1em; width: 100%; max-width: 1060px;
+  margin-bottom: 1.2em;
+}
+
+.aud-card {
+  border-radius: 8px; overflow: hidden;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.aud-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0,0,0,.12);
+}
+
+.aud-top {
+  padding: 1.3em 1.3em .9em;
+  display: flex; flex-direction: column; gap: .45em;
+  flex: 1; position: relative;
+}
+
+.aud-icon { font-size: clamp(26px,3vw,40px); }
+.aud-num {
+  font-size: clamp(8px,.85vw,10px);
+  letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 700; color: var(--muted);
+}
+.aud-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px,1.85vw,22px);
+  font-weight: 700; line-height: 1.15; color: var(--ink);
+}
+.aud-desc {
+  font-size: clamp(10px,.95vw,12px);
+  color: var(--muted); line-height: 1.5;
+}
+
+.aud-cta {
+  padding: .6em 1.3em;
+  font-size: clamp(10px,1vw,12px);
+  font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+
+.aud-card.gov .aud-top  { background: linear-gradient(150deg, #F0F5FC 0%, #E8F0FA 100%); }
+.aud-card.gov .aud-num  { color: var(--d1l); }
+.aud-card.gov .aud-cta  { background: var(--d1); color: #fff; border-color: var(--d1); }
+
+.aud-card.cre .aud-top  { background: linear-gradient(150deg, #F7F2FD 0%, #F0E8FA 100%); }
+.aud-card.cre .aud-num  { color: var(--d2l); }
+.aud-card.cre .aud-cta  { background: var(--d2); color: #fff; border-color: var(--d2); }
+
+.aud-card.biz .aud-top  { background: linear-gradient(150deg, #F2F9F4 0%, #E8F5EC 100%); }
+.aud-card.biz .aud-num  { color: var(--d3l); }
+.aud-card.biz .aud-cta  { background: var(--d3); color: #fff; border-color: var(--d3); }
+
+/* Hub event strip */
+.evt-strip {
+  display: flex; gap: .6em; flex-wrap: wrap;
+  justify-content: center; max-width: 1060px;
+  width: 100%; margin-bottom: .8em;
+}
+.evt {
+  background: var(--linen);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+  padding: .4em .8em;
+  font-size: clamp(9px,.9vw,11px); color: var(--body);
+}
+.evt strong { color: var(--gold); }
+
+/* ═══ DECK SHELL ═════════════════════════════════════════════ */
+.deck {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s; z-index: 10;
+}
+.deck.show { opacity: 1; pointer-events: all; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .38s, transform .38s;
+  transform: translateX(40px); overflow: hidden;
+}
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.exit   { opacity: 0; transform: translateX(-40px); }
+
+.s-body {
+  flex: 1; display: flex; flex-direction: column;
+  padding: 2vh 3.5vw 0; position: relative; z-index: 1; overflow: hidden;
+}
+
+/* ═══ TEXT ATOMS ════════════════════════════════════════════ */
+.ey {
+  font-size: clamp(8px,.82vw,10.5px);
+  letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: .35em;
+}
+.h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px,2.6vw,36px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--ink); margin-bottom: .25em;
+}
+.gr { height: 2px; background: linear-gradient(90deg, currentColor 0%, transparent 80%); margin: .3em 0 .6em; opacity: .5; }
+.tg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(12px,1.35vw,16px);
+  font-style: italic; line-height: 1.55;
+}
+.bd {
+  font-size: clamp(10px,1.02vw,13px);
+  line-height: 1.6; color: var(--body);
+}
+.sc { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:.6em; min-height:0; padding-bottom:52px; }
+.sc::-webkit-scrollbar { width:3px; }
+.sc::-webkit-scrollbar-thumb { background: var(--border); border-radius:2px; }
+
+/* ═══ CARDS ══════════════════════════════════════════════════ */
+.card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 6px; padding: .9em 1.1em;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; border-radius: 6px 0 0 6px;
+}
+.card.ac::before { background: var(--amber); }
+.card.bl::before { background: var(--d1); }
+.card.pu::before { background: var(--d2); }
+.card.gr::before { background: var(--d3); }
+.card .cl {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(11px,1.1vw,14px); font-weight: 700;
+  margin-bottom: .3em;
+}
+
+/* ═══ STAT BOX ═══════════════════════════════════════════════ */
+.stat {
+  background: var(--linen); border: 1px solid var(--border);
+  border-left: 3px solid; border-radius: 0 6px 6px 0;
+  padding: .65em 1em;
+}
+.sn { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,40px); font-weight:700; line-height:1; }
+.sl { font-size:clamp(9px,.9vw,11px); color:var(--muted); margin-top:.15em; }
+
+/* ═══ GRIDS ═════════════════════════════════════════════════ */
+.g2  { display:grid; grid-template-columns:1fr 1fr; gap:.85em; }
+.g3  { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.75em; }
+.g23 { display:grid; grid-template-columns:1.1fr 1fr; gap:1.2em; }
+.col { display:flex; flex-direction:column; gap:.65em; }
+
+/* ═══ QUOTE ═════════════════════════════════════════════════ */
+.qt {
+  background: var(--linen); border-left: 4px solid;
+  border-radius: 0 6px 6px 0; padding: .75em 1.1em;
+}
+.qt p  { font-family:'Cormorant Garamond',serif; font-size:clamp(12px,1.3vw,16px); font-style:italic; line-height:1.55; color:var(--ink); }
+.qt sm { font-size:clamp(9px,.88vw,11px); font-weight:700; letter-spacing:.05em; margin-top:.4em; display:block; color:var(--muted); }
+
+/* ═══ CRITERIA ROW ══════════════════════════════════════════ */
+.cr { display:grid; grid-template-columns:1fr auto 1.5fr; gap:.55em; align-items:center; padding:.48em .75em; border-radius:4px; }
+.cr:nth-child(odd)  { background:var(--linen); }
+.cr:nth-child(even) { background:var(--cream); }
+.cr-n { font-family:'Cormorant Garamond',serif; font-size:clamp(11px,1.05vw,13.5px); font-weight:700; }
+.cr-p { font-family:'Cormorant Garamond',serif; font-size:clamp(14px,1.5vw,18px); font-weight:700; min-width:2.8em; text-align:center; }
+.cr-d { font-size:clamp(9px,.88vw,11px); color:var(--muted); line-height:1.35; }
+
+/* ═══ STEP CARDS (pillar) ═══════════════════════════════════ */
+.pc { border-radius:6px; overflow:hidden; display:flex; flex-direction:column; border:1.5px solid var(--border); background:var(--cream); }
+.ph { padding:.5em .85em; display:flex; align-items:center; gap:.45em; flex-shrink:0; }
+.pn { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; }
+.pt { font-family:'Cormorant Garamond',serif; font-size:clamp(10px,1.05vw,13px); font-weight:700; line-height:1.2; }
+.pb { padding:.8em; flex:1; display:flex; flex-direction:column; gap:.4em; background:var(--cream); }
+
+/* ═══ PRIZE TOWER ═══════════════════════════════════════════ */
+.pz { border-radius:6px; overflow:hidden; display:flex; flex-direction:column; border:1.5px solid var(--border); }
+.pz-h { padding:.5em .85em; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(11px,1.1vw,14px); }
+.pz-b { padding:.85em; flex:1; background:var(--cream); }
+.pz-a { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,40px); font-weight:700; line-height:1; }
+
+/* ═══ TIMELINE ═══════════════════════════════════════════════ */
+.tl { display:flex; gap:.45em; align-items:stretch; }
+.ti { flex:1; display:flex; flex-direction:column; align-items:center; gap:.3em; }
+.ti-dot { width:10px; height:10px; border-radius:50%; border:2px solid; flex-shrink:0; }
+.ti-d { font-size:clamp(7px,.78vw,10px); font-weight:700; letter-spacing:.04em; text-align:center; }
+.ti-c { border-left:2px solid; padding:.38em .52em; border-radius:0 3px 3px 0; width:100%; background:var(--linen); }
+.ti-e { font-size:clamp(7px,.82vw,10.5px); line-height:1.3; font-weight:500; color:var(--body); }
+
+/* ═══ FINDING ROW ════════════════════════════════════════════ */
+.fr { background:var(--linen); border:1px solid var(--border); border-left:2px solid; border-radius:0 4px 4px 0; padding:.48em .7em; }
+.ft { font-family:'Cormorant Garamond',serif; font-size:clamp(11px,1.05vw,13px); font-weight:700; margin-bottom:.15em; }
+.fd { font-size:clamp(9px,.88vw,11px); color:var(--muted); line-height:1.35; }
+
+/* ═══ ACCENT BAR ════════════════════════════════════════════ */
+.ab { border-radius:4px; padding:.5em .95em; font-size:clamp(9px,.92vw,12px); font-weight:600; line-height:1.45; flex-shrink:0; }
+
+/* ═══ THREAD DIVIDER ════════════════════════════════════════ */
+.td { height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); flex-shrink:0; margin:.1em 0; }
+
+/* ═══ NAV BAR ════════════════════════════════════════════════ */
+.nav-bar {
+  position:absolute; bottom:0; left:0; right:0; height:44px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 1.1em; gap:.7em; z-index:50;
+  border-top:1px solid var(--border);
+  background:rgba(250,247,242,.96);
+  backdrop-filter:blur(8px);
+}
+.nb-back { font-size:clamp(8px,.88vw,11px); letter-spacing:.07em; text-transform:uppercase; font-weight:700; cursor:pointer; border:none; background:transparent; color:var(--muted); display:flex; align-items:center; gap:.35em; }
+.nb-back:hover { color:var(--ink); }
+.dots { display:flex; gap:5px; align-items:center; flex:1; justify-content:center; flex-wrap:wrap; }
+.dot { width:7px; height:7px; border-radius:50%; border:none; cursor:pointer; transition:all .2s; background:var(--border); }
+.dot.on { transform:scale(1.35); }
+.nb-ctr { font-family:'Cormorant Garamond',serif; font-size:14px; min-width:3.8em; text-align:center; color:var(--muted); }
+.nav-btn { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--border); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all .2s; background:var(--cream); color:var(--body); }
+.nav-btn:hover { border-color:currentColor; background:var(--linen); }
+
+/* ═══ COVER SLIDE HERO ═══════════════════════════════════════ */
+.cover-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:2em; flex:1; overflow:hidden; }
+.cover-left { display:flex; flex-direction:column; justify-content:center; }
+.cover-right { display:flex; flex-direction:column; justify-content:center; gap:.6em; }
+
+.ev-card {
+  background:var(--cream); border:1px solid var(--border);
+  border-left:3px solid; border-radius:0 6px 6px 0;
+  padding:.55em .95em; transition:background .2s;
+}
+.ev-card:hover { background:var(--linen); }
+.ev-t { font-family:'Cormorant Garamond',serif; font-size:clamp(12px,1.3vw,15.5px); font-weight:700; color:var(--ink); }
+.ev-s { font-size:clamp(9px,.9vw,11px); color:var(--muted); margin-top:.12em; }
+
+.cta-btn {
+  display:inline-flex; align-items:center; gap:.4em;
+  padding:.55em 1.3em; border:none; border-radius:4px;
+  cursor:pointer; font-family:'Cormorant Garamond',serif;
+  font-weight:700; font-size:clamp(11px,1.15vw,14px);
+  letter-spacing:.06em; text-transform:uppercase;
+  transition:all .2s; margin-top:.8em;
+  background:var(--gold); color:#fff;
+  box-shadow: 0 2px 10px rgba(155,106,28,.3);
+}
+.cta-btn:hover { background:var(--amber); transform:translateY(-1px); }
+
+/* ═══ DECK BACKGROUNDS ═══════════════════════════════════════ */
+#deck1 .slide { background: var(--d1bg); }
+#deck1 .ey    { color: var(--d1); }
+#deck1 .gr    { color: var(--d1); }
+#deck1 .card.bl::before { background: var(--d1); }
+#deck1 .card .cl { color: var(--d1); }
+#deck1 .qt  { border-color: var(--d1); background: #EBF2FC; }
+#deck1 .qt p { color: var(--ink); }
+#deck1 .qt sm { color: var(--d1l); }
+#deck1 .cr-n { color: var(--d1); }
+#deck1 .cr-p { color: var(--d1l); }
+#deck1 .cr:nth-child(odd)  { background: #EBF2FC; }
+#deck1 .cr:nth-child(even) { background: #F4F8FE; }
+#deck1 .pc .ph { background: var(--d1); }
+#deck1 .pc .pn, #deck1 .pc .pt { color: #fff; }
+#deck1 .pc .pb { background: #EBF2FC; }
+#deck1 .pz-h { background: var(--d1); color: #fff; }
+#deck1 .pz-b { background: #F0F5FC; }
+#deck1 .pz-a { color: var(--d1); }
+#deck1 .stat { border-left-color: var(--d1); }
+#deck1 .sn   { color: var(--d1); }
+#deck1 .ab   { background: var(--d1); color: #fff; }
+#deck1 .nav-btn { color: var(--d1); border-color: rgba(26,74,122,.2); }
+#deck1 .dot  { background: rgba(26,74,122,.2); }
+#deck1 .dot.on { background: var(--d1); }
+#deck1 .nb-back { color: var(--d1l); }
+#deck1 .fr { border-left-color: var(--d1); }
+#deck1 .ft { color: var(--d1); }
+#deck1 .ti-dot { background: var(--d1); border-color: var(--d1); }
+#deck1 .ti-d   { color: var(--d1); }
+#deck1 .ti-c   { border-color: var(--d1); }
+
+#deck2 .slide { background: var(--d2bg); }
+#deck2 .ey    { color: var(--d2); }
+#deck2 .gr    { color: var(--d2); }
+#deck2 .card .cl { color: var(--d2); }
+#deck2 .qt  { border-color: var(--d2); background: #F0E8FA; }
+#deck2 .qt p { color: var(--ink); }
+#deck2 .qt sm { color: var(--d2l); }
+#deck2 .cr-n { color: var(--d2); }
+#deck2 .cr-p { color: var(--d2l); }
+#deck2 .cr:nth-child(odd)  { background: #F0E8FA; }
+#deck2 .cr:nth-child(even) { background: #F7F2FD; }
+#deck2 .pc .ph { background: var(--d2); }
+#deck2 .pc .pn, #deck2 .pc .pt { color: #fff; }
+#deck2 .pc .pb { background: #F0E8FA; }
+#deck2 .pz-h { background: var(--d2); color: #fff; }
+#deck2 .pz-b { background: var(--d2bg); }
+#deck2 .pz-a { color: var(--d2); }
+#deck2 .stat { border-left-color: var(--d2); }
+#deck2 .sn   { color: var(--d2); }
+#deck2 .ab   { background: var(--d2); color: #fff; }
+#deck2 .nav-btn { color: var(--d2); border-color: rgba(92,45,122,.2); }
+#deck2 .dot  { background: rgba(92,45,122,.2); }
+#deck2 .dot.on { background: var(--d2); }
+#deck2 .nb-back { color: var(--d2l); }
+#deck2 .fr { border-left-color: var(--d2); }
+#deck2 .ft { color: var(--d2); }
+#deck2 .ti-dot { background: var(--d2); border-color: var(--d2); }
+#deck2 .ti-d   { color: var(--d2); }
+#deck2 .ti-c   { border-color: var(--d2); }
+#deck2 .ev-card { border-left-color: var(--d2); }
+
+#deck3 .slide { background: var(--d3bg); }
+#deck3 .ey    { color: var(--d3); }
+#deck3 .gr    { color: var(--d3); }
+#deck3 .card .cl { color: var(--d3); }
+#deck3 .qt  { border-color: var(--d3); background: #E8F5EC; }
+#deck3 .qt p { color: var(--ink); }
+#deck3 .qt sm { color: var(--d3l); }
+#deck3 .cr-n { color: var(--d3); }
+#deck3 .cr-p { color: var(--d3l); }
+#deck3 .cr:nth-child(odd)  { background: #E8F5EC; }
+#deck3 .cr:nth-child(even) { background: #F2F9F4; }
+#deck3 .pc .ph { background: var(--d3); }
+#deck3 .pc .pn, #deck3 .pc .pt { color: #fff; }
+#deck3 .pc .pb { background: #E8F5EC; }
+#deck3 .pz-h { background: var(--d3); color: #fff; }
+#deck3 .pz-b { background: var(--d3bg); }
+#deck3 .pz-a { color: var(--d3); }
+#deck3 .stat { border-left-color: var(--d3); }
+#deck3 .sn   { color: var(--d3); }
+#deck3 .ab   { background: var(--d3); color: #fff; }
+#deck3 .nav-btn { color: var(--d3); border-color: rgba(26,90,50,.2); }
+#deck3 .dot  { background: rgba(26,90,50,.2); }
+#deck3 .dot.on { background: var(--d3); }
+#deck3 .nb-back { color: var(--d3l); }
+#deck3 .fr { border-left-color: var(--d3); }
+#deck3 .ft { color: var(--d3); }
+#deck3 .ti-dot { background: var(--d3); border-color: var(--d3); }
+#deck3 .ti-d   { color: var(--d3); }
+#deck3 .ti-c   { border-color: var(--d3); }
+
+/* ═══ GITHUB PAGE ════════════════════════════════════════════ */
+#gh-page { background: var(--paper); overflow-y: auto; }
+.gh-wrap { max-width: 800px; margin: 0 auto; padding: 4vh 4vw; position:relative; z-index:1; }
+.step-card {
+  background: var(--cream); border: 1.5px solid var(--border);
+  border-left: 4px solid var(--amber);
+  border-radius: 0 8px 8px 0;
+  padding: 1.1em 1.3em; margin-bottom: 1em;
+}
+.step-head { display:flex; align-items:center; gap:.6em; margin-bottom:.65em; }
+.step-num {
+  background: var(--gold); color: #fff;
+  width: 28px; height: 28px; border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14px; flex-shrink:0;
+}
+.step-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--ink); }
+.step-body { font-size:13px; color:var(--body); line-height:1.7; display:flex; flex-direction:column; gap:.45em; }
+.step-body code { background:var(--parchment); border:1px solid var(--border); padding:.1em .4em; border-radius:3px; font-size:12px; color:var(--gold); font-family:monospace; }
+.note { background:var(--linen); border:1px solid var(--border); border-radius:4px; padding:.55em .75em; font-size:11.5px; color:var(--muted); margin-top:.3em; }
+.trouble-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75em; margin-top:.3em; }
+.tr-card { background:var(--linen); border:1px solid var(--border); border-radius:5px; padding:.6em .8em; font-size:12px; }
+.tr-card strong { color:var(--gold); display:block; margin-bottom:.2em; }
+
+/* ═══ FIXED GITHUB BTN ═══════════════════════════════════════ */
+#gh-btn {
+  position:fixed; bottom:14px; right:14px; z-index:200;
+  background:var(--gold); color:#fff; border:none; border-radius:5px;
+  padding:.45em 1em; font-family:'DM Sans',sans-serif;
+  font-size:11px; font-weight:700; letter-spacing:.06em;
+  cursor:pointer; text-transform:uppercase;
+  box-shadow:0 3px 14px rgba(155,106,28,.35);
+  transition:all .2s;
+}
+#gh-btn:hover { background:var(--amber); }
+
+@media(max-width:768px){
+  .aud-grid,.g2,.g3,.g23,.cover-grid,.trouble-grid { grid-template-columns:1fr; }
+  .tl { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ████████████ HUB ████████████ -->
+<div class="page show" id="hub">
+  <div class="wb lg"></div>
+  <div class="hub-wrap">
+    <div class="hub-kicker">Philippines · ASEAN Chairmanship 2026</div>
+    <h1 class="hub-title">GALING <em>LIKHA</em><br><span>NATIONAL SEARCH</span></h1>
+    <div class="hub-sub">Amazing Weaves Competition 2026</div>
+    <div style="display:flex;justify-content:center;gap:.5em;margin-bottom:.4em;flex-wrap:wrap">
+      <div class="inaul-stripe" style="width:120px;border-radius:2px;opacity:.7"></div>
+      <div class="wb sm" style="width:80px;border-radius:2px;opacity:.8"></div>
+      <div class="inaul-stripe" style="width:120px;border-radius:2px;opacity:.7"></div>
+    </div>
+    <div class="hub-rule"></div>
+    <p class="hub-intro">
+      A national search for the Philippines' outstanding indigenous weaving traditions and ecosystems.<br>
+      Winners receive the <strong>Amazing Weaves Distinction Awards</strong> and are showcased at the <strong>ASEAN Trade Show · 7–9 November 2026 · Grand Ballroom Hall, Okada Manila.</strong><br><br>
+      Select your audience below to open a presentation tailored for you:
+    </p>
+    <div class="aud-grid">
+      <div class="aud-card gov" onclick="openDeck('d1')">
+        <div class="aud-top pina-bg">
+          <div class="aud-icon">🏛️</div>
+          <div class="aud-num">Deck 01 · Government &amp; LGUs</div>
+          <div class="aud-name">Local Governments &amp; DILG Field Offices</div>
+          <div class="aud-desc">1,600 LGUs invited · Galing Likha mechanics · GAD budget · prizes · pathway to ASEAN Trade Show, Grand Ballroom Okada</div>
+        </div>
+        <div class="wb sm"></div>
+        <div class="aud-cta"><span>Open Presentation</span><span>→</span></div>
+      </div>
+      <div class="aud-card cre" onclick="openDeck('d2')">
+        <div class="aud-top">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 10px,rgba(92,45,122,.04) 10px,rgba(92,45,122,.04) 11px),repeating-linear-gradient(-45deg,transparent 0,transparent 10px,rgba(92,45,122,.04) 10px,rgba(92,45,122,.04) 11px);pointer-events:none;z-index:0"></div>
+          <div class="aud-icon" style="position:relative;z-index:1">🧵</div>
+          <div class="aud-num" style="position:relative;z-index:1">Deck 02 · Creators</div>
+          <div class="aud-name" style="position:relative;z-index:1">Weavers, Artisans, Designers &amp; Producers</div>
+          <div class="aud-desc" style="position:relative;z-index:1">Your weave on the ASEAN stage · Heritage-to-Use showcase · Distinction Awards · how to enter &amp; win at Okada Grand Ballroom</div>
+        </div>
+        <div class="wb sm"></div>
+        <div class="aud-cta"><span>Open Presentation</span><span>→</span></div>
+      </div>
+      <div class="aud-card biz" onclick="openDeck('d3')">
+        <div class="aud-top">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 8px,rgba(26,90,50,.05) 8px,rgba(26,90,50,.05) 9px),repeating-linear-gradient(90deg,transparent 0,transparent 8px,rgba(26,90,50,.05) 8px,rgba(26,90,50,.05) 9px);pointer-events:none;z-index:0"></div>
+          <div class="aud-icon" style="position:relative;z-index:1">🤝</div>
+          <div class="aud-num" style="position:relative;z-index:1">Deck 03 · Partners</div>
+          <div class="aud-name" style="position:relative;z-index:1">Private Sector, Academe &amp; Solutions Providers</div>
+          <div class="aud-desc" style="position:relative;z-index:1">Market opportunity · investment · sponsorship · ASEAN Trade Show partnership · research collaboration · Grand Ballroom showcase</div>
+        </div>
+        <div class="wb sm"></div>
+        <div class="aud-cta"><span>Open Presentation</span><span>→</span></div>
+      </div>
+    </div>
+    <div class="evt-strip">
+      <div class="evt"><strong>Galing Likha National Search</strong> · Amazing Weaves Competition 2026</div>
+      <div class="evt"><strong>Amazing Weaves Distinction Awards</strong> · 7 November 2026 · Okada Manila</div>
+      <div class="evt"><strong>ASEAN Trade Show</strong> · 7–9 November · Grand Ballroom Hall, Okada Manila</div>
+      <div class="evt"><strong>2nd ASEAN Women Economic Summit</strong> · Philippines ASEAN Chairmanship 2026</div>
+    </div>
+    <div style="font-size:clamp(8px,.78vw,10px);color:var(--light-t);letter-spacing:.08em;text-align:center">
+      DTI · PCW · ASEAN BAC Philippines · Women's Business Council Philippines · DILG · DoST PTRI
+    </div>
+  </div>
+  <div class="wb lg"></div>
+</div>
+
+<!-- ████████████ DECK 1: GOVERNMENT ████████████ -->
+<div class="deck" id="d1">
+
+  <!-- Cover -->
+  <div class="slide active" data-t="Welcome">
+    <div class="pina-bg"></div>
+    <div class="wb lg"></div>
+    <div class="s-body" style="justify-content:center;overflow:hidden;">
+      <div class="cover-grid">
+        <div class="cover-left">
+          <div class="ey" style="color:var(--d1)">DILG Memorandum Circular 2026 · Local Government Offices</div>
+          <div class="h2" style="font-size:clamp(26px,4.5vw,56px)">Galing Likha<br>National Search<br><span style="font-size:.55em;color:var(--muted);font-weight:400;font-style:italic">Amazing Weaves Competition 2026</span></div>
+          <div class="td" style="width:70%;margin:.6em 0"></div>
+          <div class="tg" style="color:var(--muted);margin-bottom:.8em">Transforming weaving from heritage craft to a strategic development pathway and ASEAN economic asset.</div>
+          <button class="cta-btn" style="background:var(--d1)" onclick="nextSlide('d1')">Explore the Opportunity →</button>
+        </div>
+        <div class="cover-right">
+          <div class="ev-card" style="border-left-color:var(--d1)"><div class="ev-t">7 November 2026</div><div class="ev-s">Distinction Awards · Okada Manila</div></div>
+          <div class="ev-card" style="border-left-color:var(--d1)"><div class="ev-t">7–9 November 2026</div><div class="ev-s">ASEAN Trade Show · Grand Ballroom Hall, Okada Manila</div></div>
+          <div class="ev-card" style="border-left-color:var(--d1)"><div class="ev-t">1,600 LGUs Invited Nationwide</div><div class="ev-s">Luzon · Visayas · Mindanao</div></div>
+          <div class="ev-card" style="border-left-color:var(--d1)"><div class="ev-t">2nd ASEAN Women Economic Summit</div><div class="ev-s">Philippines ASEAN Chairmanship 2026</div></div>
+          <div class="ev-card" style="border-left-color:var(--amber)"><div class="ev-t" style="color:var(--gold)">PhP 80B GAD Budget Available</div><div class="ev-s">Unlockable through 5% LGU Gender &amp; Development funds</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- Why Join -->
+  <div class="slide" data-t="The Opportunity">
+    <div class="pina-bg"></div><div class="wb"></div>
+    <div class="s-body">
+      <div class="ey">The Opportunity for LGUs</div>
+      <div class="h2">Your LGU Holds the Key to Living Heritage.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="qt" style="border-color:var(--d1)"><p>"Weaving is not merely heritage — it is a foundation for inclusive and sustainable economic growth. LGUs that invest in weaving ecosystems build communities that are culturally rooted and economically resilient."</p><sm>— ASEAN Amazing Weaves Program Concept Note 2026</sm></div>
+        <div class="g2">
+          <div class="col">
+            <div class="card bl"><div class="cl">PhP 80 Billion Available</div><div class="bd">The 5% LGU Gender &amp; Development (GAD) budget, when directed to weaving communities, can fund heritage hubs, skills centers, innovation labs, and market linkages nationwide.</div></div>
+            <div class="card bl"><div class="cl">500+ Weave Traditions at Risk</div><div class="bd">Across 7,641 islands — many within your jurisdiction, under-documented and at risk of extinction without urgent LGU leadership and investment.</div></div>
+          </div>
+          <div class="col">
+            <div class="g2" style="gap:.55em">
+              <div class="stat" style="border-left-color:var(--d1)"><div class="sn">$1T+</div><div class="sl">Global textile &amp; apparel market</div></div>
+              <div class="stat" style="border-left-color:var(--d1)"><div class="sn">$300B</div><div class="sl">ASEAN digital economy</div></div>
+            </div>
+            <div class="card bl"><div class="cl">Why This Year?</div><div class="bd">The Philippines holds the ASEAN Chairmanship in 2026. Winners of the Galing Likha National Search will be showcased at the ASEAN Trade Show, Grand Ballroom Hall, Okada Manila — 7–9 November 2026 — before buyers and investors from 10 ASEAN nations.</div></div>
+          </div>
+        </div>
+        <div class="ab">Your LGU's flagship weave can win national recognition, earn cash prizes, and be showcased at Okada Manila — Grand Ballroom Hall, 7–9 November 2026.</div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- How to Join -->
+  <div class="slide" data-t="How to Join">
+    <div class="pina-bg"></div><div class="wb"></div>
+    <div class="s-body">
+      <div class="ey">Galing Likha — How LGUs Join</div>
+      <div class="h2">Three Steps to the National Stage.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="g3">
+          <div class="pc"><div class="ph"><div class="pn" style="color:#fff">01</div><div class="pt">Partner &amp; Prepare</div></div><div class="pb"><div class="bd" style="display:flex;flex-direction:column;gap:.4em"><div style="border-left:2px solid var(--d1);padding-left:.55em">Identify your LGU's flagship indigenous weave tradition</div><div style="border-left:2px solid var(--d1l);padding-left:.55em">Partner with local weaving community (association / cooperative / cluster)</div><div style="border-left:2px solid var(--d1);padding-left:.55em">Secure Community Consent, Authenticity Declaration &amp; Benefit-Sharing Statement — signed by LCE and community representative</div></div></div></div>
+          <div class="pc"><div class="ph"><div class="pn" style="color:#fff">02</div><div class="pt">Submit Entry</div></div><div class="pb"><div class="bd" style="display:flex;flex-direction:column;gap:.4em"><div style="border-left:2px solid var(--d1);padding-left:.55em">Complete official online AWC application form</div><div style="border-left:2px solid var(--d1l);padding-left:.55em">Upload weave narrative, photos, market plan &amp; sustainability plan</div><div style="border-left:2px solid var(--d1);padding-left:.55em">Courier one (1) woven swatch: exactly 12″ × 12″ to Island Secretariat</div><div style="border-left:2px solid var(--d1l);padding-left:.55em">One entry per LGU · Indigenous weaves prioritized</div></div></div></div>
+          <div class="pc" style="border-color:var(--d1)"><div class="ph"><div class="pn" style="color:#fff">03</div><div class="pt">Compete &amp; Win</div></div><div class="pb"><div class="bd" style="display:flex;flex-direction:column;gap:.4em"><div style="border-left:2px solid var(--d1);padding-left:.55em">Island Secretariat screens &amp; validates your entry</div><div style="border-left:2px solid var(--d1l);padding-left:.55em">Island-Wide Selection Committee — Top 5 finalists per island group</div><div style="border-left:2px solid var(--d1);padding-left:.55em">Top 2 Island Winners advance to National Finals</div><div style="border-left:2px solid var(--d1l);padding-left:.55em"><strong>3 National Winners showcased at ASEAN Trade Show, Grand Ballroom, Okada Manila 7–9 Nov 2026</strong></div></div></div></div>
+        </div>
+        <div class="ab">One entry per LGU · Indigenous weaves prioritized · Community Consent mandatory · No imported finished textiles · Swatch: 12″ × 12″ exactly</div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- Judging Criteria -->
+  <div class="slide" data-t="Judging Criteria">
+    <div class="pina-bg"></div><div class="wb"></div>
+    <div class="s-body">
+      <div class="ey">Amazing Weaves Distinction Awards — Judging Criteria</div>
+      <div class="h2">Six Dimensions of Excellence.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="tg" style="color:var(--muted);margin-bottom:.3em">Designed so culture, enterprise, and governance reinforce one another — building coherent ecosystems, not just award-winning textiles:</div>
+        <div style="display:flex;flex-direction:column;gap:.3em">
+          <div class="cr"><div class="cr-n">Cultural Protection</div><div class="cr-p" style="color:var(--d1)">20%</div><div class="cr-d">Documentation of outstanding indigenous weaving with strong cultural narratives, authentic attribution, and craft excellence</div></div>
+          <div class="cr"><div class="cr-n">Craft Excellence &amp; Eco-Innovation</div><div class="cr-p" style="color:var(--d1)">20%</div><div class="cr-d">Technical mastery; natural fiber sourcing; regenerative production models promoting ethical commercialization</div></div>
+          <div class="cr"><div class="cr-n">LGU Policy &amp; Ecosystem</div><div class="cr-p" style="color:var(--d1)">15%</div><div class="cr-d">Strengthened weaving ecosystems through LGU enabling policies, GAD-funded programs, and enterprise development</div></div>
+          <div class="cr"><div class="cr-n">Community Impact</div><div class="cr-p" style="color:var(--d1)">15%</div><div class="cr-d">Responsible raw material sourcing; active skills transfer to younger generations through mentorship and training</div></div>
+          <div class="cr"><div class="cr-n">Market Access &amp; Value Chain</div><div class="cr-p" style="color:var(--d1)">15%</div><div class="cr-d">Demonstrated value chain integration; market linkages; fair benefit distribution across the community enterprise</div></div>
+          <div class="cr"><div class="cr-n">Sustainable Livelihood</div><div class="cr-p" style="color:var(--d1)">15%</div><div class="cr-d">Weaving traditions sustained for women &amp; artisans using GAD resources; replication and adoption models in place</div></div>
+        </div>
+        <div class="ab" style="font-size:clamp(9px,.88vw,11px)">Aligned: Magna Carta of Women · MSME Dev Plan 2023–2028 · ASEAN Gender Mainstreaming Strategy · SDG 5 · GEWE</div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- Prizes -->
+  <div class="slide" data-t="Prizes">
+    <div class="pina-bg"></div><div class="wb"></div>
+    <div class="s-body">
+      <div class="ey">Prizes &amp; Recognition</div>
+      <div class="h2">Honored Nationally. Showcased at the ASEAN Trade Show, Okada Manila.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="qt" style="border-color:var(--d1)"><p>Cash prizes go to the LGU-Community partnership. A benefit-sharing agreement must ensure weavers receive their direct and equitable share.</p></div>
+        <div class="g3">
+          <div class="pz"><div class="pz-h">Island Finalists<br><small style="font-weight:400">Bottom 3 of Top 5 per island</small></div><div class="pz-b"><div class="pz-a">₱30,000</div><div class="bd" style="margin-top:.5em;color:var(--muted)">Certificate of Recognition · Distinction Awards Ceremony · Regional media</div></div></div>
+          <div class="pz"><div class="pz-h">Island Winners<br><small style="font-weight:400">Top 2 per island group</small></div><div class="pz-b"><div class="pz-a" style="font-size:clamp(26px,3.5vw,44px)">₱75,000</div><div class="bd" style="margin-top:.5em;color:var(--muted)">Distinction Award Trophy · ASEAN Trade Show access · National Finals</div></div></div>
+          <div class="pz" style="border-color:var(--d1)"><div class="pz-h">National Winners<br><small style="font-weight:400">1 per island · 3 total</small></div><div class="pz-b"><div class="pz-a" style="font-size:clamp(26px,3.8vw,48px)">₱150,000</div><div class="bd" style="margin-top:.5em;color:var(--muted)">Amazing Weaves Distinction Award · Grand Ballroom showcase, Okada Manila · National media · Buyer matchmaking · ASEAN platform</div></div></div>
+        </div>
+        <div class="ab">National winners are showcased at the ASEAN Trade Show — Grand Ballroom Hall, Okada Manila — 7–9 November 2026, before ASEAN leaders, buyers, investors &amp; media.</div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="slide" data-t="Calendar 2026">
+    <div class="pina-bg"></div><div class="wb"></div>
+    <div class="s-body">
+      <div class="ey">Calendar of Activities 2026</div>
+      <div class="h2">From Application to ASEAN Grand Ballroom.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="tl">
+          <div class="ti"><div class="ti-d">JAN–FEB</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">Digital Outreach &amp; Advocacy</div></div></div>
+          <div class="ti"><div class="ti-d">MAR 12–14</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">Galing Likha Launch + Mindanao Knowledge Exchange (SMX Davao)</div></div></div>
+          <div class="ti"><div class="ti-d">APR–JUN</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">Strategic Partnerships (AMCHAM, DFAT, DigiPinas, DIWA)</div></div></div>
+          <div class="ti"><div class="ti-d">JUL 10–12</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">Luzon Selection Tradefair — North EDSA Manila</div></div></div>
+          <div class="ti"><div class="ti-d">AUG 14–16</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">Visayas Selection — Cebu SMX</div></div></div>
+          <div class="ti"><div class="ti-d">SEP</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">PCW 4th ASEAN Women Leaders Summit</div></div></div>
+          <div class="ti"><div class="ti-d">OCT 15–17</div><div class="ti-dot"></div><div class="ti-c"><div class="ti-e">ASEAN Pavilion @ Manila Fame (WTC)</div></div></div>
+          <div class="ti" style="flex:1.4"><div class="ti-d" style="font-size:clamp(8px,.88vw,11px);font-weight:700">7–9 NOV 2026</div><div class="ti-dot" style="width:14px;height:14px"></div><div class="ti-c" style="background:var(--d1);border-color:var(--d1)"><div class="ti-e" style="color:#fff;font-weight:700">AWES + Distinction Awards + ASEAN Trade Show · Grand Ballroom, Okada Manila</div></div></div>
+        </div>
+        <div class="ab" style="font-size:clamp(9px,.88vw,11px)">Women Strong Network Hybrid Marketplace Tradefairs run alongside all island selection events · NCR Tradefair at ASEAN Trade Show</div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="slide" data-t="Join Now">
+    <div class="pina-bg"></div><div class="wb lg"></div>
+    <div class="s-body" style="align-items:center;justify-content:center;text-align:center;gap:.8em;overflow:hidden">
+      <div class="ey">Your LGU · Your Weavers · Your Stage</div>
+      <div class="h2" style="font-size:clamp(26px,4.5vw,54px)">Join Galing Likha.<br>Bring Your Heritage to ASEAN.</div>
+      <div class="td" style="width:60%;margin:.3em auto"></div>
+      <div class="tg" style="color:var(--muted);max-width:580px">Partner with your weaving community. Submit your entry. Win national recognition. Be showcased at the ASEAN Trade Show, Grand Ballroom Hall, Okada Manila — 7–9 November 2026.</div>
+      <div style="display:flex;gap:.8em;flex-wrap:wrap;justify-content:center;margin-top:.6em">
+        <div style="background:var(--linen);border:1.5px solid var(--border);border-left:3px solid var(--d1);padding:.55em 1.1em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d1)">Step 1</strong><br>Partner with weaving community</div>
+        <div style="background:var(--linen);border:1.5px solid var(--border);border-left:3px solid var(--d1);padding:.55em 1.1em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d1)">Step 2</strong><br>Submit online + 12″×12″ swatch</div>
+        <div style="background:var(--linen);border:1.5px solid var(--border);border-left:3px solid var(--d1);padding:.55em 1.1em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d1)">Step 3</strong><br>Compete → Win → Grand Ballroom</div>
+      </div>
+      <div class="ab" style="max-width:680px;font-size:clamp(9px,.9vw,12px)">amazingweaves2026.ph · #GalingLikha · #AmazingWeaves · DILG Memorandum Circular 2026</div>
+    </div>
+    <div class="wb lg"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d1')">‹</button><button class="nav-btn" onclick="nextSlide('d1')">›</button></div>
+  </div>
+
+</div><!-- /d1 -->
+
+<!-- ████████████ DECK 2: CREATORS ████████████ -->
+<div class="deck" id="d2">
+
+  <!-- Cover -->
+  <div class="slide active" data-t="Your Stage">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 14px,rgba(92,45,122,.04) 14px,rgba(92,45,122,.04) 15px),repeating-linear-gradient(-45deg,transparent 0,transparent 14px,rgba(92,45,122,.04) 14px,rgba(92,45,122,.04) 15px);z-index:0"></div>
+    <div class="wb lg"></div>
+    <div class="s-body" style="align-items:center;justify-content:center;text-align:center;gap:.8em;overflow:hidden;position:relative;z-index:1">
+      <div class="ey">For Filipino &amp; Filipina Weavers · Artisans · Designers · Producers</div>
+      <div class="h2" style="font-size:clamp(26px,4.8vw,58px);color:var(--ink)">Your Weave.<br><span style="color:var(--d2);font-style:italic">Your Story.</span><br>The ASEAN Stage.</div>
+      <div style="display:flex;justify-content:center;gap:.4em;margin:.3em 0;flex-wrap:wrap">
+        <div class="inaul-stripe" style="width:100px;border-radius:2px"></div>
+        <div class="wb sm" style="width:60px;border-radius:2px;opacity:.7"></div>
+        <div class="inaul-stripe" style="width:100px;border-radius:2px"></div>
+      </div>
+      <div class="tg" style="color:var(--muted);max-width:620px">Every thread woven is a story told. Every story told is a future preserved.<br>Galing Likha invites you to bring your weave to the world.</div>
+      <div style="display:flex;gap:.65em;flex-wrap:wrap;justify-content:center;margin-top:.6em">
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d2)">Galing Likha</strong><br>National Search Competition</div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d2)">Distinction Awards</strong><br>7 November 2026</div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d2)">ASEAN Trade Show</strong><br>Grand Ballroom · Okada Manila</div>
+      </div>
+    </div>
+    <div class="wb lg"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d2')">‹</button><button class="nav-btn" onclick="nextSlide('d2')">›</button></div>
+  </div>
+
+  <!-- Heritage Value -->
+  <div class="slide" data-t="Your Heritage Has Value">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px),repeating-linear-gradient(-45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px);z-index:0"></div>
+    <div class="wb"></div>
+    <div class="s-body" style="position:relative;z-index:1">
+      <div class="ey">The Value of What You Carry</div>
+      <div class="h2">Your Weaving Tradition is Irreplaceable.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="qt" style="border-color:var(--d2)"><p>"I do not want our traditional arts and culture to be lost. The traditional arts of indigenous communities in the Philippines are as universal as they are local."</p><sm>— Mercedes Zobel, Patron of Philippine Arts · Habi: Art and the Order of Nature · Ayala Museum</sm></div>
+        <div class="g2">
+          <div class="col">
+            <div class="card pu"><div class="cl">What Your Weave Encodes</div><div class="bd">Motifs that speak of rivers, mountains, rice, and the moon. Ritual patterns connecting communities to the sacred. Knowledge passed for centuries. This is not merely cloth — it is civilization.</div></div>
+            <div class="fr" style="border-color:var(--d2)"><div class="ft" style="color:var(--d2)">T'nalak · South Cotabato</div><div class="fd">Dream-woven by T'boli masters — each pattern a vision from ancestors. Never replicated exactly. A UNESCO-recognized living tradition.</div></div>
+            <div class="fr" style="border-color:var(--pinya)"><div class="ft" style="color:var(--pinya)">Piña · Aklan</div><div class="fd">Woven from pineapple fiber — the queen of Philippine textiles. Painstaking, precious, worn by royalty across Asia.</div></div>
+          </div>
+          <div class="col">
+            <div class="fr" style="border-color:var(--yakan)"><div class="ft" style="color:var(--yakan)">Yakan · Zamboanga &amp; Basilan</div><div class="fd">Among the most complex weavings in Southeast Asia — intricate geometric masterpieces of the Yakan people.</div></div>
+            <div class="fr" style="border-color:var(--inaul)"><div class="ft" style="color:var(--inaul)">Inaul · Maguindanao</div><div class="fd">The royal textile of the Maguindanao — rich geometric patterning in silk, worn at royal ceremonies and celebrations.</div></div>
+            <div class="fr" style="border-color:var(--d2)"><div class="ft" style="color:var(--d2)">Inabel · Ilocos Norte &amp; Sur</div><div class="fd">Ancient Ilocano geometric weaves — 400 years of Highland trade identity encoded in cotton.</div></div>
+            <div class="card pu"><div class="cl">Royal Recognition</div><div class="bd">HRH The Prince of Wales: "Philippine indigenous textiles reflect universal principles and provide a view into how our noble ancestors lived sustainably." — Clarence House</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d2')">‹</button><button class="nav-btn" onclick="nextSlide('d2')">›</button></div>
+  </div>
+
+  <!-- For Designers -->
+  <div class="slide" data-t="For Designers">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px),repeating-linear-gradient(-45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px);z-index:0"></div>
+    <div class="wb"></div>
+    <div class="s-body" style="position:relative;z-index:1">
+      <div class="ey">For Filipino &amp; Filipina Designers &amp; Producers</div>
+      <div class="h2">You Are the Bridge Between Loom and World.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="g23">
+          <div class="col">
+            <div class="tg" style="color:var(--muted)">Translate the sacred language of the loom into contemporary markets — ethically, beautifully, without erasure.</div>
+            <div class="td"></div>
+            <div class="card pu"><div class="cl">Co-create with attribution</div><div class="bd">Design collections honoring indigenous motifs with proper attribution and design credit to the originating community.</div></div>
+            <div class="card pu"><div class="cl">Amplify the artisan's story</div><div class="bd">Use fashion, film, and digital content to make every weave's origin visible to ASEAN buyers, ethical fashion media, and global markets.</div></div>
+            <div class="card pu"><div class="cl">Access ASEAN matchmaking</div><div class="bd">Connect with regional supply chains and buyers at the ASEAN Trade Show, Grand Ballroom, Okada Manila — 7–9 November 2026.</div></div>
+          </div>
+          <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:7px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="background:var(--d2);padding:.5em .85em;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(11px,1.1vw,14px);font-weight:700;color:#fff">HERITAGE-TO-USE SHOWCASE<br><small style="font-weight:400;opacity:.85">Required for National Finalists</small></div></div>
+            <div style="padding:.8em;flex:1;display:flex;flex-direction:column;gap:.45em">
+              <div class="bd" style="color:var(--muted);font-style:italic;margin-bottom:.2em">National finalists must present their weave alongside at least one physical design application:</div>
+              <div class="fr" style="border-color:var(--pinya)"><div class="fd">👗 Clothing, fashion &amp; couture</div></div>
+              <div class="fr" style="border-color:var(--d2)"><div class="fd">💍 Accessories &amp; jewellery</div></div>
+              <div class="fr" style="border-color:var(--pinya)"><div class="fd">🏠 Interior &amp; home textiles</div></div>
+              <div class="fr" style="border-color:var(--d2)"><div class="fd">🎭 Cultural performance wear</div></div>
+              <div class="fr" style="border-color:var(--pinya)"><div class="fd">🛍️ Functional everyday items</div></div>
+              <div style="font-size:clamp(9px,.88vw,11px);color:var(--muted);font-style:italic;margin-top:.2em">Designers must explain how weavers benefit and how cultural authenticity is protected.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d2')">‹</button><button class="nav-btn" onclick="nextSlide('d2')">›</button></div>
+  </div>
+
+  <!-- How to Enter -->
+  <div class="slide" data-t="How to Enter">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px),repeating-linear-gradient(-45deg,transparent 0,transparent 14px,rgba(92,45,122,.035) 14px,rgba(92,45,122,.035) 15px);z-index:0"></div>
+    <div class="wb"></div>
+    <div class="s-body" style="position:relative;z-index:1">
+      <div class="ey">How Your Community Enters Galing Likha</div>
+      <div class="h2">Partner with Your LGU. Weave Your Story. Claim Your Stage.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="g23">
+          <div class="col">
+            <div class="card pu"><div class="cl">Your Role as Community Partner</div><div class="bd">Your weaving association, cooperative, cluster, or recognized community joins as the Community Partner alongside an LGU Lead Proponent. Together you submit one flagship weave tradition.</div></div>
+            <div class="card pu"><div class="cl">What You Provide</div><div class="bd" style="display:flex;flex-direction:column;gap:.38em"><div style="border-left:2px solid var(--d2);padding-left:.55em">Weave narrative — your tradition's history and community significance</div><div style="border-left:2px solid var(--d2l);padding-left:.55em">Photographic documentation of weaving process and finished works</div><div style="border-left:2px solid var(--d2);padding-left:.55em">One woven swatch: exactly 12″ × 12″</div><div style="border-left:2px solid var(--d2l);padding-left:.55em">Community Consent &amp; Benefit-Sharing Agreement signed by your representative</div></div></div>
+          </div>
+          <div class="col">
+            <div class="card pu"><div class="cl">What You Receive</div><div class="bd" style="display:flex;flex-direction:column;gap:.38em"><div style="border-left:2px solid var(--d2);padding-left:.55em"><strong style="color:var(--d2)">If finalist:</strong> ₱30,000 + national recognition</div><div style="border-left:2px solid var(--d2l);padding-left:.55em"><strong style="color:var(--d2)">If Island Winner:</strong> ₱75,000 + ASEAN Trade Show access</div><div style="border-left:2px solid var(--d2);padding-left:.55em"><strong style="color:var(--d2)">If National Winner:</strong> ₱150,000 + Distinction Award + Grand Ballroom showcase at Okada Manila 7–9 Nov</div><div style="border-left:2px solid var(--d2l);padding-left:.55em">Direct, equitable share through benefit-sharing agreement</div></div></div>
+            <div class="ab">Your tradition will be permanently documented, nationally recognized, and presented to ASEAN buyers actively seeking authentic Philippine heritage products.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d2')">‹</button><button class="nav-btn" onclick="nextSlide('d2')">›</button></div>
+  </div>
+
+  <!-- ASEAN Stage CTA -->
+  <div class="slide" data-t="The Grand Ballroom">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 14px,rgba(92,45,122,.04) 14px,rgba(92,45,122,.04) 15px),repeating-linear-gradient(-45deg,transparent 0,transparent 14px,rgba(92,45,122,.04) 14px,rgba(92,45,122,.04) 15px);z-index:0"></div>
+    <div class="wb lg"></div>
+    <div class="s-body" style="align-items:center;text-align:center;gap:.8em;justify-content:center;overflow:hidden;position:relative;z-index:1">
+      <div class="ey">The Destination — Grand Ballroom Hall, Okada Manila · 7–9 November 2026</div>
+      <div class="h2" style="font-size:clamp(24px,4vw,52px)">Your Weave. The Grand Ballroom.<br><span style="color:var(--d2);font-style:italic">The World.</span></div>
+      <div class="td" style="width:55%;margin:.2em auto"></div>
+      <div class="tg" style="color:var(--muted);max-width:620px">Winners of the Galing Likha National Search are showcased at the ASEAN Trade Show in the Grand Ballroom Hall, Okada Manila — before ASEAN buyers, investors, designers, and policymakers from 10 nations.</div>
+      <div class="g3" style="width:100%;max-width:750px;margin-top:.5em">
+        <div class="card pu" style="text-align:left"><div class="cl">ASEAN Market Access</div><div class="bd">Direct connections to buyers &amp; investors from 10 ASEAN nations seeking authentic Philippine heritage products.</div></div>
+        <div class="card pu" style="text-align:left"><div class="cl">Your Story Told</div><div class="bd">Digital traceability &amp; ESG storytelling platforms amplify your weave's cultural value to global ethical fashion buyers.</div></div>
+        <div class="card pu" style="text-align:left"><div class="cl">Fair Prices</div><div class="bd">B2B matchmaking links your community to buyers who pay premium prices for authenticated, culturally significant work.</div></div>
+      </div>
+      <div class="ab" style="max-width:700px;font-size:clamp(9px,.92vw,12px)">amazingweaves2026.ph · #GalingLikha · #AmazingWeaves · 7–9 November 2026 · Grand Ballroom, Okada Manila</div>
+    </div>
+    <div class="wb lg"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d2')">‹</button><button class="nav-btn" onclick="nextSlide('d2')">›</button></div>
+  </div>
+
+</div><!-- /d2 -->
+
+<!-- ████████████ DECK 3: PARTNERS ████████████ -->
+<div class="deck" id="d3">
+
+  <!-- Cover -->
+  <div class="slide active" data-t="Market Opportunity">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px),repeating-linear-gradient(90deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px);z-index:0"></div>
+    <div class="wb lg"></div>
+    <div class="s-body" style="align-items:center;justify-content:center;text-align:center;gap:.8em;overflow:hidden;position:relative;z-index:1">
+      <div class="ey">For Private Sector · Academe · Solutions Providers · NGOs</div>
+      <div class="h2" style="font-size:clamp(26px,4.5vw,56px)">Invest in the Ecosystem.<br><span style="color:var(--d3);font-style:italic">Build the Future.</span></div>
+      <div class="td" style="width:55%;margin:.3em auto"></div>
+      <div class="tg" style="color:var(--muted);max-width:620px">The Galing Likha National Search and ASEAN Trade Show create strategic entry points for partners across the full weaving value chain.</div>
+      <div style="display:flex;gap:.65em;flex-wrap:wrap;justify-content:center;margin-top:.6em">
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d3);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d3)">$1T+</strong><br><span style="color:var(--muted)">Global textile &amp; apparel market</span></div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d3);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d3)">$300B</strong><br><span style="color:var(--muted)">ASEAN digital economy</span></div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d3);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d3)">1,600 LGUs</strong><br><span style="color:var(--muted)">Participating communities</span></div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-left:3px solid var(--d3);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:clamp(10px,1vw,13px)"><strong style="color:var(--d3)">10 ASEAN Nations</strong><br><span style="color:var(--muted)">Grand Ballroom, Okada Manila</span></div>
+      </div>
+    </div>
+    <div class="wb lg"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d3')">‹</button><button class="nav-btn" onclick="nextSlide('d3')">›</button></div>
+  </div>
+
+  <!-- Partner Roles -->
+  <div class="slide" data-t="Partner Opportunities">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px),repeating-linear-gradient(90deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px);z-index:0"></div>
+    <div class="wb"></div>
+    <div class="s-body" style="position:relative;z-index:1">
+      <div class="ey">Strategic Partnership Opportunities</div>
+      <div class="h2">Six Entry Points Across the Value Chain.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="g2">
+          <div class="card gr"><div class="cl">Financial Institutions</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">Microfinance · MSME credit · Women's Economic Fund</div><div class="bd">83% of weavers lack formal financing. Lending to this sector unlocks premium ethical market returns and ESG impact metrics aligned with SDG 5.</div></div>
+          <div class="card gr"><div class="cl">Technology Providers</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">Digital traceability · QR provenance · e-commerce platforms</div><div class="bd">Ethical fashion buyers globally demand supply chain transparency. Digital authentication multiplies premium product value significantly.</div></div>
+          <div class="card gr"><div class="cl">Research &amp; Academe</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">DoST PTRI · Universities · Heritage documentation</div><div class="bd">Partner with DoST PTRI to build the sustainable weaving value chain research base. Document, innovate, and scale with academic rigor.</div></div>
+          <div class="card gr"><div class="cl">Logistics &amp; Packaging</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">Courier networks · sustainable packaging</div><div class="bd">Infrastructure gaps are the #1 barrier to scaling weaving production. Differentiated services to a rapidly growing, premium sector.</div></div>
+          <div class="card gr"><div class="cl">Media &amp; Communications</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">Storytelling · documentary · digital amplification</div><div class="bd">Every weave has a story worth telling. Heritage content drives premium brand positioning at the ASEAN Trade Show, Okada Manila.</div></div>
+          <div class="card gr"><div class="cl">Private Sector &amp; CSR</div><div style="font-size:clamp(9px,.88vw,11px);color:var(--d3l);margin-bottom:.3em">Sponsorship · awards ceremony · ASEAN pavilion</div><div class="bd">Align your brand with cultural heritage, women's empowerment, and ASEAN leadership — 2026's most visible Philippine platform.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d3')">‹</button><button class="nav-btn" onclick="nextSlide('d3')">›</button></div>
+  </div>
+
+  <!-- ASEAN Trade Show -->
+  <div class="slide" data-t="ASEAN Trade Show">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px),repeating-linear-gradient(90deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px);z-index:0"></div>
+    <div class="wb"></div>
+    <div class="s-body" style="position:relative;z-index:1">
+      <div class="ey">ASEAN Trade Show · 7–9 November 2026 · Grand Ballroom Hall, Okada Manila</div>
+      <div class="h2">Where Investment Meets Heritage. Heritage Meets the World.</div>
+      <div class="gr"></div>
+      <div class="sc">
+        <div class="qt" style="border-color:var(--d3)"><p>"Not just a marketplace — a journey. Every touchpoint intentional: digital traceability, ESG metrics, cross-border matchmaking, and storytelling platforms that elevate women from producers to enterprise leaders."</p><sm>— ASEAN Amazing Weaves Program Concept Note 2026</sm></div>
+        <div class="g23">
+          <div class="col">
+            <div class="card gr"><div class="cl">For Your Organization</div><div class="bd" style="display:flex;flex-direction:column;gap:.4em"><div style="border-left:2px solid var(--d3);padding-left:.55em">ASEAN Pavilion presence — 10-nation trade delegation</div><div style="border-left:2px solid var(--d3l);padding-left:.55em">B2B matchmaking with LGU-community partnerships</div><div style="border-left:2px solid var(--d3);padding-left:.55em">Branded sponsorship of Distinction Awards ceremony</div><div style="border-left:2px solid var(--d3l);padding-left:.55em">Research showcase alongside DoST PTRI</div><div style="border-left:2px solid var(--d3);padding-left:.55em">Digital platform integration with Galing Likha network</div></div></div>
+            <div class="ab">The ASEAN Trade Show at Okada Grand Ballroom is the highest-visibility platform for heritage-aligned brand positioning in 2026.</div>
+          </div>
+          <div class="col">
+            <div style="font-size:clamp(9px,.88vw,11px);color:var(--d3);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3em">The Transformation</div>
+            <div style="display:flex;flex-direction:column;gap:.38em">
+              <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.4em;align-items:center;font-size:clamp(9px,.9vw,12px)"><div style="background:var(--linen);border:1px solid var(--border);padding:.35em .6em;border-radius:4px;color:var(--muted)">Commodity textiles</div><div style="color:var(--d3);font-weight:700">→</div><div style="background:#E8F5EC;border:1px solid var(--d3);padding:.35em .6em;border-radius:4px;font-weight:600;color:var(--d3)">Cultural capital</div></div>
+              <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.4em;align-items:center;font-size:clamp(9px,.9vw,12px)"><div style="background:var(--linen);border:1px solid var(--border);padding:.35em .6em;border-radius:4px;color:var(--muted)">Artisan producers</div><div style="color:var(--d3);font-weight:700">→</div><div style="background:#E8F5EC;border:1px solid var(--d3);padding:.35em .6em;border-radius:4px;font-weight:600;color:var(--d3)">Enterprise leaders</div></div>
+              <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.4em;align-items:center;font-size:clamp(9px,.9vw,12px)"><div style="background:var(--linen);border:1px solid var(--border);padding:.35em .6em;border-radius:4px;color:var(--muted)">CSR obligation</div><div style="color:var(--d3);font-weight:700">→</div><div style="background:#E8F5EC;border:1px solid var(--d3);padding:.35em .6em;border-radius:4px;font-weight:600;color:var(--d3)">ESG investment</div></div>
+              <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.4em;align-items:center;font-size:clamp(9px,.9vw,12px)"><div style="background:var(--linen);border:1px solid var(--border);padding:.35em .6em;border-radius:4px;color:var(--muted)">Local supplier</div><div style="color:var(--d3);font-weight:700">→</div><div style="background:#E8F5EC;border:1px solid var(--d3);padding:.35em .6em;border-radius:4px;font-weight:600;color:var(--d3)">ASEAN market player</div></div>
+            </div>
+            <div class="card gr"><div class="cl">Policy Alignment</div><div class="bd">ASEAN Community Vision 2045 · Philippine MSME Dev Plan · SDG 5 · GEWE · Magna Carta of Women · Philippine Dev Plan 2023–2040</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wb"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d3')">‹</button><button class="nav-btn" onclick="nextSlide('d3')">›</button></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="slide" data-t="Partner with Us">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px),repeating-linear-gradient(90deg,transparent 0,transparent 12px,rgba(26,90,50,.04) 12px,rgba(26,90,50,.04) 13px);z-index:0"></div>
+    <div class="wb lg"></div>
+    <div class="s-body" style="align-items:center;justify-content:center;text-align:center;gap:.9em;overflow:hidden;position:relative;z-index:1">
+      <div class="ey">Join the Movement · Build the Ecosystem</div>
+      <div class="h2" style="font-size:clamp(26px,4.5vw,56px)">Invest in Heritage.<br><span style="color:var(--d3);font-style:italic">Invest in ASEAN's Future.</span></div>
+      <div class="td" style="width:55%;margin:.2em auto"></div>
+      <div class="tg" style="color:var(--muted);max-width:600px">Partner with the Galing Likha National Search and ASEAN Trade Show to build the ecosystem that sustains indigenous weaving as a living economic and cultural force.</div>
+      <div class="g3" style="width:100%;max-width:800px;margin-top:.5em;text-align:left">
+        <div class="card gr"><div class="cl">Sponsor</div><div class="bd">Brand your partnership with the Distinction Awards, ASEAN Trade Show pavilion, or island selection events.</div></div>
+        <div class="card gr"><div class="cl">Invest</div><div class="bd">Provide financing, technology, or logistics solutions directly to Galing Likha community enterprises.</div></div>
+        <div class="card gr"><div class="cl">Research</div><div class="bd">Collaborate with DoST PTRI and Galing Likha to build the knowledge base for sustainable Philippine weaving.</div></div>
+      </div>
+      <div class="ab" style="max-width:700px;font-size:clamp(9px,.92vw,12px)">amazingweaves2026.ph · #GalingLikha · #AmazingWeaves · Grand Ballroom Hall, Okada Manila · 7–9 November 2026</div>
+    </div>
+    <div class="wb lg"></div>
+    <div class="nav-bar"><button class="nb-back" onclick="closeDeck()">← All Audiences</button><div class="dots"></div><div class="nb-ctr"></div><button class="nav-btn" onclick="prevSlide('d3')">‹</button><button class="nav-btn" onclick="nextSlide('d3')">›</button></div>
+  </div>
+
+</div><!-- /d3 -->
+
+<!-- ████████████ GITHUB GUIDE ████████████ -->
+<div class="page" id="gh-page">
+  <div class="wb lg"></div>
+  <div class="gh-wrap" style="position:relative;z-index:1">
+    <button onclick="showHub()" style="background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:.4em .9em;border-radius:4px;cursor:pointer;font-size:13px;margin-bottom:1.3em;font-family:'DM Sans',sans-serif;font-weight:600">← Back to Presentations</button>
+
+    <div class="wb sm" style="margin-bottom:.8em;border-radius:3px"></div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,42px);color:var(--ink);margin-bottom:.3em;">Deploy to GitHub Pages</h1>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:1.3em;line-height:1.7;">Host your Amazing Weaves presentation free at <strong style="color:var(--gold)">yourname.github.io</strong> — no server, no hosting cost, shareable worldwide in any browser.</p>
+
+    <div class="step-card">
+      <div class="step-head"><div class="step-num">1</div><div class="step-title">Create a Free GitHub Account</div></div>
+      <div class="step-body">
+        <div>→ Open <code>github.com</code> in your browser and click <strong>Sign up</strong></div>
+        <div>→ Choose a username — this becomes your public web address: <code>yourusername.github.io</code></div>
+        <div>→ Verify your email address to activate your account</div>
+        <div class="note">💡 <strong>Tip:</strong> Use your organization name as the username (e.g. <code>amazingweaves2026</code>) to get the URL <code>amazingweaves2026.github.io</code> — cleaner for sharing with LGUs and partners.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-head"><div class="step-num">2</div><div class="step-title">Create a New Repository</div></div>
+      <div class="step-body">
+        <div>→ Click the <strong>+</strong> icon at the top right → select <strong>New repository</strong></div>
+        <div>→ In the <strong>Repository name</strong> field, type exactly: your username + <code>.github.io</code></div>
+        <div style="background:var(--linen);border:1px solid var(--border);border-radius:4px;padding:.6em .9em;font-family:monospace;font-size:13px;color:var(--gold);">Example: amazingweaves2026.github.io</div>
+        <div>→ Set visibility to <strong>Public</strong></div>
+        <div>→ Check the box: <strong>"Add a README file"</strong></div>
+        <div>→ Click <strong>Create repository</strong></div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-head"><div class="step-num">3</div><div class="step-title">Upload Your HTML File as index.html</div></div>
+      <div class="step-body">
+        <div>→ Inside your new repository, click <strong>Add file</strong> → <strong>Upload files</strong></div>
+        <div>→ Drag and drop <code>GalingLikha_AmazingWeaves_2026.html</code> into the upload area</div>
+        <div>→ <strong>Critical:</strong> Before uploading, rename the file to exactly <code>index.html</code> (lowercase, no spaces)</div>
+        <div>→ Scroll down to the commit section, add a message: <em>"Add Amazing Weaves presentation"</em></div>
+        <div>→ Click <strong>Commit changes</strong></div>
+        <div class="note">💡 The file must be named <strong>index.html</strong> — this tells GitHub Pages to serve it automatically as your homepage when someone visits your URL.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-head"><div class="step-num">4</div><div class="step-title">Enable GitHub Pages</div></div>
+      <div class="step-body">
+        <div>→ In your repository, click <strong>Settings</strong> (top menu bar)</div>
+        <div>→ In the left sidebar, scroll down to find <strong>Pages</strong> and click it</div>
+        <div>→ Under <strong>Source</strong>, select <strong>Deploy from a branch</strong></div>
+        <div>→ Branch: select <strong>main</strong> &nbsp;·&nbsp; Folder: select <strong>/ (root)</strong></div>
+        <div>→ Click <strong>Save</strong></div>
+        <div>→ Wait 1–3 minutes, then refresh the page — you will see a green banner:</div>
+        <div style="background:var(--linen);border:1.5px solid var(--d3);border-radius:4px;padding:.65em .9em;font-family:monospace;font-size:13px;color:var(--d3);font-weight:600;">✅ Your site is live at https://amazingweaves2026.github.io</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-head"><div class="step-num">5</div><div class="step-title">Share Your Link with Stakeholders</div></div>
+      <div class="step-body">
+        <div>→ Your presentation is now live at: <code>https://yourusername.github.io</code></div>
+        <div>→ Share this URL by email, SMS, WhatsApp, or social media — it works on <strong>any device, any browser, no app needed</strong></div>
+        <div>→ Works perfectly on mobile phones — important for LGU officers in the field</div>
+        <div>→ To update: upload a new <code>index.html</code>, commit → site updates in ~1 minute</div>
+        <div class="note">💡 <strong>Optional custom domain:</strong> You can connect a domain like <code>amazingweaves2026.ph</code> by going to Settings → Pages → Custom domain, then updating your DNS A records at your registrar to point to: <code>185.199.108.153</code>, <code>185.199.109.153</code>, <code>185.199.110.153</code>, <code>185.199.111.153</code></div>
+      </div>
+    </div>
+
+    <div class="step-card" style="border-left-color:var(--d3)">
+      <div class="step-head"><div class="step-num" style="background:var(--d3)">6</div><div class="step-title">Create a QR Code for Events &amp; Printed Materials</div></div>
+      <div class="step-body">
+        <div>→ Go to <code>qr-code-generator.com</code> or <code>qrcode-monkey.com</code></div>
+        <div>→ Paste your GitHub Pages URL into the URL field</div>
+        <div>→ Customize colors to match Amazing Weaves (gold: <code>#9B6A1C</code>, purple: <code>#5C2D7A</code>)</div>
+        <div>→ Download as <strong>PNG</strong> (for digital use) or <strong>SVG</strong> (for printing)</div>
+        <div>→ Include the QR code in LGU briefing materials, event banners, posters, and ASEAN Trade Show booth displays</div>
+        <div>→ Attendees scan with their phone camera → the full interactive presentation opens instantly</div>
+      </div>
+    </div>
+
+    <div class="step-card" style="border-left-color:var(--border)">
+      <div class="step-head"><div class="step-num" style="background:var(--muted)">?</div><div class="step-title">Troubleshooting</div></div>
+      <div class="trouble-grid">
+        <div class="tr-card"><strong>Site not showing?</strong>Wait 3–5 minutes after enabling Pages. Hard-refresh with Ctrl+Shift+R (or Cmd+Shift+R on Mac).</div>
+        <div class="tr-card"><strong>Blank white page?</strong>Make sure the file is named exactly <code style="color:var(--gold)">index.html</code> — lowercase, no spaces, no other extension.</div>
+        <div class="tr-card"><strong>Fonts not loading?</strong>The presentation needs internet access to load Google Fonts. Once visited, fonts are cached for offline use.</div>
+        <div class="tr-card"><strong>Need to update?</strong>Upload a new <code style="color:var(--gold)">index.html</code>, write any commit message, click Commit — site updates in about 1 minute.</div>
+        <div class="tr-card"><strong>Repository name wrong?</strong>It must match your username exactly: <code style="color:var(--gold)">username.github.io</code>. Delete and recreate if needed.</div>
+        <div class="tr-card"><strong>Share by email?</strong>Just paste the full URL: <code style="color:var(--gold)">https://yourusername.github.io</code> — no login needed to view.</div>
+      </div>
+    </div>
+
+    <div class="wb lg" style="margin-top:1.2em;border-radius:4px"></div>
+  </div>
+</div>
+
+<!-- Fixed GitHub button -->
+<button onclick="toggleGuide()" id="gh-btn">📂 GitHub Deploy Guide</button>
+
+<script>
+let cDeck = null;
+const dState = {};
+
+function openDeck(id) {
+  document.getElementById('hub').classList.remove('show');
+  const d = document.getElementById(id);
+  d.classList.add('show');
+  cDeck = id;
+  initDeck(id);
+  document.getElementById('gh-btn').style.display = 'none';
+}
+function closeDeck() {
+  if (cDeck) { document.getElementById(cDeck).classList.remove('show'); cDeck = null; }
+  showHub();
+}
+function showHub() {
+  document.getElementById('hub').classList.add('show');
+  document.getElementById('gh-page').classList.remove('show');
+  document.getElementById('gh-btn').style.display = '';
+}
+function toggleGuide() {
+  const g = document.getElementById('gh-page'), h = document.getElementById('hub');
+  if (g.classList.contains('show')) { g.classList.remove('show'); h.classList.add('show'); }
+  else { h.classList.remove('show'); g.classList.add('show'); }
+}
+
+function initDeck(id) {
+  const d = document.getElementById(id), slides = d.querySelectorAll('.slide');
+  if (dState[id] === undefined) dState[id] = 0;
+  d.querySelectorAll('.dots').forEach(dc => {
+    dc.innerHTML = '';
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === dState[id] ? ' on' : '');
+      dot.onclick = () => goDeck(id, i);
+      dc.appendChild(dot);
+    });
+  });
+  updateCtrs(id);
+}
+
+function goDeck(id, n) {
+  const d = document.getElementById(id), slides = d.querySelectorAll('.slide'), p = dState[id];
+  if (n === p) return;
+  slides[p].classList.remove('active'); slides[p].classList.add('exit');
+  setTimeout(() => slides[p].classList.remove('exit'), 420);
+  dState[id] = n; slides[n].classList.add('active');
+  d.querySelectorAll('.dots').forEach(dc => {
+    dc.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('on', i === n));
+  });
+  updateCtrs(id);
+}
+
+function updateCtrs(id) {
+  const d = document.getElementById(id), total = d.querySelectorAll('.slide').length, cur = dState[id] + 1;
+  d.querySelectorAll('.nb-ctr').forEach(el => el.textContent = cur + '/' + total);
+}
+
+function nextSlide(id) {
+  const d = document.getElementById(id), t = d.querySelectorAll('.slide').length;
+  goDeck(id, Math.min((dState[id] || 0) + 1, t - 1));
+}
+function prevSlide(id) {
+  goDeck(id, Math.max((dState[id] || 0) - 1, 0));
+}
+
+document.addEventListener('keydown', e => {
+  if (cDeck) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(cDeck); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(cDeck); }
+    if (e.key === 'Escape') closeDeck();
+  }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  if (!cDeck) return;
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) dx < 0 ? nextSlide(cDeck) : prevSlide(cDeck);
+}, { passive: true });
+</script>
+</body>
+</html>
