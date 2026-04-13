@@ -1,1 +1,1 @@
-# GalingLikha2026.github.io
+# GalingLikha2026
