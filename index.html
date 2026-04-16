@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galing Likha · Amazing Weaves Distinction Awards 2026</title>
+<title>Galing Likha · Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -301,6 +301,24 @@ textarea{resize:vertical;min-height:90px;}
 /* misc */
 .rule{height:1px;background:linear-gradient(90deg,var(--border),transparent);margin:1.5em 0;}
 .pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.22em .65em;border-radius:3px;background:rgba(155,106,28,.1);color:var(--gold);}
+
+/* ── HOME BUTTON IN SLIDE NAV ─────────── */
+.snav-home{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:1.5px solid var(--border);border-radius:4px;padding:.28em .75em;cursor:pointer;background:var(--gold);color:#fff;transition:all .2s;flex-shrink:0;}
+.snav-home:hover{background:var(--amber);}
+.ds-btn-group{display:flex;gap:.4em;align-items:center;flex-shrink:0;}
+.ds-dl-btn{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:1.5px solid var(--d1);border-radius:4px;padding:.28em .75em;cursor:pointer;background:transparent;color:var(--d1);transition:all .2s;white-space:nowrap;}
+.ds-dl-btn:hover{background:var(--d1);color:#fff;}
+@media print{
+  body > *:not(#deck-overlay){display:none!important;}
+  #deck-overlay{display:block!important;position:static!important;}
+  #deck-switcher{display:none!important;}
+  .deck:not(.active-deck){display:none!important;}
+  .slide:not(.active){display:none!important;}
+  .snav{display:none!important;}
+  .slide.active{page-break-after:always;height:auto!important;min-height:100vh;}
+  .wb{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+
 </style>
 </head>
 <body>
@@ -325,23 +343,22 @@ textarea{resize:vertical;min-height:90px;}
   <div class="hero-grid">
     <div>
       <div class="hero-kicker">Philippines · ASEAN Chairmanship 2026</div>
-      <h1 class="hero-title">GALING<br><em>LIKHA</em><br><span style="font-size:.48em;color:var(--amber);letter-spacing:.04em;font-style:normal">NATIONAL SEARCH</span></h1>
-      <div class="hero-sub">Amazing Weaves Competition 2026<br>"Weaving Our Future Together"</div>
+      <h1 class="hero-title">GALING<br><em>LIKHA</em><br><span style="font-size:.42em;color:var(--amber);letter-spacing:.04em;font-style:normal">2026 AWDA</span></h1>
+      <div class="hero-sub">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)<br>"Weaving Our Future Together"</div>
       <div style="display:flex;gap:.45em;flex-wrap:wrap;margin-bottom:.9em;">
         <div class="inaul-bg" style="height:5px;width:120px;border-radius:3px;"></div>
         <div class="wb sm" style="width:80px;border-radius:3px;opacity:.8;"></div>
         <div class="inaul-bg" style="height:5px;width:120px;border-radius:3px;"></div>
       </div>
-      <p style="font-size:14px;color:var(--body);line-height:1.7;max-width:520px;margin-bottom:1em;">A national search for the Philippines' most outstanding indigenous weaving traditions and ecosystems. Winners receive the <strong>Amazing Weaves Distinction Awards</strong> and are showcased at the <strong>ASEAN Trade Show, Grand Ballroom Hall, Okada Manila — 7–9 November 2026.</strong></p>
+      <p style="font-size:14px;color:var(--body);line-height:1.7;max-width:520px;margin-bottom:1em;">A national search for the Philippines' most outstanding indigenous weaving traditions and ecosystems. Winners receive the <strong>Amazing Weaves Distinction Awards (AWDA)</strong> and are showcased at the <strong>ASEAN Trade Show, Grand Ballroom Hall, Okada Manila — 7–9 November 2026.</strong></p>
       <div class="hero-cta">
         <a href="#apply" class="btn btn-gold">Apply Now →</a>
         <a href="#presentations" class="btn btn-outline">View Presentations</a>
       </div>
       <div class="organiser-strip">
-        <span class="org-chip">DTI</span><span class="org-chip">PCW</span>
-        <span class="org-chip">ASEAN BAC Philippines</span>
-        <span class="org-chip">Women's Business Council PH</span>
-        <span class="org-chip">DILG</span><span class="org-chip">DoST PTRI</span>
+        <span class="org-chip" style="border-color:var(--d1);color:var(--d1);">DILG</span><span class="org-chip" style="border-color:var(--d2);color:var(--d2);">PCW</span>
+        <span class="org-chip">DTI</span><span class="org-chip">ASEAN BAC Philippines</span>
+        <span class="org-chip">Women's Business Council PH</span><span class="org-chip">DoST PTRI</span>
       </div>
       <div class="countdown" style="margin-top:1.2em;">
         <div class="cd-box"><div class="cd-num" id="cd-d">000</div><div class="cd-lbl">Days</div></div>
@@ -351,13 +368,13 @@ textarea{resize:vertical;min-height:90px;}
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-event-card"><div class="hec-date">7 November 2026</div><div class="hec-sub">Amazing Weaves Distinction Awards · Okada Manila · 9:00 AM–5:00 PM</div></div>
+      <div class="hero-event-card"><div class="hec-date">7 November 2026</div><div class="hec-sub">Amazing Weaves Distinction Awards (AWDA) · Okada Manila · 9:00 AM–5:00 PM</div></div>
       <div class="hero-event-card"><div class="hec-date">7–9 November 2026</div><div class="hec-sub">ASEAN Trade Show · Grand Ballroom Hall, Okada Manila</div></div>
       <div class="hero-event-card"><div class="hec-date">2nd ASEAN Women Economic Summit</div><div class="hec-sub">7 November 2026 · Okada Manila · Philippines ASEAN Chairmanship</div></div>
       <div class="hero-event-card" style="border-left-color:var(--weave)"><div class="hec-date" style="color:var(--weave)">1,600 LGUs Invited Nationwide</div><div class="hec-sub">Luzon · Visayas · Mindanao · BARMM</div></div>
       <div class="hero-event-card" style="border-left-color:var(--sage)"><div class="hec-date" style="color:var(--sage)">PhP 80 Billion GAD Budget</div><div class="hec-sub">Unlockable through 5% LGU Gender &amp; Development funds</div></div>
       <div style="display:flex;gap:.5em;flex-wrap:wrap;margin-top:.3em;font-size:12px;color:var(--muted);">
-        <span>#GalingLikha</span><span>#AmazingWeaves</span><span>#WeavingOurFutureTogether</span>
+        <span>#GalingLikha</span><span>#GalingLikha2026AWDA</span><span>#WeavingOurFutureTogether</span>
       </div>
     </div>
   </div>
@@ -391,13 +408,13 @@ textarea{resize:vertical;min-height:90px;}
 <!-- DECK OVERLAY (full screen) -->
 <div id="deck-overlay">
   <div id="deck-switcher">
-    <div class="ds-brand">GALING LIKHA 2026</div>
+    <div class="ds-brand">GALING LIKHA 2026 AWDA</div>
     <div class="ds-tabs">
       <button class="ds-tab d1" onclick="openDeck('dk1')">🏛️ Government &amp; LGUs</button>
       <button class="ds-tab d2" onclick="openDeck('dk2')">🧵 Weavers &amp; Designers</button>
       <button class="ds-tab d3" onclick="openDeck('dk3')">🤝 Partners &amp; Academe</button>
     </div>
-    <button class="ds-home" onclick="closeDeck()">⌂ Home</button>
+    <div class="ds-btn-group"><button class="ds-dl-btn" onclick="downloadActiveDeck()" title="Download this deck as PDF">⬇ Download Deck</button><button class="ds-home" onclick="closeDeck(true)">⌂ Back to Home</button></div>
   </div>
 
   <!-- ══ DECK 1: GOVERNMENT ══ -->
@@ -406,14 +423,14 @@ textarea{resize:vertical;min-height:90px;}
     <div class="slide active">
       <div class="wb"></div>
       <div class="s-inner" style="align-items:center;justify-content:center;text-align:center;gap:.7em;overflow:hidden;">
-        <div class="ey">DILG Memorandum Circular 2026 · Local Government Offices</div>
-        <h2 class="sh" style="font-size:clamp(26px,4.5vw,54px);">Galing Likha National Search<br><span style="font-size:.6em;font-weight:400;font-style:italic;color:var(--muted);">Amazing Weaves Competition 2026</span></h2>
+        <div class="ey">DILG-PCW Joint Memorandum Circular 2026 · Local Government Offices</div>
+        <h2 class="sh" style="font-size:clamp(26px,4.5vw,54px);">Galing Likha 2026 AWDA<br><span style="font-size:.6em;font-weight:400;font-style:italic;color:var(--muted);">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</span></h2>
         <div style="display:flex;justify-content:center;gap:.4em;flex-wrap:wrap;">
           <div class="wb sm" style="width:100px;border-radius:2px;"></div>
           <div class="inaul-bg" style="height:4px;width:80px;border-radius:2px;"></div>
           <div class="wb sm" style="width:100px;border-radius:2px;"></div>
         </div>
-        <p class="stg" style="max-width:600px;">Transforming weaving from heritage craft to a strategic development pathway and ASEAN economic asset.</p>
+        <p class="stg" style="max-width:600px;">A standards-based recognition program — not a cultural competition. Transforming weaving from heritage craft to a strategic development pathway and ASEAN economic asset.</p><p style="font-size:12px;color:var(--muted);margin-top:.4em;text-align:center;">Jointly issued by DILG and PCW · Philippines ASEAN Chairmanship 2026</p>
         <div style="display:flex;gap:.7em;flex-wrap:wrap;justify-content:center;margin-top:.5em;">
           <div style="background:var(--cream);border:1.5px solid var(--border);border-left:3px solid var(--d1);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d1);">7 November 2026</strong><br><span style="color:var(--muted);">Distinction Awards · Okada Manila</span></div>
           <div style="background:var(--cream);border:1.5px solid var(--border);border-left:3px solid var(--d1);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d1);">7–9 November 2026</strong><br><span style="color:var(--muted);">ASEAN Trade Show · Grand Ballroom, Okada</span></div>
@@ -421,7 +438,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -448,7 +465,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -461,19 +478,19 @@ textarea{resize:vertical;min-height:90px;}
           <div class="g3">
             <div class="pc"><div class="ph"><div class="pn">01</div><div class="pt">Partner &amp; Prepare</div></div><div class="pb"><p class="sbd" style="display:flex;flex-direction:column;gap:.38em;"><span style="border-left:2px solid var(--d1);padding-left:.5em;">Identify your LGU's flagship indigenous weave tradition</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Partner with local weaving community (association / cooperative / cluster)</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Secure Community Consent, Authenticity Declaration &amp; Benefit-Sharing Statement — signed by LCE + community rep</span></p></div></div>
             <div class="pc"><div class="ph"><div class="pn">02</div><div class="pt">Submit Entry</div></div><div class="pb"><p class="sbd" style="display:flex;flex-direction:column;gap:.38em;"><span style="border-left:2px solid var(--d1);padding-left:.5em;">Complete official online application form</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Upload weave narrative, photos, market plan &amp; sustainability plan</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Courier one (1) woven swatch: exactly 12″ × 12″ to Island Secretariat</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">One entry per LGU · Indigenous weaves prioritized</span></p></div></div>
-            <div class="pc" style="border-color:var(--d1);"><div class="ph"><div class="pn">03</div><div class="pt">Compete &amp; Win</div></div><div class="pb"><p class="sbd" style="display:flex;flex-direction:column;gap:.38em;"><span style="border-left:2px solid var(--d1);padding-left:.5em;">Island Secretariat screens &amp; validates</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">IWSC selects Top 5 finalists per island</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Top 2 Island Winners → National Finals</span><span style="border-left:2px solid var(--d1);padding-left:.5em;"><strong>3 National Winners showcased at Grand Ballroom, Okada Manila</strong></span></p></div></div>
+            <div class="pc" style="border-color:var(--d1);"><div class="ph"><div class="pn">03</div><div class="pt">Compete &amp; Win</div></div><div class="pb"><p class="sbd" style="display:flex;flex-direction:column;gap:.38em;"><span style="border-left:2px solid var(--d1);padding-left:.5em;">Island Secretariat screens &amp; validates</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">IWSC selects Top 5 finalists per island</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Top 2 Island-Level Excellence Awardees → National Finals</span><span style="border-left:2px solid var(--d1);padding-left:.5em;"><strong>3 National Distinction Awardees showcased at Grand Ballroom, Okada Manila</strong></span></p></div></div>
           </div>
           <div style="background:var(--d1);color:#fff;border-radius:4px;padding:.55em 1em;font-size:12px;font-weight:600;">One entry per LGU · Community Consent mandatory · Swatch: 12″ × 12″ exactly · No imported finished textiles</div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
       <div class="wb"></div>
       <div class="s-inner">
-        <div class="ey">Amazing Weaves Distinction Awards — Judging</div>
+        <div class="ey">Amazing Weaves Distinction Awards (AWDA) — Evaluation</div>
         <h2 class="sh">Six Dimensions of Excellence.</h2>
         <div class="sgr"></div>
         <div class="sc">
@@ -486,11 +503,11 @@ textarea{resize:vertical;min-height:90px;}
             <div class="cr-row"><div class="cr-name">Market Access &amp; Value Chain</div><div class="cr-pct">15%</div><div class="cr-desc">Demonstrated value chain integration; market linkages; fair benefit distribution across the community enterprise</div></div>
             <div class="cr-row"><div class="cr-name">Sustainable Livelihood</div><div class="cr-pct">15%</div><div class="cr-desc">Weaving traditions sustained for women &amp; artisans using GAD resources; replication and adoption models in place</div></div>
           </div>
-          <div style="background:var(--d1);color:#fff;border-radius:4px;padding:.55em 1em;font-size:12px;font-weight:600;margin-top:.3em;">Aligned: Magna Carta of Women · MSME Dev Plan 2023–2028 · ASEAN Gender Mainstreaming · SDG 5 · GEWE Framework</div>
+          <p style="font-size:12px;font-style:italic;color:var(--muted);margin:.4em 0;">"The six criteria are designed so that culture, enterprise, and governance reinforce one another — creating nationally coherent weaving ecosystems, not just award-winning textiles."</p><div style="background:var(--d1);color:#fff;border-radius:4px;padding:.55em 1em;font-size:12px;font-weight:600;margin-top:.3em;">Aligned: Magna Carta of Women · MSME Dev Plan 2023–2028 · ASEAN Gender Mainstreaming · SDG 5 · GEWE Framework</div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -502,14 +519,14 @@ textarea{resize:vertical;min-height:90px;}
         <div class="sc">
           <div class="quote-block" style="border-color:var(--d1);"><p>Cash prizes go to the LGU-Community partnership. A benefit-sharing agreement must ensure weavers receive their direct and equitable share.</p></div>
           <div class="g3">
-            <div class="pz"><div class="pz-h">Island Finalists<br><small style="font-weight:400;">Bottom 3 of Top 5 per island</small></div><div class="pz-b"><div class="pz-amt">₱30,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Certificate of Recognition · Distinction Awards Ceremony · Regional media feature</p></div></div>
-            <div class="pz"><div class="pz-h">Island Winners<br><small style="font-weight:400;">Top 2 per island group</small></div><div class="pz-b"><div class="pz-amt" style="font-size:clamp(24px,3vw,42px);">₱75,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Distinction Award Trophy · ASEAN Trade Show access · National Finals qualification</p></div></div>
-            <div class="pz" style="border-color:var(--d1);"><div class="pz-h">National Winners<br><small style="font-weight:400;">1 per island · 3 total</small></div><div class="pz-b"><div class="pz-amt" style="font-size:clamp(26px,3.5vw,46px);">₱150,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Amazing Weaves Distinction Award · Grand Ballroom showcase, Okada Manila 7–9 Nov · National media · ASEAN buyer matchmaking</p></div></div>
+            <div class="pz"><div class="pz-h">Island-Level Distinction Awardees<br><small style="font-weight:400;">Bottom 3 of Top 5 per island group</small></div><div class="pz-b"><div class="pz-amt">₱30,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Certificate of Recognition · Distinction Awards Ceremony · Regional media feature</p></div></div>
+            <div class="pz"><div class="pz-h">Island-Level Excellence Awardees / National Finalists<br><small style="font-weight:400;">Top 2 per island group</small></div><div class="pz-b"><div class="pz-amt" style="font-size:clamp(24px,3vw,42px);">₱75,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Distinction Award Trophy · ASEAN Trade Show access · National Finals qualification</p></div></div>
+            <div class="pz" style="border-color:var(--d1);"><div class="pz-h">National Distinction Awardees<br><small style="font-weight:400;">1 per island group · 3 total</small></div><div class="pz-b"><div class="pz-amt" style="font-size:clamp(26px,3.5vw,46px);">₱150,000</div><p class="sbd" style="margin-top:.5em;color:var(--muted);">Amazing Weaves Distinction Award · Grand Ballroom showcase, Okada Manila 7–9 Nov · National media · ASEAN buyer matchmaking</p></div></div>
           </div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -525,14 +542,18 @@ textarea{resize:vertical;min-height:90px;}
               <div class="card bl"><div class="cl">Policy Alignment</div><p class="sbd" style="display:flex;flex-direction:column;gap:.35em;"><span style="border-left:2px solid var(--d1);padding-left:.5em;">SDG 5 — Gender equality &amp; women's empowerment</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">Philippine Development Plan 2023–2040</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">MSME Development Plan 2023–2028</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">GEWE Framework · Magna Carta of Women</span><span style="border-left:2px solid var(--d1);padding-left:.5em;">ASEAN Community Vision 2045</span></p></div>
             </div>
             <div class="col">
-              <div class="card bl"><div class="cl">Why Join Galing Likha Through GAD?</div><p class="sbd">The 5% GAD budget, when directed to weaving communities, preserves living heritage, empowers women, strengthens local economies, and positions your LGU for national recognition — all simultaneously. The result is a nationally coherent system where culture, enterprise, and governance reinforce one another.</p></div>
+              <div class="card bl"><div class="cl">Why Join Galing Likha 2026 AWDA Through GAD?</div><p class="sbd">The 5% GAD budget, when directed to weaving communities, preserves living heritage, empowers women, strengthens local economies, and positions your LGU for national recognition — all simultaneously. The result is a nationally coherent system where culture, enterprise, and governance reinforce one another.</p></div>
+              <div style="background:#E8F5EC;border:2px solid var(--d3);border-radius:8px;padding:1em 1.2em;margin-top:.6em;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--d3);margin-bottom:.4em;">🌏 AWDA is Your Passport to the ASEAN Trade Expo</div>
+              <p style="font-size:13px;color:var(--body);line-height:1.65;">Galing Likha 2026 AWDA is not just a national award — it is a passport to the ASEAN Trade Expo, held 7–9 November 2026 at Okada Manila alongside the 2nd ASEAN Women Economic Summit (AWES). Here, Filipino weaves meet ASEAN buyers, investors, policymakers, cross-border matchmaking platforms, ESG-aligned investment and procurement dialogues, and a storytelling stage where weavers become enterprise leaders — not just producers.</p>
+            </div>
               <div style="background:var(--d1);color:#fff;border-radius:6px;padding:1em;text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;">PhP 80B</div><div style="font-size:12px;opacity:.85;margin-top:.2em;">Potential national GAD investment in weaving ecosystems</div></div>
             </div>
           </div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -553,11 +574,11 @@ textarea{resize:vertical;min-height:90px;}
             <div class="ti final"><div class="ti-date">7–9 NOV 2026</div><div class="ti-dot"></div><div class="ti-card"><div class="ti-ev">AWES + Distinction Awards + ASEAN Trade Show · Grand Ballroom, Okada Manila</div></div></div>
           </div>
           <div style="background:var(--d1);color:#fff;border-radius:4px;padding:.55em 1em;font-size:12px;font-weight:600;margin-top:.5em;">Women Strong Network Hybrid Marketplace Tradefairs run alongside all island selection events</div>
-          <div style="text-align:center;margin-top:.8em;"><a href="#apply" onclick="closeDeck()" class="btn btn-gold" style="font-size:13px;">Apply Now — Join Galing Likha →</a></div>
+          <div style="text-align:center;margin-top:.8em;"><a href="#apply" onclick="closeDeck()" class="btn btn-gold" style="font-size:13px;">Apply for the AWDA →</a></div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
   </div><!-- /dk1 -->
 
@@ -571,13 +592,13 @@ textarea{resize:vertical;min-height:90px;}
         <div style="height:1px;width:55%;background:linear-gradient(90deg,transparent,var(--d2),transparent);margin:.3em auto;"></div>
         <p class="stg" style="max-width:600px;">Every thread woven is a story told. Every story told is a future preserved. Galing Likha invites you to bring your weave to the world.</p>
         <div style="display:flex;gap:.65em;flex-wrap:wrap;justify-content:center;margin-top:.6em;">
-          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d2);">Galing Likha</strong><br><span style="color:var(--muted);">National Search Competition</span></div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d2);">Galing Likha</strong><br><span style="color:var(--muted);">AWDA Competition</span></div>
           <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d2);">Distinction Awards</strong><br><span style="color:var(--muted);">7 November 2026 · Okada Manila</span></div>
           <div style="background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--d2);padding:.5em .95em;border-radius:0 5px 5px 0;font-size:12px;"><strong style="color:var(--d2);">ASEAN Trade Show</strong><br><span style="color:var(--muted);">Grand Ballroom · Nov 7–9</span></div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -603,7 +624,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -636,7 +657,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -653,13 +674,16 @@ textarea{resize:vertical;min-height:90px;}
             </div>
             <div class="col">
               <div class="card pu" style="background:var(--d2bg);"><div class="cl" style="color:var(--d2);">What You Receive</div><p class="sbd" style="display:flex;flex-direction:column;gap:.38em;"><span style="border-left:2px solid var(--d2);padding-left:.5em;"><strong>If finalist:</strong> ₱30,000 + national recognition</span><span style="border-left:2px solid var(--d2);padding-left:.5em;"><strong>If Island Winner:</strong> ₱75,000 + ASEAN Trade Show access</span><span style="border-left:2px solid var(--d2);padding-left:.5em;"><strong>If National Winner:</strong> ₱150,000 + Distinction Award + Grand Ballroom showcase, Okada Manila 7–9 Nov</span><span style="border-left:2px solid var(--d2);padding-left:.5em;">Direct, equitable share through benefit-sharing agreement</span></p></div>
+              <div style="background:#FEF0E0;border:1.5px solid var(--amber);border-radius:6px;padding:.85em 1.1em;margin-top:.4em;">
+              <p style="font-size:13px;color:var(--body);line-height:1.6;"><strong style="color:var(--gold);">⚠️ Sacred &amp; Restricted Motifs — Special Protocol:</strong> For entries featuring restricted or sacred motifs: entries must declare whether commercial use is permitted and provide authorization from recognized custodians/elders. Restricted motifs may be showcased for recognition subject to community protocol, but <em>shall not be presented as commercially available without explicit custodial consent.</em></p>
+            </div>
               <div style="background:var(--d2);color:#fff;border-radius:4px;padding:.6em .9em;font-size:12px;font-weight:600;">Your tradition permanently documented, nationally recognized, and presented to ASEAN buyers.</div>
             </div>
           </div>
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -674,11 +698,11 @@ textarea{resize:vertical;min-height:90px;}
           <div class="card pu" style="background:var(--d2bg);"><div class="cl" style="color:var(--d2);">Your Story Told</div><p class="sbd">Digital traceability &amp; ESG storytelling amplify your weave's cultural value to global ethical fashion buyers.</p></div>
           <div class="card pu" style="background:var(--d2bg);"><div class="cl" style="color:var(--d2);">Fair Prices</div><p class="sbd">B2B matchmaking links your community to buyers paying premium prices for authenticated heritage work.</p></div>
         </div>
-        <div style="background:var(--d2);color:#fff;border-radius:4px;padding:.6em 1.2em;font-size:12px;font-weight:600;max-width:680px;margin-top:.3em;">amazingweaves2026.ph · #GalingLikha · #AmazingWeaves · Grand Ballroom, Okada Manila</div>
-        <a href="#apply" onclick="closeDeck()" class="btn btn-gold" style="margin-top:.4em;">Join Galing Likha — Apply Now →</a>
+        <div style="background:var(--d2);color:#fff;border-radius:4px;padding:.6em 1.2em;font-size:12px;font-weight:600;max-width:680px;margin-top:.3em;">amazingweaves2026.ph · #GalingLikha2026AWDA · #AmazingWeaves · Grand Ballroom, Okada Manila</div>
+        <a href="#apply" onclick="closeDeck()" class="btn btn-gold" style="margin-top:.4em;">Join Galing Likha 2026 AWDA — Apply Now →</a>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
   </div><!-- /dk2 -->
 
@@ -699,7 +723,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -720,7 +744,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -750,7 +774,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -759,16 +783,16 @@ textarea{resize:vertical;min-height:90px;}
         <div class="ey" style="color:var(--d3);">Join the Movement · Build the Ecosystem</div>
         <h2 class="sh" style="font-size:clamp(26px,4.5vw,52px);">Invest in Heritage.<br><span style="color:var(--d3);">Invest in ASEAN's Future.</span></h2>
         <div style="height:1px;width:55%;background:linear-gradient(90deg,transparent,var(--d3),transparent);margin:.2em auto;"></div>
-        <p class="stg" style="max-width:600px;color:var(--muted);">Partner with the Galing Likha National Search and ASEAN Trade Show to build the ecosystem that sustains indigenous weaving as a living economic and cultural force.</p>
+        <p class="stg" style="max-width:600px;color:var(--muted);">Partner with the Galing Likha 2026 AWDA and ASEAN Trade Show to build the ecosystem that sustains indigenous weaving as a living economic and cultural force.</p>
         <div class="g3" style="max-width:800px;width:100%;margin-top:.5em;text-align:left;">
           <div class="card gr" style="background:var(--d3bg);"><div class="cl">Sponsor</div><p class="sbd">Brand your partnership with the Distinction Awards, ASEAN Trade Show pavilion, or island selection events.</p></div>
           <div class="card gr" style="background:var(--d3bg);"><div class="cl">Invest</div><p class="sbd">Provide financing, technology, or logistics solutions directly to Galing Likha community enterprises.</p></div>
           <div class="card gr" style="background:var(--d3bg);"><div class="cl">Research</div><p class="sbd">Collaborate with DoST PTRI and Galing Likha to build the knowledge base for sustainable Philippine weaving.</p></div>
         </div>
-        <div style="background:var(--d3);color:#fff;border-radius:4px;padding:.6em 1.2em;font-size:12px;font-weight:600;max-width:700px;">amazingweaves2026.ph · #GalingLikha · #AmazingWeaves · Grand Ballroom, Okada Manila 7–9 November 2026</div>
+        <div style="background:var(--d3);color:#fff;border-radius:4px;padding:.6em 1.2em;font-size:12px;font-weight:600;max-width:700px;">amazingweaves2026.ph · #GalingLikha2026AWDA · #AmazingWeaves · Grand Ballroom, Okada Manila 7–9 November 2026</div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
   </div><!-- /dk3 -->
 
@@ -779,20 +803,27 @@ textarea{resize:vertical;min-height:90px;}
 <div class="section-inner">
   <div class="section-label">Resources &amp; Downloads</div>
   <h2 class="section-title">Document Library</h2>
-  <p class="section-sub">Official programme documents, templates, and forms for the Galing Likha National Search.</p>
+  <p class="section-sub">Official programme documents, templates, and forms for the Galing Likha 2026 AWDA.</p>
   <div class="wb sm" style="margin-bottom:1.5em;border-radius:3px;"></div>
 
   <div class="g3" id="doc-grid">
-    <div class="doc-card"><div class="doc-icon">📄</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Programme</span></div><div class="doc-name">ASEAN Amazing Weaves 2026 — Program Overview</div><div class="doc-desc">Full programme concept note, ASEAN Women: UnityWoven, "Weaving Our Future Together"</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">📋</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#E0EDFF;color:#1A4A7A;">Official</span></div><div class="doc-name">DILG Memorandum Circular 2026</div><div class="doc-desc">Official MC to all Governors, Mayors, Punong Barangays, and DILG field offices nationwide</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">📚</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#F5EDF8;color:#5C2D7A;">Heritage</span></div><div class="doc-name">Habi: Art and the Order of Nature</div><div class="doc-desc">Mercedes Zobel Collection — 111 indigenous Philippine textiles, Ayala Museum publication</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">📑</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex A</span></div><div class="doc-name">Competition Mechanics &amp; Implementing Guidelines</div><div class="doc-desc">Full AWC mechanics, eligibility rules, selection process, and implementing guidelines</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">📝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex B</span></div><div class="doc-name">Application Form &amp; Submission Checklist</div><div class="doc-desc">Official application checklist and submission requirements for all island groups</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><a href="#apply" class="btn btn-outline btn-sm">📋 Apply Online</a></div></div>
-    <div class="doc-card"><div class="doc-icon">📦</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex C</span></div><div class="doc-name">Swatch Tag Template &amp; Courier Instructions</div><div class="doc-desc">Physical swatch submission packaging standards and Island Secretariat courier addresses</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">🤝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-1</span></div><div class="doc-name">Community Consent &amp; Endorsement Template</div><div class="doc-desc">Template for LCE and community representative signatures — mandatory for all entries</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">✅</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-2</span></div><div class="doc-name">Authenticity &amp; Attribution Declaration</div><div class="doc-desc">Template certifying weave authenticity and protecting community intellectual heritage</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">⚖️</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-3</span></div><div class="doc-name">Benefit-Sharing Statement Template</div><div class="doc-desc">Template ensuring weavers receive equitable share of prizes, recognition, and commercial benefits</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">🏆</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#EDF8EE;color:#1A5A32;">Scoring</span></div><div class="doc-name">Judging Criteria Scorecard</div><div class="doc-desc">Official scoring rubric across all 6 dimensions with detailed evaluation indicators</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docNotice()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docNotice()">👁 Preview</button></div></div>
+    <div class="doc-card" style="border-top:3px solid var(--d1);">
+      <div class="doc-icon">📋</div>
+      <div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag" style="background:#E0EDFF;color:#1A4A7A;">JMC</span><span class="tag" style="background:#1A4A7A;color:#fff;">OFFICIAL</span></div>
+      <div class="doc-name">DILG-PCW Joint Memorandum Circular on Galing Likha 2026 AWDA</div>
+      <div class="doc-desc">Official JMC jointly issued by Sec. Juanito Victor C. Remulla Jr. (DILG) and Chairperson Ermelita V. Valdeavilla (PCW) — sets AWDA mechanics, mandates field office roles, calls for participation.</div>
+      <div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="downloadJMC()">⬇ Download DOCX</button><button class="btn btn-outline btn-sm" onclick="previewJMC()">👁 Preview</button></div>
+    </div>
+    <div class="doc-card"><div class="doc-icon">📄</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Programme</span></div><div class="doc-name">Galing Likha 2026 AWDA — Program Overview</div><div class="doc-desc">Full programme concept note, ASEAN Women: UnityWoven, "Navigating the Future Together"</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">📚</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#F5EDF8;color:#5C2D7A;">Heritage</span></div><div class="doc-name">Habi: Art and the Order of Nature</div><div class="doc-desc">Mercedes Zobel Collection — 111 indigenous Philippine textiles, Ayala Museum (The Prince of Wales foreword, Clarence House)</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">📑</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex A</span></div><div class="doc-name">AWDA Mechanics &amp; Implementing Guidelines</div><div class="doc-desc">Full AWDA mechanics, eligibility rules, textile sample requirements, selection process and receiving hub details</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">📝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex B</span></div><div class="doc-name">Official Online Application &amp; Submission Checklist</div><div class="doc-desc">Official application checklist and submission requirements for all island groups (Luzon, Visayas, Mindanao)</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><a href="#apply" class="btn btn-outline btn-sm">📋 Apply Online</a></div></div>
+    <div class="doc-card"><div class="doc-icon">📦</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex C</span></div><div class="doc-name">Textile Sample Tag Template &amp; Courier Instructions</div><div class="doc-desc">Physical textile sample size/measurement requirements, tagging instructions, and Island Secretariat courier addresses</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">🤝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-1</span></div><div class="doc-name">Community Consent &amp; Endorsement Template</div><div class="doc-desc">Mandatory form — LCE and community representative signatures certifying community consent to participate in the AWDA</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">✅</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-2</span></div><div class="doc-name">Authenticity &amp; Attribution Declaration</div><div class="doc-desc">Mandatory form — certifies weave authenticity, cultural origin, and that restricted/sacred motifs are declared per JMC Section 4.1</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">⚖️</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-3</span></div><div class="doc-name">Benefit-Sharing Statement Template</div><div class="doc-desc">Mandatory form — declares sharing arrangement ensuring weavers receive direct, equitable share of all awards and commercial benefits</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">🏆</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#EDF8EE;color:#1A5A32;">Scoring</span></div><div class="doc-name">AWDA Evaluation Criteria Scorecard</div><div class="doc-desc">Official evaluation rubric across all 6 criteria with detailed assessment indicators per JMC Section 5.2</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+    <div class="doc-card"><div class="doc-icon">🌏</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#EDF8EE;color:#1A5A32;">ASEAN</span></div><div class="doc-name">ASEAN Trade Expo 2026 — Exhibitor Guide</div><div class="doc-desc">Grand Ballroom Hall, Okada Manila · November 7–9, 2026 · Buyer matchmaking, digital traceability, ESG procurement dialogues</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
   </div>
   <div id="uploaded-docs-area"></div>
 
@@ -826,24 +857,24 @@ textarea{resize:vertical;min-height:90px;}
 <!-- SECTION 4: ABOUT -->
 <section id="about">
 <div class="section-inner">
-  <div class="section-label">About the Competition</div>
+  <div class="section-label">About the Recognition Program</div>
   <h2 class="section-title">What is Galing Likha?</h2>
   <div class="rule"></div>
 
   <div class="g2" style="margin-bottom:2em;">
     <div>
-      <p style="font-size:15px;color:var(--body);line-height:1.75;margin-bottom:1em;">Galing Likha is a countrywide initiative that transforms weaving from a heritage &amp; cultural craft to a strategic development pathway towards a sustainable economic asset.</p>
-      <p style="font-size:15px;color:var(--body);line-height:1.75;margin-bottom:1em;">It empowers local governments to invest meaningfully in women-led livelihoods through the 5% LGU GAD budget — potentially unlocking <strong>PhP 80 billion</strong> — in building ecosystems to preserve, nurture, and elevate weaving as a tool for gender equality, inclusive enterprise, and climate-resilient livelihoods.</p>
+      <p style="font-size:15px;color:var(--body);line-height:1.75;margin-bottom:1em;">Galing Likha 2026 AWDA is a <strong>standards-based recognition program — not a cultural competition</strong>. It does not pit one culture against another. Instead, it recognizes weaving communities and partner LGUs that demonstrate distinction in: authenticity and cultural safeguarding, craft excellence, fair livelihood outcomes, sustainability, market readiness, and enabling local governance support.</p>
+      <p style="font-size:15px;color:var(--body);line-height:1.75;margin-bottom:1em;">Jointly issued by the <strong>Department of the Interior and Local Government (DILG)</strong> and the <strong>Philippine Commission on Women (PCW)</strong>, Galing Likha 2026 AWDA is a countrywide initiative that transforms weaving from a heritage craft to a strategic development pathway — empowering local governments to invest meaningfully in women-led livelihoods through the 5% LGU GAD budget, potentially unlocking <strong>PhP 80 billion</strong> in support for weaving ecosystems.</p>
       <div style="background:var(--linen);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:.85em 1.1em;margin-top:.8em;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink);">"The result is a nationally coherent system where culture, enterprise, and governance reinforce one another."</p></div>
     </div>
     <div>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:.8em;">Organising Partners</h3>
       <div style="display:flex;flex-direction:column;gap:.5em;">
-        <div class="partner-chip">🏛️ DTI — Department of Trade and Industry</div>
-        <div class="partner-chip">♀️ PCW — Philippine Commission on Women</div>
+        <div class="partner-chip" style="border-color:var(--d1);color:var(--d1);">🏛️ DILG — Department of the Interior &amp; Local Government <em style="font-size:10.5px;color:var(--muted);font-style:normal;">(Joint Issuing Agency)</em></div>
+        <div class="partner-chip" style="border-color:var(--d2);color:var(--d2);">♀️ PCW — Philippine Commission on Women <em style="font-size:10.5px;color:var(--muted);font-style:normal;">(Joint Issuing Agency)</em></div>
+        <div class="partner-chip">🏪 DTI — Department of Trade and Industry</div>
         <div class="partner-chip">🌏 ASEAN BAC Philippines — Business Advisory Council</div>
         <div class="partner-chip">💼 Women's Business Council Philippines</div>
-        <div class="partner-chip">🏛️ DILG — Department of the Interior &amp; Local Government</div>
         <div class="partner-chip">🧵 DoST PTRI — Philippine Textile Research Institute</div>
         <div class="partner-chip">🌟 2nd ASEAN Women Economic Summit 2026</div>
       </div>
@@ -858,18 +889,18 @@ textarea{resize:vertical;min-height:90px;}
     </div>
     <div class="acc-item">
       <button class="acc-head" onclick="toggleAcc(this)">Level 2 — Island-Wide Selection <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><p style="font-size:14px;color:var(--body);line-height:1.65;padding:.5em 0;">The Island-Wide Selection Committee (IWSC) evaluates all qualified entries using the six judging criteria. The IWSC selects the Top 5 finalists per island group. Finalists make presentations before the IWSC. After presentations, the IWSC selects the Top 2 Island Winners per island group who advance to the National Finals. Bottom 3 finalists receive ₱30,000 each.</p></div>
+      <div class="acc-body"><p style="font-size:14px;color:var(--body);line-height:1.65;padding:.5em 0;">The Island-Wide Selection Committee (IWSC) evaluates all qualified entries using the six evaluation criteria. The IWSC selects the Top 5 finalists per island group. Finalists make presentations before the IWSC. After presentations, the IWSC selects the Top 2 Island-Level Excellence Awardees per island group who advance to the National Finals. Bottom 3 finalists receive ₱30,000 each.</p></div>
     </div>
     <div class="acc-item">
       <button class="acc-head" onclick="toggleAcc(this)">Level 3 — National Finals &amp; Distinction Awards <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><p style="font-size:14px;color:var(--body);line-height:1.65;padding:.5em 0;">The National Selection Committee (NSC) evaluates the 6 national finalists (Top 2 per island group). National finalists must present the weave AND at least one physical Heritage-to-Use design application (clothing, accessories, interior items, etc.), demonstrating responsible translation of the living heritage into contemporary use. The NSC selects 3 National Winners — one per island group — who receive ₱150,000 each and the Amazing Weaves Distinction Award, with showcase at the ASEAN Trade Show, Grand Ballroom, Okada Manila.</p></div>
+      <div class="acc-body"><p style="font-size:14px;color:var(--body);line-height:1.65;padding:.5em 0;">The National Selection Committee (NSC) evaluates the 6 national finalists (Top 2 per island group). National finalists must present the weave AND at least one physical Heritage-to-Use design application (clothing, accessories, interior items, etc.), demonstrating responsible translation of the living heritage into contemporary use. The NSC selects 3 National Distinction Awardees — one per island group — who receive ₱150,000 each and the Amazing Weaves Distinction Award, with showcase at the ASEAN Trade Show, Grand Ballroom, Okada Manila.</p></div>
     </div>
   </div>
 
   <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:.8em;">Eligibility Rules</h3>
   <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:1.2em 1.4em;margin-bottom:1.5em;">
     <div class="elig-item"><div class="elig-icon">✅</div><div>Any LGU may join as Lead Proponent with a Community Partner (association / cooperative / cluster / recognized community)</div></div>
-    <div class="elig-item"><div class="elig-icon">✅</div><div>One entry per LGU featuring one flagship weave tradition for the competition cycle</div></div>
+    <div class="elig-item"><div class="elig-icon">✅</div><div>One entry per LGU featuring one flagship weave tradition for the recognition cycle</div></div>
     <div class="elig-item"><div class="elig-icon">✅</div><div>The featured weave must be produced within the LGU's jurisdiction — indigenous weaves prioritized</div></div>
     <div class="elig-item"><div class="elig-icon">✅</div><div>Swatch must be exactly 12″ × 12″ (1 square foot) and labeled with entry code — couriered to Island Secretariat</div></div>
     <div class="elig-item"><div class="elig-icon">❌</div><div>Entries using imported finished textiles or non-local production are <strong>ineligible</strong></div></div>
@@ -884,14 +915,20 @@ textarea{resize:vertical;min-height:90px;}
     <div class="card ac"><div class="cl">Benefit-Sharing Statement</div><p style="font-size:13px;color:var(--muted);line-height:1.55;">A mutually agreed arrangement must be in place ensuring weavers directly and equitably benefit from prizes, recognition, and commercialization.</p></div>
   </div>
   <p style="font-size:13px;color:var(--muted);">All three documents must be signed by both the <strong>Local Chief Executive</strong> and the <strong>authorized Community Partner representative</strong>.</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink);margin-top:1.5em;margin-bottom:.8em;">Sacred &amp; Restricted Motifs — Special Protocol</h3>
+  <div style="background:#FEF8EC;border:2px solid var(--amber);border-radius:8px;padding:1.2em 1.4em;margin-bottom:1.5em;">
+    <p style="font-size:14px;color:var(--body);line-height:1.7;">For entries featuring <strong>restricted or sacred motifs and traditional knowledge</strong>: entries must declare whether commercial use is permitted and provide authorization from recognized custodians/elders as applicable.</p>
+    <p style="font-size:14px;color:var(--body);line-height:1.7;margin-top:.6em;">Restricted motifs <em>may be showcased for recognition</em> subject to community protocol; however, <strong>no entry shall present restricted motifs as commercially available without explicit custodial consent.</strong></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:.6em;">This provision protects the cultural sovereignty of indigenous communities and is a mandatory declaration in the AWDA application form.</p>
+  </div>
 </div>
 </section>
 
 <!-- SECTION 5: APPLICATION FORM -->
 <section id="apply" style="background:var(--linen);">
 <div class="section-inner">
-  <div class="section-label">Official Online Application</div>
-  <h2 class="section-title">Galing Likha National Search<br>Amazing Weaves Competition 2026</h2>
+  <div class="section-label">Official Online Application — AWDA 2026</div>
+  <h2 class="section-title">Galing Likha 2026 AWDA<br>Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</h2>
   <p class="section-sub">Complete all required fields (marked <span style="color:var(--pinya);">*</span>). Your progress is auto-saved every 30 seconds.</p>
   <div class="wb sm" style="margin-bottom:1.5em;border-radius:3px;"></div>
   <div class="progress-label" id="prog-label">Progress: 0% complete</div>
@@ -1006,7 +1043,28 @@ textarea{resize:vertical;min-height:90px;}
             <label class="radio-item"><input type="radio" name="documented" value="No"> No</label>
           </div>
         </div>
+      
+      <div class="form-row cols2">
+        <div class="form-field">
+          <label>Does the featured weave include restricted or sacred motifs?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="restricted_motifs" value="Yes"> Yes</label>
+            <label class="radio-item"><input type="radio" name="restricted_motifs" value="No"> No</label>
+          </div>
+        </div>
+        <div class="form-field"><label>If yes — custodian authorization details</label><textarea name="restricted_motifs_detail" rows="2" placeholder="Describe restricted/sacred elements and details of custodian authorization from recognized elders/community leaders"></textarea></div>
       </div>
+      <div class="form-row cols2">
+        <div class="form-field"><label>Lead Weaver(s) Full Name</label><input type="text" name="lead_weaver_name" placeholder="Name(s) of principal master weaver(s)"></div>
+        <div class="form-field"><label>Lead Weaver — Years of Practice</label><input type="number" name="lead_weaver_years" placeholder="e.g. 35" min="0"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Lead Weaver — Training / Apprenticeship Background</label><textarea name="lead_weaver_background" rows="2" placeholder="Briefly describe training, apprenticeship, and how the master weaver learned the tradition"></textarea></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Mini-Catalog / Product Names &amp; SKU Codes <span class="hint">(for ASEAN Trade Expo)</span></label><textarea name="product_sku" rows="2" placeholder="List product names and SKU/product codes for all woven products from this tradition that are available or will be available for sale/showcase at the ASEAN Trade Expo (Nov 7–9, Okada Manila)"></textarea></div>
+      </div>
+    </div>
     </div>
 
     <!-- PART D -->
@@ -1130,7 +1188,7 @@ textarea{resize:vertical;min-height:90px;}
         <div class="form-field"><label>Community Profile or Organisation Certificate <span class="hint">(optional)</span></label><div class="upload-zone" onclick="document.getElementById('up-profile').click()"><div class="uz-icon">📁</div><p>Upload Community Profile or Certificate (PDF)</p><input type="file" id="up-profile" accept=".pdf" style="display:none;" onchange="handleFiles(this,'profile-list','profile')"></div><div class="file-list" id="profile-list"></div></div>
       </div>
       <div style="background:var(--linen);border:1.5px solid var(--amber);border-radius:6px;padding:.85em 1.1em;margin-top:.8em;">
-        <p style="font-size:13.5px;color:var(--body);line-height:1.6;">📦 <strong>Physical Swatch Reminder:</strong> After submitting this online application, you must courier <strong>one (1) woven swatch measuring exactly 12″ × 12″ (1 square foot)</strong> to your Island Secretariat. Label the swatch with your entry code (provided in your confirmation email). This physical submission is mandatory — your application will not be evaluated by the IWSC without it.</p>
+        <p style="font-size:13.5px;color:var(--body);line-height:1.6;">📦 <strong>Physical Textile Sample Reminder:</strong> After submitting this online application, you must courier a <strong>woven textile sample</strong> to your Island Secretariat receiving hub. The sample must meet the <strong>prescribed size/measurement and tagging requirements</strong> specified in Annex C (Textile Sample Tag Template &amp; Courier Packaging Instructions). Your entry will not be forwarded to the IWSC without the physical sample. Courier details will be provided in your confirmation acknowledgment.</p>
       </div>
     </div>
 
@@ -1172,11 +1230,11 @@ textarea{resize:vertical;min-height:90px;}
 <footer style="background:var(--parchment);border-top:1.5px solid var(--border);">
 <div class="wb lg"></div>
 <div style="max-width:1100px;margin:0 auto;padding:2em 2em 1.5em;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2em;align-items:start;">
-  <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:.4em;">GALING LIKHA 2026</div><div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6em;">National Search · Amazing Weaves Competition<br>Philippines ASEAN Chairmanship 2026</div><div style="font-size:12px;color:var(--light);">#GalingLikha · #AmazingWeaves · #WeavingOurFutureTogether</div></div>
+  <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:.4em;">GALING LIKHA 2026</div><div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6em;">AWDA · Galing Likha 2026 AWDA<br>Philippines ASEAN Chairmanship 2026</div><div style="font-size:12px;color:var(--light);">#GalingLikha2026AWDA · #AmazingWeaves · #WeavingOurFutureTogether · #NavigatingTheFutureTogether</div></div>
   <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Jul 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div>Oct 15–17: ASEAN Pavilion</div><div><strong>Nov 7–9: Grand Ballroom, Okada</strong></div></div></div>
   <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Organisers</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>DTI · PCW</div><div>ASEAN BAC Philippines</div><div>Women's Business Council PH</div><div>DILG · DoST PTRI</div></div></div>
 </div>
-<div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha National Search — Amazing Weaves Distinction Awards · amazingweaves2026.ph</div>
+<div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
 <div class="wb lg"></div>
 </footer>
 
@@ -1186,8 +1244,8 @@ textarea{resize:vertical;min-height:90px;}
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div style="text-align:center;margin-bottom:1em;"><div style="font-size:40px;">🎉</div></div>
     <h2>Application Submitted!</h2>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:.8em;">Your Galing Likha National Search application has been received. Please save your reference number.</p>
-    <div class="ref-num" id="ref-num-display">AWC-2026-000-0000</div>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:.8em;">Your Galing Likha 2026 AWDA application has been received. Please save your reference number.</p>
+    <div class="ref-num" id="ref-num-display">AWDA-2026-000-0000</div>
     <div style="font-size:13px;color:var(--body);margin-bottom:1em;"><strong>Next Steps:</strong><br>1. Your application will be reviewed by the Island Secretariat.<br>2. Courier your <strong>12″ × 12″ woven swatch</strong> to the Island Secretariat.<br>3. You will receive confirmation within 5 business days.<br>4. Watch for notification of your screening result.</div>
     <div style="font-size:12px;color:var(--muted);background:var(--linen);padding:.75em 1em;border-radius:6px;margin-bottom:1em;border-left:3px solid var(--amber);">📦 <strong>Important:</strong> Your application is not complete until the physical 12″×12″ woven swatch is received at the Island Secretariat with the correct entry code label.</div>
     <div id="summary-section"></div>
@@ -1263,9 +1321,15 @@ function openDeck(id){
   document.body.style.overflow='hidden';
 }
 
-function closeDeck(){
+function closeDeck(scrollHome){
   document.getElementById('deck-overlay').classList.remove('open');
   document.body.style.overflow='';
+  if(scrollHome){
+    setTimeout(function(){
+      var hero=document.getElementById('hero');
+      if(hero)hero.scrollIntoView({behavior:'smooth',block:'start'});
+    },80);
+  }
 }
 
 function initDeckDots(id){
@@ -1330,8 +1394,65 @@ document.addEventListener('touchend',e=>{
 // ═══════════════════════════════════════════════════════
 // DOCUMENT LIBRARY
 // ═══════════════════════════════════════════════════════
-function docNotice(){
-  alert('Document downloads will be available when the official files are uploaded by the programme secretariat.\n\nFor early access, please contact: secretariat@amazingweaves2026.ph');
+const JMC_B64 = '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';
+
+function downloadJMC(){
+  const link=document.createElement('a');
+  link.href='data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,'+JMC_B64;
+  link.download='DILG-PCW_JMC_GalingLikha2026_AWDA.docx';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function docPlaceholder(){
+  showDocModal('📁 Document Available from Secretariat',
+    '<p style="font-size:14px;color:var(--body);line-height:1.65;margin-bottom:1em;">This document will be available for download once uploaded by the Galing Likha 2026 AWDA Secretariat.</p>' +
+    '<p style="font-size:13px;color:var(--muted);margin-bottom:.5em;">📧 For early access: <strong>secretariat@galinglikha2026.ph</strong></p>' +
+    '<p style="font-size:13px;color:var(--muted);">Authorised staff can upload documents using the Admin Upload area below (password required).</p>');
+}
+
+function docNotice(){ docPlaceholder(); }
+
+function previewJMC(){
+  showDocModal('DILG-PCW Joint Memorandum Circular<br><small style="font-size:14px;font-weight:400;color:var(--muted);">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</small>',
+    `<div style="background:var(--d1bg);border:1.5px solid var(--d1);border-radius:6px;padding:.85em 1.1em;margin-bottom:1em;">
+      <p style="font-size:13px;font-weight:700;color:var(--d1);">Jointly issued by:</p>
+      <p style="font-size:13.5px;color:var(--body);line-height:1.6;"><strong>JUANITO VICTOR C. REMULLA JR.</strong><br>Secretary, Department of the Interior and Local Government</p>
+      <p style="font-size:13.5px;color:var(--body);line-height:1.6;margin-top:.4em;"><strong>ERMELITA V. VALDEAVILLA</strong><br>Chairperson, Philippine Commission on Women</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.6em;">
+      <div class="acc-item open"><button class="acc-head" onclick="toggleAcc(this)">Background &amp; Purpose <span class="acc-arrow">▼</span></button><div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">Galing Likha 2026 AWDA is a <strong>standards-based recognition program — not a cultural competition</strong>. It does not pit one culture against another. It recognizes weaving communities and partner LGUs that demonstrate distinction in authenticity, craft excellence, fair livelihood outcomes, sustainability, market readiness, and enabling local governance support.</p></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Evaluation Criteria <span class="acc-arrow">▼</span></button><div class="acc-body"><div style="display:flex;flex-direction:column;gap:.35em;padding:.5em 0;">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Cultural Protection</strong> — documentation, cultural narratives, craft excellence</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Craft Excellence &amp; Eco-conscious Innovation</strong> — technical mastery, natural fiber sourcing</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>LGU Policy &amp; Ecosystem</strong> — enabling policy, programs, partnerships</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Community Impact</strong> — raw material sourcing, skills transfer, mentorship</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Market Access &amp; Value Chain</strong> — integration, linkages, export market access</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Sustainable Livelihood</strong> — GAD resources, adoption and replication model</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+      </div></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Awards &amp; Incentives <span class="acc-arrow">▼</span></button><div class="acc-body"><div style="padding:.5em 0;font-size:13.5px;color:var(--body);line-height:1.7;"><p>• <strong>Island-Level Distinction Awardees</strong> (Bottom 3 of Top 5 per island group): <strong>PhP 30,000</strong> each</p><p>• <strong>Island-Level Excellence Awardees / National Finalists</strong> (Top 2 per island group): <strong>PhP 75,000</strong> each</p><p>• <strong>National Distinction Awardees</strong> (1 per island group, 3 total): <strong>PhP 150,000</strong> each</p></div></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">ASEAN Trade Expo 2026 <span class="acc-arrow">▼</span></button><div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">AWDA is a passport to the ASEAN Trade Expo, held 7–9 November 2026 at Okada Manila alongside the 2nd ASEAN Women Economic Summit. Here, Filipino weaves meet ASEAN buyers, investors, and policymakers; cross-border matchmaking and digital traceability platforms; ESG-aligned investment dialogues; and a storytelling stage where weavers become enterprise leaders.</p></div></div>
+    </div>
+    <div style="margin-top:1.2em;text-align:center;"><button class="btn btn-gold" onclick="downloadJMC()">⬇ Download Full JMC (DOCX)</button></div>`);
+}
+
+
+function downloadActiveDeck(){
+  window.print();
+}
+
+function showDocModal(title, body){
+  document.getElementById('modal-overlay').classList.add('open');
+  const m=document.getElementById('conf-modal');
+  m.querySelector('h2').innerHTML=title;
+  let sb=document.getElementById('summary-section');
+  sb.innerHTML=body;
+  document.getElementById('ref-num-display').style.display='none';
+  const nextSteps=m.querySelector('div[style*="font-size:13px"]');
+  if(nextSteps)nextSteps.style.display='none';
+  const btnRow=m.querySelector('div[style*="justify-content:center"]');
+  if(btnRow)btnRow.innerHTML='<button class="btn btn-outline" onclick="closeModal()">Close</button>';
 }
 
 let adminUnlocked=false;
@@ -1594,7 +1715,7 @@ document.getElementById('app-form').addEventListener('submit',function(e){
   const island=document.getElementById('island-group').value||'LUZ';
   const islandCode=island==='Luzon'?'LUZ':island==='Visayas'?'VIS':island==='Mindanao'?'MIN':'PHL';
   const randNum=Math.floor(1000+Math.random()*9000);
-  const refNum='AWC-2026-'+islandCode+'-'+randNum;
+  const refNum='AWDA-2026-'+islandCode+'-'+randNum;
 
   // Build summary
   const lguName=document.querySelector('[name="lgu_name"]').value;
@@ -1628,7 +1749,13 @@ document.getElementById('app-form').addEventListener('submit',function(e){
   document.getElementById('modal-overlay').classList.add('open');
 });
 
-function closeModal(){document.getElementById('modal-overlay').classList.remove('open');}
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('ref-num-display').style.display='';
+  const nextSteps=document.querySelector('#conf-modal div[style*="font-size:13px"]');
+  if(nextSteps)nextSteps.style.display='';
+  document.getElementById('summary-section').innerHTML='';
+}
 document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
 function printConf(){window.print();}
