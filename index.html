@@ -319,67 +319,6 @@ textarea{resize:vertical;min-height:90px;}
   .wb{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
 
-
-/* ── DATA ADMIN PANEL ────────────────────────── */
-#data-admin{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.55);align-items:center;justify-content:center;}
-#data-admin.open{display:flex;}
-.da-modal{background:var(--cream);border-radius:10px;width:min(96vw,860px);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);}
-.da-head{background:var(--d1);color:#fff;padding:.9em 1.3em;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.da-head h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;}
-.da-close{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;}
-.da-body{flex:1;overflow-y:auto;padding:1.2em 1.4em;}
-.da-toolbar{display:flex;gap:.6em;flex-wrap:wrap;margin-bottom:1em;align-items:center;}
-.da-count{font-size:13px;color:var(--muted);flex:1;}
-.da-table-wrap{overflow-x:auto;border:1.5px solid var(--border);border-radius:6px;}
-.da-table{width:100%;border-collapse:collapse;font-size:12px;}
-.da-table th{background:var(--d1);color:#fff;padding:.5em .75em;text-align:left;white-space:nowrap;font-weight:600;letter-spacing:.03em;}
-.da-table td{padding:.45em .75em;border-bottom:1px solid var(--border);color:var(--body);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.da-table tr:nth-child(even) td{background:var(--linen);}
-.da-table tr:hover td{background:#EBF2FC;}
-.da-empty{text-align:center;padding:2em;color:var(--muted);font-style:italic;}
-/* Admin FAB removed — repository is now a full inline section */
-/* ── DECK FIX: ensure overlay stacks above everything ─ */
-#deck-overlay{z-index:800;}
-/* ── SNAV counter position fix ───────────────── */
-.snav{display:flex;align-items:center;gap:.5em;flex-wrap:nowrap;}
-.snav-dots{flex:1;display:flex;justify-content:center;gap:5px;}
-
-/* ── IMPROVED DECK SWITCHER ──────────────────────── */
-.ds-home-main{font-size:13px;font-weight:700;letter-spacing:.03em;border:none;border-radius:5px;padding:.38em 1em;cursor:pointer;background:var(--gold);color:#fff;transition:all .2s;flex-shrink:0;white-space:nowrap;}
-.ds-home-main:hover{background:var(--amber);}
-.ds-divider{width:1px;height:24px;background:var(--border);flex-shrink:0;}
-.ds-breadcrumb{font-size:11.5px;font-weight:600;color:var(--muted);white-space:nowrap;background:var(--linen);border:1px solid var(--border);border-radius:4px;padding:.28em .8em;letter-spacing:.03em;flex-shrink:0;}
-/* Keyboard hint inside overlay */
-#deck-kb-hint{position:fixed;bottom:54px;right:14px;font-size:10.5px;color:var(--light);background:rgba(250,247,242,.88);border:1px solid var(--border);border-radius:4px;padding:.2em .6em;pointer-events:none;z-index:20;}
-
-/* ── REPOSITORY SECTION ──────────────────────────── */
-#repository{background:var(--linen);}
-.repo-header{display:flex;align-items:center;justify-content:space-between;gap:1em;flex-wrap:wrap;margin-bottom:1.2em;}
-.repo-stats{display:flex;gap:.7em;flex-wrap:wrap;}
-.repo-stat{background:var(--cream);border:1.5px solid var(--border);border-radius:6px;padding:.5em 1.1em;text-align:center;}
-.repo-stat-num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--d1);line-height:1;}
-.repo-stat-lbl{font-size:10px;color:var(--muted);margin-top:.1em;letter-spacing:.05em;text-transform:uppercase;}
-.repo-toolbar{display:flex;gap:.6em;flex-wrap:wrap;align-items:center;margin-bottom:1em;padding:.8em 1em;background:var(--cream);border:1.5px solid var(--border);border-radius:6px;}
-.repo-search{flex:1;min-width:160px;font-family:'DM Sans',sans-serif;font-size:13px;padding:.42em .8em;border:1.5px solid var(--border);border-radius:5px;background:var(--paper);color:var(--ink);}
-.repo-search:focus{outline:none;border-color:var(--d1);}
-.repo-filter{font-family:'DM Sans',sans-serif;font-size:12.5px;padding:.42em .7em;border:1.5px solid var(--border);border-radius:5px;background:var(--paper);color:var(--ink);}
-.repo-lock{display:flex;align-items:center;gap:.5em;font-size:12px;color:var(--muted);background:var(--linen);border:1.5px dashed var(--border);border-radius:6px;padding:.65em 1.1em;margin-bottom:1em;}
-.repo-lock-icon{font-size:18px;}
-.repo-pw-form{display:flex;gap:.5em;align-items:center;flex-wrap:wrap;margin-top:.4em;}
-.repo-pw-input{font-family:'DM Sans',sans-serif;font-size:13px;padding:.4em .75em;border:1.5px solid var(--border);border-radius:5px;background:var(--cream);color:var(--ink);width:180px;}
-.repo-pw-input:focus{outline:none;border-color:var(--d1);}
-#repo-content{display:none;}
-#repo-content.unlocked{display:block;}
-.island-badge{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15em .5em;border-radius:2px;}
-.island-badge.luzon{background:#EBF2FC;color:var(--d1);}
-.island-badge.visayas{background:#EDE6F8;color:var(--d2);}
-.island-badge.mindanao{background:#E8F5EC;color:var(--d3);}
-.island-badge.phl{background:var(--linen);color:var(--muted);}
-.status-badge{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.15em .55em;border-radius:2px;background:#FEF0E0;color:#8B5A00;}
-.repo-empty{text-align:center;padding:3em 2em;color:var(--muted);font-style:italic;background:var(--cream);border:1.5px dashed var(--border);border-radius:8px;}
-.repo-empty .re-icon{font-size:36px;margin-bottom:.5em;}
-.repo-row-expand{font-size:11px;color:var(--d1);cursor:pointer;text-decoration:underline;white-space:nowrap;}
-
 </style>
 </head>
 <body>
@@ -392,7 +331,6 @@ textarea{resize:vertical;min-height:90px;}
     <a href="#presentations" onclick="closeNav()">Presentations</a>
     <a href="#documents" onclick="closeNav()">Documents</a>
     <a href="#about" onclick="closeNav()">About</a>
-    <a href="#repository" onclick="closeNav()">📊 Repository</a>
     <a href="#apply" class="nav-apply" onclick="closeNav()">Apply Now</a>
   </div>
   <button class="nav-menu-btn" onclick="toggleNav()" aria-label="Menu">☰</button>
@@ -470,17 +408,13 @@ textarea{resize:vertical;min-height:90px;}
 <!-- DECK OVERLAY (full screen) -->
 <div id="deck-overlay">
   <div id="deck-switcher">
-    <button class="ds-home-main" onclick="closeDeck(true)" title="Back to Home Page">⌂ Home</button>
-    <div class="ds-divider"></div>
+    <div class="ds-brand">GALING LIKHA 2026 AWDA</div>
     <div class="ds-tabs">
-      <button class="ds-tab d1" onclick="openDeck('dk1')">🏛️ Gov &amp; LGUs</button>
-      <button class="ds-tab d2" onclick="openDeck('dk2')">🧵 Weavers</button>
-      <button class="ds-tab d3" onclick="openDeck('dk3')">🤝 Partners</button>
+      <button class="ds-tab d1" onclick="openDeck('dk1')">🏛️ Government &amp; LGUs</button>
+      <button class="ds-tab d2" onclick="openDeck('dk2')">🧵 Weavers &amp; Designers</button>
+      <button class="ds-tab d3" onclick="openDeck('dk3')">🤝 Partners &amp; Academe</button>
     </div>
-    <div class="ds-breadcrumb" id="ds-breadcrumb">Deck 1 · Slide 1</div>
-    <div class="ds-btn-group">
-      <button class="ds-dl-btn" onclick="downloadActiveDeck()" title="Print/Save this deck as PDF">⬇ PDF</button>
-    </div>
+    <div class="ds-btn-group"><button class="ds-dl-btn" onclick="downloadActiveDeck()" title="Download this deck as PDF">⬇ Download Deck</button><button class="ds-home" onclick="closeDeck(true)">⌂ Back to Home</button></div>
   </div>
 
   <!-- ══ DECK 1: GOVERNMENT ══ -->
@@ -504,7 +438,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -531,7 +465,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -550,7 +484,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -573,7 +507,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -592,7 +526,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -619,7 +553,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
 
     <div class="slide">
@@ -644,10 +578,9 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div>
     </div>
   </div><!-- /dk1 -->
-<div id="deck-kb-hint">← → Arrow keys · Esc to close</div>
 
   <!-- ══ DECK 2: CREATORS ══ -->
   <div class="deck yakan-bg" id="dk2">
@@ -665,7 +598,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -691,7 +624,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -724,7 +657,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -750,7 +683,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
 
     <div class="slide">
@@ -769,7 +702,7 @@ textarea{resize:vertical;min-height:90px;}
         <a href="#apply" onclick="closeDeck()" class="btn btn-gold" style="margin-top:.4em;">Join Galing Likha 2026 AWDA — Apply Now →</a>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk2')">‹</button><button class="snav-btn" onclick="nextSlide('dk2')">›</button></div>
     </div>
   </div><!-- /dk2 -->
 
@@ -790,7 +723,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -811,7 +744,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -841,7 +774,7 @@ textarea{resize:vertical;min-height:90px;}
         </div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
 
     <div class="slide">
@@ -859,7 +792,7 @@ textarea{resize:vertical;min-height:90px;}
         <div style="background:var(--d3);color:#fff;border-radius:4px;padding:.6em 1.2em;font-size:12px;font-weight:600;max-width:700px;">amazingweaves2026.ph · #GalingLikha2026AWDA · #AmazingWeaves · Grand Ballroom, Okada Manila 7–9 November 2026</div>
       </div>
       <div class="wb"></div>
-      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div>
+      <div class="snav"><button class="snav-home" onclick="closeDeck(true)" title="Back to Home">⌂ Home</button><div class="snav-dots"></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk1')">‹</button><button class="snav-btn" onclick="nextSlide('dk1')">›</button></div><div class="snav-ctr"></div><button class="snav-btn" onclick="prevSlide('dk3')">‹</button><button class="snav-btn" onclick="nextSlide('dk3')">›</button></div>
     </div>
   </div><!-- /dk3 -->
 
@@ -1293,78 +1226,6 @@ textarea{resize:vertical;min-height:90px;}
 </div>
 </section>
 
-<!-- SECTION 6: REPOSITORY -->
-<section id="repository" style="padding-top:72px;">
-<div class="section-inner">
-  <div class="section-label">Application Data Repository</div>
-  <h2 class="section-title">Submitted Applications</h2>
-  <p class="section-sub">This repository stores all AWDA 2026 applications submitted through this platform. Authorised secretariat staff can view, search, filter, and export records.</p>
-  <div class="rule"></div>
-
-  <!-- Stats row (always visible) -->
-  <div class="repo-header">
-    <div class="repo-stats" id="repo-stats-row">
-      <div class="repo-stat"><div class="repo-stat-num" id="rs-total">0</div><div class="repo-stat-lbl">Total</div></div>
-      <div class="repo-stat"><div class="repo-stat-num" id="rs-luzon" style="color:var(--d1)">0</div><div class="repo-stat-lbl">Luzon</div></div>
-      <div class="repo-stat"><div class="repo-stat-num" id="rs-visayas" style="color:var(--d2)">0</div><div class="repo-stat-lbl">Visayas</div></div>
-      <div class="repo-stat"><div class="repo-stat-num" id="rs-mindanao" style="color:var(--d3)">0</div><div class="repo-stat-lbl">Mindanao</div></div>
-    </div>
-    <div style="font-size:12px;color:var(--muted);max-width:320px;line-height:1.55;">
-      Data is stored locally in this browser. Export CSV/Excel to back up or share records with the national secretariat.
-    </div>
-  </div>
-
-  <!-- Auth gate -->
-  <div class="repo-lock" id="repo-lock-box">
-    <div class="repo-lock-icon">🔐</div>
-    <div style="flex:1;">
-      <div style="font-weight:700;color:var(--ink);margin-bottom:.25em;">Secretariat Access Required</div>
-      <div style="font-size:12px;margin-bottom:.5em;">Enter the Data Admin password to view and export application records.</div>
-      <div class="repo-pw-form">
-        <input class="repo-pw-input" type="password" id="repo-pw" placeholder="Password" onkeydown="if(event.key==='Enter')repoUnlock()">
-        <button class="btn btn-gold btn-sm" onclick="repoUnlock()">Unlock Repository</button>
-      </div>
-      <div id="repo-pw-err" style="display:none;font-size:11.5px;color:var(--pinya);margin-top:.35em;">Incorrect password. Please try again.</div>
-    </div>
-  </div>
-
-  <!-- Content (shown after auth) -->
-  <div id="repo-content">
-    <div class="repo-toolbar">
-      <input class="repo-search" type="text" id="repo-search-inp" placeholder="🔍  Search by LGU, province, weave, region…" oninput="repoFilter()">
-      <select class="repo-filter" id="repo-filter-island" onchange="repoFilter()">
-        <option value="">All Island Groups</option>
-        <option value="Luzon">Luzon</option>
-        <option value="Visayas">Visayas</option>
-        <option value="Mindanao">Mindanao</option>
-      </select>
-      <select class="repo-filter" id="repo-filter-status" onchange="repoFilter()">
-        <option value="">All Statuses</option>
-        <option value="Submitted">Submitted</option>
-        <option value="Reviewed">Reviewed</option>
-        <option value="Shortlisted">Shortlisted</option>
-      </select>
-      <button class="btn btn-gold btn-sm" onclick="exportCSV()" title="Download all records as CSV">⬇ CSV</button>
-      <button class="btn btn-outline btn-sm" onclick="exportExcel()" title="Download all records as Excel">⬇ Excel</button>
-      <button class="btn btn-outline btn-sm" onclick="repoClearConfirm()" style="color:var(--pinya);border-color:var(--pinya);">🗑 Clear All</button>
-    </div>
-
-    <div class="da-table-wrap">
-      <table class="da-table" id="repo-table">
-        <thead id="repo-thead"></thead>
-        <tbody id="repo-tbody"></tbody>
-      </table>
-    </div>
-
-    <div style="margin-top:.75em;font-size:11.5px;color:var(--muted);">
-      ⌨ Click any row to expand full record detail. Data is stored in your browser's localStorage.
-      <strong style="color:var(--amber);">Export CSV/Excel regularly</strong> to keep a backup — clearing browser data will remove records.
-    </div>
-  </div>
-</div>
-</section>
-
-
 <!-- FOOTER -->
 <footer style="background:var(--parchment);border-top:1.5px solid var(--border);">
 <div class="wb lg"></div>
@@ -1395,321 +1256,244 @@ textarea{resize:vertical;min-height:90px;}
   </div>
 </div>
 
-
-<!-- ── DATA ADMIN MODAL ── -->
-<div id="data-admin">
-  <div class="da-modal">
-    <div class="da-head">
-      <h3>📊 Galing Likha 2026 AWDA — Application Data</h3>
-      <button class="da-close" onclick="closeDataAdmin()">✕</button>
-    </div>
-    <div class="da-body">
-      <div class="da-toolbar">
-        <div class="da-count" id="da-count">Loading...</div>
-        <button class="btn btn-gold btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
-        <button class="btn btn-outline btn-sm" onclick="exportExcel()">⬇ Export Excel (.xls)</button>
-        <button class="btn btn-outline btn-sm" onclick="clearAllData()" style="color:var(--pinya);border-color:var(--pinya);">🗑 Clear All</button>
-      </div>
-      <div class="da-table-wrap">
-        <table class="da-table" id="da-table">
-          <thead id="da-thead"></thead>
-          <tbody id="da-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-// ══════════════════════════════════════════════════════════════════
-// JMC DOCUMENT (embedded DOCX)
-// ══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// COUNTDOWN TIMER
+// ═══════════════════════════════════════════════════════
+function updateCountdown(){
+  const target=new Date('2026-11-07T09:00:00+08:00');
+  const now=new Date();
+  const diff=target-now;
+  if(diff<=0){document.querySelectorAll('.cd-num').forEach(el=>el.textContent='0');return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=d;
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+function toggleNav(){document.getElementById('navlinks').classList.toggle('open');}
+function closeNav(){document.getElementById('navlinks').classList.remove('open');}
+window.addEventListener('scroll',function(){
+  const links=document.querySelectorAll('.nav-links a');
+  const sections=['hero','presentations','documents','about','apply'];
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-80)current=id;
+  });
+  links.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+});
+
+// ═══════════════════════════════════════════════════════
+// ACCORDION
+// ═══════════════════════════════════════════════════════
+function toggleAcc(btn){
+  const item=btn.closest('.acc-item');
+  item.classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════
+// DECK SYSTEM
+// ═══════════════════════════════════════════════════════
+const dkState={'dk1':0,'dk2':0,'dk3':0};
+
+function openDeck(id){
+  document.getElementById('deck-overlay').classList.add('open');
+  ['dk1','dk2','dk3'].forEach(did=>{
+    const d=document.getElementById(did);
+    d.classList.toggle('active-deck',did===id);
+  });
+  document.querySelectorAll('.ds-tab').forEach(t=>{
+    t.classList.toggle('on',t.classList.contains(id.replace('dk','d')));
+  });
+  initDeckDots(id);
+  document.body.style.overflow='hidden';
+}
+
+function closeDeck(scrollHome){
+  document.getElementById('deck-overlay').classList.remove('open');
+  document.body.style.overflow='';
+  if(scrollHome){
+    setTimeout(function(){
+      var hero=document.getElementById('hero');
+      if(hero)hero.scrollIntoView({behavior:'smooth',block:'start'});
+    },80);
+  }
+}
+
+function initDeckDots(id){
+  const d=document.getElementById(id);
+  const slides=d.querySelectorAll('.slide');
+  d.querySelectorAll('.snav-dots').forEach(dc=>{
+    dc.innerHTML='';
+    slides.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.className='snav-dot'+(i===dkState[id]?' on':'');
+      dot.onclick=()=>goSlide(id,i);
+      dc.appendChild(dot);
+    });
+  });
+  updateDeckCtr(id);
+}
+
+function goSlide(id,n){
+  const d=document.getElementById(id);
+  const slides=d.querySelectorAll('.slide');
+  const prev=dkState[id];
+  if(n===prev||n<0||n>=slides.length)return;
+  slides[prev].classList.remove('active');
+  dkState[id]=n;
+  slides[n].classList.add('active');
+  d.querySelectorAll('.snav-dot').forEach((dot,i)=>dot.classList.toggle('on',i===n));
+  updateDeckCtr(id);
+}
+
+function updateDeckCtr(id){
+  const d=document.getElementById(id);
+  const total=d.querySelectorAll('.slide').length;
+  d.querySelectorAll('.snav-ctr').forEach(el=>el.textContent=(dkState[id]+1)+'/'+total);
+}
+
+function nextSlide(id){
+  const d=document.getElementById(id);
+  goSlide(id,Math.min(dkState[id]+1,d.querySelectorAll('.slide').length-1));
+}
+function prevSlide(id){goSlide(id,Math.max(dkState[id]-1,0));}
+
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('deck-overlay').classList.contains('open'))return;
+  const active=['dk1','dk2','dk3'].find(id=>document.getElementById(id).classList.contains('active-deck'));
+  if(!active)return;
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(active);}
+  if(e.key==='ArrowLeft'){e.preventDefault();prevSlide(active);}
+  if(e.key==='Escape')closeDeck();
+});
+
+let touchX=0;
+document.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(!document.getElementById('deck-overlay').classList.contains('open'))return;
+  const dx=e.changedTouches[0].clientX-touchX;
+  if(Math.abs(dx)<50)return;
+  const active=['dk1','dk2','dk3'].find(id=>document.getElementById(id).classList.contains('active-deck'));
+  if(!active)return;
+  dx<0?nextSlide(active):prevSlide(active);
+},{passive:true});
+
+// ═══════════════════════════════════════════════════════
+// DOCUMENT LIBRARY
+// ═══════════════════════════════════════════════════════
 const JMC_B64 = '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';
 
 function downloadJMC(){
   const link=document.createElement('a');
   link.href='data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,'+JMC_B64;
   link.download='DILG-PCW_JMC_GalingLikha2026_AWDA.docx';
-  document.body.appendChild(link);link.click();document.body.removeChild(link);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
-// ══════════════════════════════════════════════════════════════════
-// COUNTDOWN
-// ══════════════════════════════════════════════════════════════════
-function updateCountdown(){
-  const target=new Date('2026-11-07T09:00:00+08:00');
-  const diff=target-new Date();
-  if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='0');return;}
-  document.getElementById('cd-d').textContent=Math.floor(diff/86400000);
-  document.getElementById('cd-h').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-updateCountdown();setInterval(updateCountdown,1000);
-
-// ══════════════════════════════════════════════════════════════════
-// NAVIGATION
-// ══════════════════════════════════════════════════════════════════
-function toggleNav(){document.getElementById('navlinks').classList.toggle('open');}
-function closeNav(){document.getElementById('navlinks').classList.remove('open');}
-window.addEventListener('scroll',function(){
-  var sections=['hero','presentations','documents','about','repository','apply'];
-  var current='';
-  sections.forEach(function(id){
-    var el=document.getElementById(id);
-    if(el&&window.scrollY>=el.offsetTop-80)current=id;
-  });
-  document.querySelectorAll('.nav-links a').forEach(function(a){
-    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
-  });
-});
-
-// ══════════════════════════════════════════════════════════════════
-// ACCORDION
-// ══════════════════════════════════════════════════════════════════
-function toggleAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
-
-// ══════════════════════════════════════════════════════════════════
-// PRESENTATION DECK SYSTEM (fully rebuilt)
-// ══════════════════════════════════════════════════════════════════
-var dkState={'dk1':0,'dk2':0,'dk3':0};
-var currentDeck=null;
-
-function openDeck(id){
-  currentDeck=id;
-  // Show overlay
-  document.getElementById('deck-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
-  // Switch decks
-  ['dk1','dk2','dk3'].forEach(function(did){
-    var d=document.getElementById(did);
-    if(d) d.classList.toggle('active-deck',did===id);
-  });
-  // Update switcher tab highlights
-  document.querySelectorAll('.ds-tab').forEach(function(t){
-    // tab classes are d1/d2/d3, id is dk1/dk2/dk3
-    var tabId=id.replace('dk','d');
-    t.classList.toggle('on',t.classList.contains(tabId));
-  });
-  // Build dots and counters for this deck
-  buildDots(id);
-  // Reset to current slide position
-  showSlide(id,dkState[id]);
-}
-
-function closeDeck(scrollHome){
-  currentDeck=null;
-  document.getElementById('deck-overlay').classList.remove('open');
-  document.body.style.overflow='';
-  if(scrollHome){
-    setTimeout(function(){
-      var hero=document.getElementById('hero');
-      if(hero){window.scrollTo({top:hero.offsetTop-60,behavior:'smooth'});}
-    },80);
-  }
-}
-
-function buildDots(id){
-  var d=document.getElementById(id);
-  if(!d)return;
-  var slides=d.querySelectorAll('.slide');
-  // Build dots in every snav-dots container inside this deck
-  d.querySelectorAll('.snav-dots').forEach(function(dc){
-    dc.innerHTML='';
-    slides.forEach(function(_,i){
-      var dot=document.createElement('button');
-      dot.className='snav-dot'+(i===dkState[id]?' on':'');
-      dot.setAttribute('aria-label','Slide '+(i+1));
-      (function(idx){dot.onclick=function(){goSlide(id,idx);};})(i);
-      dc.appendChild(dot);
-    });
-  });
-  updateCounter(id);
-}
-
-function showSlide(id,n){
-  var d=document.getElementById(id);
-  if(!d)return;
-  var slides=d.querySelectorAll('.slide');
-  slides.forEach(function(s,i){
-    s.classList.toggle('active',i===n);
-  });
-  // Update dots
-  d.querySelectorAll('.snav-dot').forEach(function(dot,i){
-    dot.classList.toggle('on',i===n);
-  });
-  updateCounter(id);
-}
-
-function goSlide(id,n){
-  var d=document.getElementById(id);
-  if(!d)return;
-  var slides=d.querySelectorAll('.slide');
-  if(n<0||n>=slides.length)return;
-  dkState[id]=n;
-  showSlide(id,n);
-}
-
-function nextSlide(id){
-  var d=document.getElementById(id);
-  if(!d)return;
-  var total=d.querySelectorAll('.slide').length;
-  goSlide(id,Math.min(dkState[id]+1,total-1));
-}
-
-function prevSlide(id){
-  goSlide(id,Math.max(dkState[id]-1,0));
-}
-
-function updateCounter(id){
-  var d=document.getElementById(id);
-  if(!d)return;
-  var total=d.querySelectorAll('.slide').length;
-  var cur=dkState[id]+1;
-  d.querySelectorAll('.snav-ctr').forEach(function(el){el.textContent=cur+'/'+total;});
-}
-
-function downloadActiveDeck(){
-  window.print();
-}
-
-// Keyboard navigation
-document.addEventListener('keydown',function(e){
-  if(!document.getElementById('deck-overlay').classList.contains('open'))return;
-  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();if(currentDeck)nextSlide(currentDeck);}
-  else if(e.key==='ArrowLeft'){e.preventDefault();if(currentDeck)prevSlide(currentDeck);}
-  else if(e.key==='Escape')closeDeck(false);
-});
-
-// Touch / swipe
-var touchStartX=0;
-document.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX;},{passive:true});
-document.addEventListener('touchend',function(e){
-  if(!document.getElementById('deck-overlay').classList.contains('open'))return;
-  var dx=e.changedTouches[0].clientX-touchStartX;
-  if(Math.abs(dx)<50)return;
-  if(currentDeck){dx<0?nextSlide(currentDeck):prevSlide(currentDeck);}
-},{passive:true});
-
-// ══════════════════════════════════════════════════════════════════
-// DOCUMENT LIBRARY
-// ══════════════════════════════════════════════════════════════════
 function docPlaceholder(){
-  showInfoModal(
-    '📁 Document Available from Secretariat',
-    '<p style="font-size:14px;color:var(--body);line-height:1.65;margin-bottom:1em;">This document will be available for download once uploaded by the Galing Likha 2026 AWDA Secretariat.</p>'+
-    '<p style="font-size:13px;color:var(--muted);margin-bottom:.5em;">📧 For early access: <strong>secretariat@galinglikha2026.ph</strong></p>'+
-    '<p style="font-size:13px;color:var(--muted);">Authorised staff can upload documents using the Admin Upload area below (password required).</p>'
-  );
+  showDocModal('📁 Document Available from Secretariat',
+    '<p style="font-size:14px;color:var(--body);line-height:1.65;margin-bottom:1em;">This document will be available for download once uploaded by the Galing Likha 2026 AWDA Secretariat.</p>' +
+    '<p style="font-size:13px;color:var(--muted);margin-bottom:.5em;">📧 For early access: <strong>secretariat@galinglikha2026.ph</strong></p>' +
+    '<p style="font-size:13px;color:var(--muted);">Authorised staff can upload documents using the Admin Upload area below (password required).</p>');
 }
-function docNotice(){docPlaceholder();}
+
+function docNotice(){ docPlaceholder(); }
 
 function previewJMC(){
-  showInfoModal(
-    'DILG-PCW Joint Memorandum Circular<br><small style="font-size:14px;font-weight:400;color:var(--muted);">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</small>',
+  showDocModal('DILG-PCW Joint Memorandum Circular<br><small style="font-size:14px;font-weight:400;color:var(--muted);">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)</small>',
     `<div style="background:var(--d1bg);border:1.5px solid var(--d1);border-radius:6px;padding:.85em 1.1em;margin-bottom:1em;">
       <p style="font-size:13px;font-weight:700;color:var(--d1);">Jointly issued by:</p>
       <p style="font-size:13.5px;color:var(--body);line-height:1.6;"><strong>JUANITO VICTOR C. REMULLA JR.</strong><br>Secretary, Department of the Interior and Local Government</p>
       <p style="font-size:13.5px;color:var(--body);line-height:1.6;margin-top:.4em;"><strong>ERMELITA V. VALDEAVILLA</strong><br>Chairperson, Philippine Commission on Women</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:.5em;">
-      <div class="acc-item open"><button class="acc-head" onclick="toggleAcc(this)">Background &amp; Purpose <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">Galing Likha 2026 AWDA is a <strong>standards-based recognition program — not a cultural competition</strong>. It recognizes weaving communities and partner LGUs that demonstrate distinction in authenticity, craft excellence, fair livelihood outcomes, sustainability, market readiness, and enabling local governance support.</p></div></div>
-      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Evaluation Criteria <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><div style="display:flex;flex-direction:column;gap:.3em;padding:.4em 0;font-size:13px;">
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Cultural Protection</strong> — documentation, cultural narratives, craft excellence</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Craft Excellence &amp; Eco-conscious Innovation</strong> — technical mastery, natural fiber sourcing</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>LGU Policy &amp; Ecosystem</strong> — enabling policy, programs, partnerships</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Community Impact</strong> — raw material sourcing, skills transfer, mentorship</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Market Access &amp; Value Chain</strong> — integration, linkages, export market access</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Sustainable Livelihood</strong> — GAD resources, adoption and replication model</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+    <div style="display:flex;flex-direction:column;gap:.6em;">
+      <div class="acc-item open"><button class="acc-head" onclick="toggleAcc(this)">Background &amp; Purpose <span class="acc-arrow">▼</span></button><div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">Galing Likha 2026 AWDA is a <strong>standards-based recognition program — not a cultural competition</strong>. It does not pit one culture against another. It recognizes weaving communities and partner LGUs that demonstrate distinction in authenticity, craft excellence, fair livelihood outcomes, sustainability, market readiness, and enabling local governance support.</p></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Evaluation Criteria <span class="acc-arrow">▼</span></button><div class="acc-body"><div style="display:flex;flex-direction:column;gap:.35em;padding:.5em 0;">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Cultural Protection</strong> — documentation, cultural narratives, craft excellence</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Craft Excellence &amp; Eco-conscious Innovation</strong> — technical mastery, natural fiber sourcing</span><span style="color:var(--d1);font-weight:700;">20%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>LGU Policy &amp; Ecosystem</strong> — enabling policy, programs, partnerships</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Community Impact</strong> — raw material sourcing, skills transfer, mentorship</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--linen);border-radius:3px;"><span><strong>Market Access &amp; Value Chain</strong> — integration, linkages, export market access</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.5em;font-size:13px;padding:.35em .6em;background:var(--cream);border-radius:3px;"><span><strong>Sustainable Livelihood</strong> — GAD resources, adoption and replication model</span><span style="color:var(--d1);font-weight:700;">15%</span></div>
       </div></div></div>
-      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Awards &amp; Incentives <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><div style="padding:.5em 0;font-size:13.5px;color:var(--body);line-height:1.8;">
-        <p>• <strong>Island-Level Distinction Awardees</strong> (Bottom 3 of Top 5): <strong>PhP 30,000</strong> each</p>
-        <p>• <strong>Island-Level Excellence Awardees / National Finalists</strong> (Top 2): <strong>PhP 75,000</strong> each</p>
-        <p>• <strong>National Distinction Awardees</strong> (1 per island, 3 total): <strong>PhP 150,000</strong> each</p>
-      </div></div></div>
-      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">ASEAN Trade Expo 2026 <span class="acc-arrow">▼</span></button>
-      <div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">AWDA is a passport to the ASEAN Trade Expo, held 7–9 November 2026 at Okada Manila alongside the 2nd ASEAN Women Economic Summit (AWES). Here, Filipino weaves meet ASEAN buyers, investors, and policymakers; cross-border matchmaking and digital traceability platforms; ESG-aligned investment dialogues; and a storytelling stage where weavers become enterprise leaders.</p></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">Awards &amp; Incentives <span class="acc-arrow">▼</span></button><div class="acc-body"><div style="padding:.5em 0;font-size:13.5px;color:var(--body);line-height:1.7;"><p>• <strong>Island-Level Distinction Awardees</strong> (Bottom 3 of Top 5 per island group): <strong>PhP 30,000</strong> each</p><p>• <strong>Island-Level Excellence Awardees / National Finalists</strong> (Top 2 per island group): <strong>PhP 75,000</strong> each</p><p>• <strong>National Distinction Awardees</strong> (1 per island group, 3 total): <strong>PhP 150,000</strong> each</p></div></div></div>
+      <div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">ASEAN Trade Expo 2026 <span class="acc-arrow">▼</span></button><div class="acc-body"><p style="font-size:13px;color:var(--body);line-height:1.65;padding:.5em 0;">AWDA is a passport to the ASEAN Trade Expo, held 7–9 November 2026 at Okada Manila alongside the 2nd ASEAN Women Economic Summit. Here, Filipino weaves meet ASEAN buyers, investors, and policymakers; cross-border matchmaking and digital traceability platforms; ESG-aligned investment dialogues; and a storytelling stage where weavers become enterprise leaders.</p></div></div>
     </div>
-    <div style="margin-top:1.2em;text-align:center;"><button class="btn btn-gold" onclick="downloadJMC()">⬇ Download Full JMC (DOCX)</button></div>`
-  );
+    <div style="margin-top:1.2em;text-align:center;"><button class="btn btn-gold" onclick="downloadJMC()">⬇ Download Full JMC (DOCX)</button></div>`);
 }
 
-// ══════════════════════════════════════════════════════════════════
-// MODAL SYSTEM (unified)
-// ══════════════════════════════════════════════════════════════════
-function showInfoModal(title,body){
-  var mo=document.getElementById('modal-overlay');
-  var modal=document.getElementById('conf-modal');
-  // Reset state
-  var rn=document.getElementById('ref-num-display');
-  if(rn)rn.style.display='none';
-  var ss=document.getElementById('summary-section');
-  if(ss)ss.innerHTML=body;
-  modal.querySelector('h2').innerHTML=title;
-  // Fix button row
-  var btnRow=modal.querySelector('.modal-btn-row');
+
+function downloadActiveDeck(){
+  window.print();
+}
+
+function showDocModal(title, body){
+  document.getElementById('modal-overlay').classList.add('open');
+  const m=document.getElementById('conf-modal');
+  m.querySelector('h2').innerHTML=title;
+  let sb=document.getElementById('summary-section');
+  sb.innerHTML=body;
+  document.getElementById('ref-num-display').style.display='none';
+  const nextSteps=m.querySelector('div[style*="font-size:13px"]');
+  if(nextSteps)nextSteps.style.display='none';
+  const btnRow=m.querySelector('div[style*="justify-content:center"]');
   if(btnRow)btnRow.innerHTML='<button class="btn btn-outline" onclick="closeModal()">Close</button>';
-  mo.classList.add('open');
 }
 
-function closeModal(){
-  document.getElementById('modal-overlay').classList.remove('open');
-  // restore state for application confirmation use
-  var rn=document.getElementById('ref-num-display');
-  if(rn)rn.style.display='';
-}
-
-document.getElementById('modal-overlay').addEventListener('click',function(e){
-  if(e.target===this)closeModal();
-});
-
-// ══════════════════════════════════════════════════════════════════
-// DOCUMENT UPLOAD (admin)
-// ══════════════════════════════════════════════════════════════════
-var adminUnlocked=false;
-var upFileData=null;
-
+let adminUnlocked=false;
 function promptAdminLogin(){
   if(adminUnlocked){toggleUpload();return;}
-  var pw=prompt('Enter admin password to upload documents:');
+  const pw=prompt('Enter admin password to upload documents:');
   if(pw==='GalingLikha2026'){adminUnlocked=true;toggleUpload();}
   else if(pw!==null){alert('Incorrect password.');}
 }
 
 function toggleUpload(){
-  var ua=document.getElementById('upload-admin');
-  if(!ua)return;
-  ua.style.display=(ua.style.display==='none'||ua.style.display==='')?'block':'none';
+  const ua=document.getElementById('upload-admin');
+  ua.style.display=ua.style.display==='none'?'block':'none';
 }
 
+let upFileData=null;
 function handleUpSelect(input){
-  var f=input.files[0];if(!f)return;
+  const f=input.files[0];
+  if(!f)return;
   document.getElementById('up-file-name').textContent='Selected: '+f.name+' ('+Math.round(f.size/1024)+'KB)';
-  var reader=new FileReader();
-  reader.onload=function(ev){upFileData={name:f.name,data:ev.target.result,size:f.size};}; 
+  const reader=new FileReader();
+  reader.onload=ev=>{upFileData={name:f.name,data:ev.target.result,size:f.size};};
   reader.readAsDataURL(f);
 }
-
 function handleUpDrop(e){
   e.preventDefault();
-  var f=e.dataTransfer.files[0];if(!f)return;
+  const f=e.dataTransfer.files[0];
+  if(!f)return;
   document.getElementById('up-file-name').textContent='Selected: '+f.name;
-  var reader=new FileReader();
-  reader.onload=function(ev){upFileData={name:f.name,data:ev.target.result,size:f.size};}; 
+  const reader=new FileReader();
+  reader.onload=ev=>{upFileData={name:f.name,data:ev.target.result,size:f.size};};
   reader.readAsDataURL(f);
 }
-
 function saveUpload(){
-  var title=document.getElementById('up-title').value.trim();
-  var type=document.getElementById('up-type').value;
-  var desc=document.getElementById('up-desc').value.trim();
+  const title=document.getElementById('up-title').value.trim();
+  const type=document.getElementById('up-type').value;
+  const desc=document.getElementById('up-desc').value.trim();
   if(!title||!desc){alert('Please fill in the document title and description.');return;}
   if(!upFileData){alert('Please select a file to upload.');return;}
-  var docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
-  docs.push({title:title,type:type,desc:desc,name:upFileData.name,data:upFileData.data,id:Date.now()});
+  const docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
+  docs.push({title,type,desc,name:upFileData.name,data:upFileData.data,id:Date.now()});
   localStorage.setItem('gl-docs',JSON.stringify(docs));
   renderUploadedDocs();
   document.getElementById('up-title').value='';
@@ -1719,129 +1503,122 @@ function saveUpload(){
   document.getElementById('up-file').value='';
   alert('Document uploaded successfully!');
 }
-
 function renderUploadedDocs(){
-  var docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
-  var area=document.getElementById('uploaded-docs-area');
-  if(!area)return;
+  const docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
+  const area=document.getElementById('uploaded-docs-area');
   if(!docs.length){area.innerHTML='';return;}
   area.innerHTML='<h3 style="font-family:Cormorant Garamond,serif;font-size:18px;font-weight:700;color:var(--ink);margin:1.5em 0 .75em;">Uploaded Documents</h3><div class="g3" id="uploaded-grid"></div>';
-  var grid=document.getElementById('uploaded-grid');
-  docs.forEach(function(doc){
-    var card=document.createElement('div');
+  const grid=document.getElementById('uploaded-grid');
+  docs.forEach(doc=>{
+    const card=document.createElement('div');
     card.className='doc-card';
     card.innerHTML='<div class="doc-icon">📄</div><div><span class="tag pdf">'+doc.type+'</span></div><div class="doc-name">'+doc.title+'</div><div class="doc-desc">'+doc.desc+'</div><div style="font-size:11px;color:var(--muted);">'+doc.name+'</div><div class="doc-actions"><a class="btn btn-gold btn-sm" href="'+doc.data+'" download="'+doc.name+'">⬇ Download</a><button class="btn btn-outline btn-sm" onclick="removeDoc('+doc.id+')">🗑 Remove</button></div>';
     grid.appendChild(card);
   });
 }
+function removeDoc(id){
+  let docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
+  docs=docs.filter(d=>d.id!==id);
+  localStorage.setItem('gl-docs',JSON.stringify(docs));
+  renderUploadedDocs();
+}
 renderUploadedDocs();
 
-// ══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // FORM HELPERS
-// ══════════════════════════════════════════════════════════════════
-var islandMap={'NCR':'Luzon','CAR':'Luzon','Region I':'Luzon','Region II':'Luzon','Region III':'Luzon','Region IV-A':'Luzon','MIMAROPA':'Luzon','Region V':'Luzon','Region VI':'Visayas','Region VII':'Visayas','Region VIII':'Visayas','Region IX':'Mindanao','Region X':'Mindanao','Region XI':'Mindanao','Region XII':'Mindanao','Region XIII':'Mindanao','BARMM':'Mindanao'};
-
+// ═══════════════════════════════════════════════════════
+const islandMap={
+  'NCR':'Luzon','CAR':'Luzon','Region I':'Luzon','Region II':'Luzon',
+  'Region III':'Luzon','Region IV-A':'Luzon','MIMAROPA':'Luzon','Region V':'Luzon',
+  'Region VI':'Visayas','Region VII':'Visayas','Region VIII':'Visayas',
+  'Region IX':'Mindanao','Region X':'Mindanao','Region XI':'Mindanao',
+  'Region XII':'Mindanao','Region XIII':'Mindanao','BARMM':'Mindanao'
+};
 function autoIsland(sel){
-  var ig=document.getElementById('island-group');
-  if(ig)ig.value=islandMap[sel.value]||'';
+  document.getElementById('island-group').value=islandMap[sel.value]||'';
   updateProgress();
 }
 
 function countWords(ta,countId){
-  var words=ta.value.trim().split(/\s+/).filter(function(w){return w.length>0;}).length;
-  var el=document.getElementById(countId);
-  if(!el)return;
-  var min=countId==='wn-wc'?200:100;
-  el.textContent=words+' words (minimum '+min+' required)';
-  el.style.color=words>=min?'var(--sage)':'var(--muted)';
+  const words=ta.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  const el=document.getElementById(countId);
+  if(el)el.textContent=words+' words'+(countId==='wn-wc'?' (minimum 200 required)':' (minimum 100 required)');
+  el.style.color=words>=(countId==='wn-wc'?200:100)?'var(--sage)':'var(--muted)';
   updateProgress();
 }
 
-var uploadedFiles={};
+const uploadedFiles={};
 function handleFiles(input,listId,key){
-  var files=Array.from(input.files);
+  const files=Array.from(input.files);
   if(!files.length)return;
   if(!uploadedFiles[key])uploadedFiles[key]=[];
-  files.forEach(function(f){uploadedFiles[key].push(f);});
+  files.forEach(f=>{uploadedFiles[key].push(f);});
   renderFileList(listId,key);
   updateProgress();
 }
-
 function renderFileList(listId,key){
-  var list=document.getElementById(listId);
+  const list=document.getElementById(listId);
   if(!list)return;
   list.innerHTML='';
-  (uploadedFiles[key]||[]).forEach(function(f,i){
-    var item=document.createElement('div');
+  (uploadedFiles[key]||[]).forEach((f,i)=>{
+    const item=document.createElement('div');
     item.className='file-item';
-    item.innerHTML='<span>'+f.name+' ('+Math.round(f.size/1024)+'KB)</span><button type="button" class="file-remove" onclick="removeFile(''+key+'','+i+',''+listId+'')">✕</button>';
+    item.innerHTML='<span>'+f.name+' ('+Math.round(f.size/1024)+'KB)</span><button type="button" class="file-remove" onclick="removeFile(\''+key+'\','+i+',\''+listId+'\')">✕</button>';
     list.appendChild(item);
   });
 }
-
 function removeFile(key,idx,listId){
-  if(uploadedFiles[key])uploadedFiles[key].splice(idx,1);
+  uploadedFiles[key].splice(idx,1);
   renderFileList(listId,key);
   updateProgress();
 }
 
-function removeDoc(id){
-  var docs=JSON.parse(localStorage.getItem('gl-docs')||'[]');
-  docs=docs.filter(function(d){return d.id!==id;});
-  localStorage.setItem('gl-docs',JSON.stringify(docs));
-  renderUploadedDocs();
-}
-
 function checkDecl(){
-  ['decl1-box','decl2-box','decl3-box'].forEach(function(boxId,i){
-    var box=document.getElementById(boxId);
-    var chk=document.getElementById('decl'+(i+1));
-    if(box&&chk)box.style.borderColor=chk.checked?'var(--sage)':'var(--border)';
+  const allChecked=['decl1','decl2','decl3'].every(id=>document.getElementById(id).checked);
+  document.getElementById('decl-error').style.display=allChecked?'none':'none';
+  ['decl1-box','decl2-box','decl3-box'].forEach((id,i)=>{
+    document.getElementById(id).style.borderColor=document.getElementById('decl'+(i+1)).checked?'var(--sage)':'var(--border)';
   });
   updateProgress();
 }
 
+// Progress tracker
 function updateProgress(){
-  var form=document.getElementById('app-form');
-  if(!form)return;
-  var required=form.querySelectorAll('[required]');
-  var filled=0;
-  required.forEach(function(el){if(el.value&&el.value.trim())filled++;});
-  var decls=['decl1','decl2','decl3'].filter(function(id){var el=document.getElementById(id);return el&&el.checked;}).length;
-  var total=required.length+3;
-  var pct=Math.round(((filled+decls)/total)*100);
-  var fill=document.getElementById('prog-fill');
-  var label=document.getElementById('prog-label');
-  if(fill)fill.style.width=pct+'%';
-  if(label)label.textContent='Progress: '+pct+'% complete';
+  const form=document.getElementById('app-form');
+  const required=form.querySelectorAll('[required]');
+  let filled=0;
+  required.forEach(el=>{if(el.value.trim())filled++;});
+  const decls=['decl1','decl2','decl3'].filter(id=>document.getElementById(id).checked).length;
+  const total=required.length+3;
+  const pct=Math.round(((filled+decls)/total)*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent='Progress: '+pct+'% complete';
 }
+document.getElementById('app-form').addEventListener('input',updateProgress);
 
+// Auto-save
 function autoSave(){
   try{
-    var form=document.getElementById('app-form');
-    if(!form)return;
-    var data={};
-    new FormData(form).forEach(function(v,k){
-      if(data[k]===undefined)data[k]=v;
-      else{if(!Array.isArray(data[k]))data[k]=[data[k]];data[k].push(v);}
-    });
+    const form=document.getElementById('app-form');
+    const data={};
+    new FormData(form).forEach((v,k)=>{if(typeof data[k]==='undefined')data[k]=v;else{if(!Array.isArray(data[k]))data[k]=[data[k]];data[k].push(v);}});
     localStorage.setItem('gl-form-draft',JSON.stringify(data));
+    console.log('Auto-saved at',new Date().toLocaleTimeString());
   }catch(e){}
 }
 setInterval(autoSave,30000);
 
 function loadDraft(){
   try{
-    var draft=JSON.parse(localStorage.getItem('gl-form-draft')||'null');
+    const draft=JSON.parse(localStorage.getItem('gl-form-draft')||'null');
     if(!draft)return;
-    var form=document.getElementById('app-form');
-    if(!form)return;
-    Object.entries(draft).forEach(function([k,v]){
-      var els=form.querySelectorAll('[name="'+k+'"]');
+    const form=document.getElementById('app-form');
+    Object.entries(draft).forEach(([k,v])=>{
+      const els=form.querySelectorAll('[name="'+k+'"]');
       if(!els.length)return;
       if(els[0].type==='checkbox'||els[0].type==='radio'){
-        var vals=Array.isArray(v)?v:[v];
-        els.forEach(function(el){el.checked=vals.includes(el.value);});
+        const vals=Array.isArray(v)?v:[v];
+        els.forEach(el=>el.checked=vals.includes(el.value));
       }else if(els[0].tagName==='SELECT'){
         els[0].value=v;
         if(els[0].name==='region')autoIsland(els[0]);
@@ -1852,433 +1629,136 @@ function loadDraft(){
 }
 loadDraft();
 
-// ══════════════════════════════════════════════════════════════════
-// FORM SUBMISSION
-// ══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// FORM VALIDATION & SUBMISSION
+// ═══════════════════════════════════════════════════════
 document.getElementById('app-form').addEventListener('submit',function(e){
   e.preventDefault();
-  var valid=true;
+  let valid=true;
 
-  // Clear previous errors
-  document.querySelectorAll('.form-field').forEach(function(ff){
+  // Clear errors
+  document.querySelectorAll('.form-field').forEach(ff=>{
     ff.classList.remove('invalid');
-    var inp=ff.querySelector('input,select,textarea');
+    const inp=ff.querySelector('input,select,textarea');
     if(inp)inp.classList.remove('err');
   });
 
-  // Required text fields
-  var requiredIds=['ff-lgu_name','ff-province','ff-region','ff-lgu_class','ff-lce_name',
-    'ff-lce_email','ff-lce_contact','ff-org_name','ff-org_type','ff-org_location',
-    'ff-rep_comm_name','ff-rep_comm_contact','ff-weave_name','ff-ecosystem_plan',
-    'ff-livelihood_desc','ff-sustainability_plan','ff-value_chain',
-    'ff-sig_lce','ff-sig_lce_date','ff-sig_comm','ff-sig_comm_date'];
+  // Validate required fields
+  const requiredFields=[
+    {id:'ff-lgu_name',name:'lgu_name'},
+    {id:'ff-province',name:'province'},
+    {id:'ff-region',name:'region'},
+    {id:'ff-lgu_class',name:'lgu_class'},
+    {id:'ff-lce_name',name:'lce_name'},
+    {id:'ff-lce_email',name:'lce_email'},
+    {id:'ff-lce_contact',name:'lce_contact'},
+    {id:'ff-org_name',name:'org_name'},
+    {id:'ff-org_type',name:'org_type'},
+    {id:'ff-org_location',name:'org_location'},
+    {id:'ff-rep_comm_name',name:'rep_comm_name'},
+    {id:'ff-rep_comm_contact',name:'rep_comm_contact'},
+    {id:'ff-weave_name',name:'weave_name'},
+    {id:'ff-ecosystem_plan',name:'ecosystem_plan'},
+    {id:'ff-livelihood_desc',name:'livelihood_desc'},
+    {id:'ff-sustainability_plan',name:'sustainability_plan'},
+    {id:'ff-value_chain',name:'value_chain'},
+    {id:'ff-sig_lce',name:'sig_lce'},
+    {id:'ff-sig_lce_date',name:'sig_lce_date'},
+    {id:'ff-sig_comm',name:'sig_comm'},
+    {id:'ff-sig_comm_date',name:'sig_comm_date'},
+  ];
 
-  requiredIds.forEach(function(fid){
-    var ff=document.getElementById(fid);
-    if(!ff)return;
-    var inp=ff.querySelector('input,select,textarea');
-    if(!inp||!inp.value.trim()){ff.classList.add('invalid');if(inp)inp.classList.add('err');valid=false;}
+  requiredFields.forEach(f=>{
+    const ff=document.getElementById(f.id);
+    const inp=document.querySelector('[name="'+f.name+'"]');
+    if(!inp||!inp.value.trim()){
+      if(ff){ff.classList.add('invalid');}
+      if(inp)inp.classList.add('err');
+      valid=false;
+    }
   });
 
-  // Email format
-  var emailEl=document.querySelector('[name="lce_email"]');
-  if(emailEl&&emailEl.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)){
-    var fff=document.getElementById('ff-lce_email');
-    if(fff)fff.classList.add('invalid');
-    valid=false;
-  }
-
-  // Narrative word count
-  var narr=document.querySelector('[name="weave_narrative"]');
-  if(narr){
-    var wc=narr.value.trim().split(/\s+/).filter(function(w){return w.length>0;}).length;
-    if(wc<200){
-      var nff=document.getElementById('ff-weave_narrative');
-      if(nff)nff.classList.add('invalid');
+  // Validate narrative word count
+  const narrative=document.querySelector('[name="weave_narrative"]');
+  if(narrative){
+    const words=narrative.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+    if(words<200){
+      const ff=document.getElementById('ff-weave_narrative');
+      if(ff)ff.classList.add('invalid');
       valid=false;
     }
   }
 
-  // Declarations
-  var declsOk=['decl1','decl2','decl3'].every(function(id){var el=document.getElementById(id);return el&&el.checked;});
-  if(!declsOk){document.getElementById('decl-error').style.display='block';valid=false;}
+  // Validate email format
+  const emailEl=document.querySelector('[name="lce_email"]');
+  if(emailEl&&emailEl.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)){
+    const ff=document.getElementById('ff-lce_email');
+    if(ff)ff.classList.add('invalid');
+    valid=false;
+  }
+
+  // Validate declarations
+  const declsOk=['decl1','decl2','decl3'].every(id=>document.getElementById(id).checked);
+  if(!declsOk){
+    document.getElementById('decl-error').style.display='block';
+    valid=false;
+  }
 
   if(!valid){
-    var firstErr=document.querySelector('.form-field.invalid input,.form-field.invalid select,.form-field.invalid textarea');
+    const firstErr=document.querySelector('.form-field.invalid, .err');
     if(firstErr)firstErr.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
 
   // Generate reference number
-  var region=document.querySelector('[name="region"]').value;
-  var island=document.getElementById('island-group')?document.getElementById('island-group').value:'';
-  var ic=island==='Luzon'?'LUZ':island==='Visayas'?'VIS':island==='Mindanao'?'MIN':'PHL';
-  var refNum='AWDA-2026-'+ic+'-'+Math.floor(1000+Math.random()*9000);
+  const region=document.querySelector('[name="region"]').value;
+  const island=document.getElementById('island-group').value||'LUZ';
+  const islandCode=island==='Luzon'?'LUZ':island==='Visayas'?'VIS':island==='Mindanao'?'MIN':'PHL';
+  const randNum=Math.floor(1000+Math.random()*9000);
+  const refNum='AWDA-2026-'+islandCode+'-'+randNum;
 
-  // Collect all form data
-  var formData={refNum:refNum,timestamp:new Date().toISOString(),status:'Submitted'};
-  new FormData(e.target).forEach(function(v,k){
-    if(formData[k]===undefined)formData[k]=v;
-    else{if(!Array.isArray(formData[k]))formData[k]=[formData[k]];formData[k].push(v);}
-  });
+  // Build summary
+  const lguName=document.querySelector('[name="lgu_name"]').value;
+  const weaveName=document.querySelector('[name="weave_name"]').value;
+  const lce=document.querySelector('[name="lce_name"]').value;
+  const org=document.querySelector('[name="org_name"]').value;
 
-  // Convert arrays to joined strings for storage
-  Object.keys(formData).forEach(function(k){
-    if(Array.isArray(formData[k]))formData[k]=formData[k].join('; ');
-  });
+  document.getElementById('ref-num-display').textContent=refNum;
+  document.getElementById('summary-section').innerHTML=
+    '<div style="margin-bottom:.6em;font-size:13px;font-weight:700;color:var(--muted);">APPLICATION SUMMARY</div>'+
+    '<div class="summary-row"><div class="sk">Reference No.</div><div class="sv">'+refNum+'</div></div>'+
+    '<div class="summary-row"><div class="sk">LGU</div><div class="sv">'+lguName+'</div></div>'+
+    '<div class="summary-row"><div class="sk">Island Group</div><div class="sv">'+island+'</div></div>'+
+    '<div class="summary-row"><div class="sk">Weave Tradition</div><div class="sv">'+weaveName+'</div></div>'+
+    '<div class="summary-row"><div class="sk">Local Chief Executive</div><div class="sv">'+lce+'</div></div>'+
+    '<div class="summary-row"><div class="sk">Community Partner</div><div class="sv">'+org+'</div></div>'+
+    '<div class="summary-row" style="border:none;"><div class="sk">Date Submitted</div><div class="sv">'+new Date().toLocaleDateString('en-PH',{year:'numeric',month:'long',day:'numeric'})+'</div></div>';
 
   // Save to localStorage
-  var subs=JSON.parse(localStorage.getItem('gl-submissions')||'[]');
-  subs.push(formData);
-  localStorage.setItem('gl-submissions',JSON.stringify(subs));
+  const submissions=JSON.parse(localStorage.getItem('gl-submissions')||'[]');
+  const formData={};
+  new FormData(e.target).forEach((v,k)=>{
+    if(typeof formData[k]==='undefined')formData[k]=v;
+    else{if(!Array.isArray(formData[k]))formData[k]=[formData[k]];formData[k].push(v);}
+  });
+  submissions.push({refNum,timestamp:new Date().toISOString(),...formData});
+  localStorage.setItem('gl-submissions',JSON.stringify(submissions));
   localStorage.removeItem('gl-form-draft');
 
-  // Show confirmation modal
-  var rn=document.getElementById('ref-num-display');
-  if(rn){rn.textContent=refNum;rn.style.display='';}
-
-  var ss=document.getElementById('summary-section');
-  if(ss){
-    ss.innerHTML=
-      '<div style="margin-bottom:.6em;font-size:13px;font-weight:700;color:var(--muted);">APPLICATION SUMMARY</div>'+
-      '<div class="summary-row"><div class="sk">Reference No.</div><div class="sv">'+refNum+'</div></div>'+
-      '<div class="summary-row"><div class="sk">LGU</div><div class="sv">'+(formData.lgu_name||'')+'</div></div>'+
-      '<div class="summary-row"><div class="sk">Island Group</div><div class="sv">'+(island||'')+'</div></div>'+
-      '<div class="summary-row"><div class="sk">Weave Tradition</div><div class="sv">'+(formData.weave_name||'')+'</div></div>'+
-      '<div class="summary-row"><div class="sk">Local Chief Executive</div><div class="sv">'+(formData.lce_name||'')+'</div></div>'+
-      '<div class="summary-row"><div class="sk">Community Partner</div><div class="sv">'+(formData.org_name||'')+'</div></div>'+
-      '<div class="summary-row" style="border:none;"><div class="sk">Date Submitted</div><div class="sv">'+new Date().toLocaleDateString('en-PH',{year:'numeric',month:'long',day:'numeric'})+'</div></div>';
-  }
-
+  // Show modal
   document.getElementById('modal-overlay').classList.add('open');
-  e.target.reset();
-  updateProgress();
 });
 
 function closeModal(){
   document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('ref-num-display').style.display='';
+  const nextSteps=document.querySelector('#conf-modal div[style*="font-size:13px"]');
+  if(nextSteps)nextSteps.style.display='';
+  document.getElementById('summary-section').innerHTML='';
 }
+document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
 function printConf(){window.print();}
-
-// ══════════════════════════════════════════════════════════════════
-// DATA ADMIN — VIEW, EXPORT CSV, EXPORT EXCEL
-// ══════════════════════════════════════════════════════════════════
-var ADMIN_PW='GalingLikha2026Admin';
-var dataAdminUnlocked=false;
-
-function promptDataAdmin(){
-  if(dataAdminUnlocked){openDataAdmin();return;}
-  var pw=prompt('Enter Data Admin password:');
-  if(pw==='GalingLikha2026Admin'){dataAdminUnlocked=true;openDataAdmin();}
-  else if(pw==='GalingLikha2026'){dataAdminUnlocked=true;openDataAdmin();} // same pw
-  else if(pw!==null){alert('Incorrect password.');}
-}
-
-function openDataAdmin(){
-  renderDataTable();
-  document.getElementById('data-admin').classList.add('open');
-}
-
-function closeDataAdmin(){
-  document.getElementById('data-admin').classList.remove('open');
-}
-
-document.getElementById('data-admin').addEventListener('click',function(e){
-  if(e.target===this)closeDataAdmin();
-});
-
-var COL_MAP=[
-  ['refNum','Ref No.'],['timestamp','Submitted At'],['status','Status'],
-  ['lgu_name','LGU Name'],['province','Province'],['region','Region'],['island_group','Island Group'],['lgu_class','LGU Type'],
-  ['lce_name','LCE Name'],['lce_email','LCE Email'],['lce_contact','LCE Contact'],
-  ['org_name','Community Partner'],['org_type','Org Type'],['org_location','Community Location'],
-  ['num_weavers','No. of Weavers'],['num_women_weavers','Women Weavers'],
-  ['rep_comm_name','Community Rep'],['rep_comm_contact','Comm Rep Contact'],
-  ['weave_name','Weave Tradition'],['weave_local_name','Local Name'],['tradition_age','Tradition Age'],
-  ['geo_origin','Geographic Origin'],['language','Language/Dialect'],
-  ['active_weavers','Active Weavers'],['youngest_weaver','Youngest Weaver'],
-  ['extinction_risk','Extinction Risk'],['restricted_motifs','Restricted Motifs'],
-  ['lead_weaver_name','Lead Weaver'],['lead_weaver_years','Weaver Years'],
-  ['product_sku','Products/SKU'],
-  ['gad_program','GAD Program'],['gad_budget','GAD Budget'],
-  ['weaver_income','Weaver Income'],['annual_revenue','Annual Revenue'],
-  ['sells_products','Sells Products'],['h2u_ready','H2U Showcase Ready'],
-  ['sig_lce','LCE Signature'],['sig_lce_date','LCE Sign Date'],
-  ['sig_comm','Comm Rep Signature'],['sig_comm_date','Comm Sign Date']
-];
-
-function getSubmissions(){
-  return JSON.parse(localStorage.getItem('gl-submissions')||'[]');
-}
-
-function renderDataTable(){
-  var subs=getSubmissions();
-  var count=document.getElementById('da-count');
-  if(count)count.textContent=subs.length+' application'+(subs.length!==1?'s':'')+' on record';
-
-  var thead=document.getElementById('da-thead');
-  var tbody=document.getElementById('da-tbody');
-  if(!thead||!tbody)return;
-
-  if(subs.length===0){
-    thead.innerHTML='';
-    tbody.innerHTML='<tr><td colspan="10" class="da-empty">No applications submitted yet. Applications will appear here after form submission.</td></tr>';
-    return;
-  }
-
-  // Header row — show key columns only in table, full data in CSV/Excel
-  var keyCols=[['refNum','Ref No.'],['timestamp','Date'],['lgu_name','LGU'],['province','Province'],
-    ['island_group','Island'],['lce_name','LCE'],['org_name','Community Partner'],
-    ['weave_name','Weave Tradition'],['status','Status']];
-
-  thead.innerHTML='<tr>'+keyCols.map(function(c){return '<th>'+c[1]+'</th>';}).join('')+'</tr>';
-  tbody.innerHTML=subs.map(function(s){
-    return '<tr>'+keyCols.map(function(c){
-      var val=s[c[0]]||'';
-      if(c[0]==='timestamp'){try{val=new Date(val).toLocaleDateString('en-PH');}catch(ex){}}
-      return '<td title="'+String(val).replace(/"/g,'&quot;')+'">'+String(val).substring(0,40)+(String(val).length>40?'…':'')+'</td>';
-    }).join('')+'</tr>';
-  }).join('');
-}
-
-function exportCSV(){
-  var subs=getSubmissions();
-  if(!subs.length){alert('No application data to export.');return;}
-
-  // Build CSV with ALL columns
-  var headers=COL_MAP.map(function(c){return '"'+c[1]+'"';});
-  var rows=subs.map(function(s){
-    return COL_MAP.map(function(c){
-      var val=String(s[c[0]]||'').replace(/"/g,'""');
-      return '"'+val+'"';
-    }).join(',');
-  });
-
-  var csv=[headers.join(',')].concat(rows).join('\n');
-  var bom='\uFEFF'; // UTF-8 BOM for Excel compatibility
-  var blob=new Blob([bom+csv],{type:'text/csv;charset=utf-8;'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;
-  a.download='GalingLikha2026_AWDA_Applications_'+new Date().toISOString().slice(0,10)+'.csv';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function exportExcel(){
-  var subs=getSubmissions();
-  if(!subs.length){alert('No application data to export.');return;}
-
-  // Build XLSX-compatible XML (SpreadsheetML format — opens natively in Excel)
-  var headers=COL_MAP.map(function(c){return c[1];});
-  
-  function escXml(s){
-    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
-  }
-
-  var xml='<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml+='<?mso-application progid="Excel.Sheet"?>\n';
-  xml+='<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" ';
-  xml+='xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n';
-  xml+='<Styles>\n';
-  xml+='<Style ss:ID="H"><Font ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#1A4A7A" ss:Pattern="Solid"/></Style>\n';
-  xml+='<Style ss:ID="D"><Alignment ss:WrapText="1"/></Style>\n';
-  xml+='<Style ss:ID="A"><Interior ss:Color="#EBF2FC" ss:Pattern="Solid"/><Alignment ss:WrapText="1"/></Style>\n';
-  xml+='</Styles>\n';
-  xml+='<Worksheet ss:Name="AWDA Applications">\n<Table>\n';
-
-  // Column widths
-  xml+=headers.map(function(){return '<Column ss:Width="120"/>';}).join('\n')+'\n';
-
-  // Header row
-  xml+='<Row>\n'+headers.map(function(h){
-    return '<Cell ss:StyleID="H"><Data ss:Type="String">'+escXml(h)+'</Data></Cell>';
-  }).join('\n')+'\n</Row>\n';
-
-  // Data rows
-  subs.forEach(function(s,ri){
-    var style=ri%2===0?'D':'A';
-    xml+='<Row>\n'+COL_MAP.map(function(c){
-      var val=s[c[0]]||'';
-      if(c[0]==='timestamp'){try{val=new Date(val).toLocaleString('en-PH');}catch(ex){}}
-      return '<Cell ss:StyleID="'+style+'"><Data ss:Type="String">'+escXml(val)+'</Data></Cell>';
-    }).join('\n')+'\n</Row>\n';
-  });
-
-  xml+='</Table>\n</Worksheet>\n</Workbook>';
-
-  var blob=new Blob([xml],{type:'application/vnd.ms-excel;charset=utf-8;'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;
-  a.download='GalingLikha2026_AWDA_Applications_'+new Date().toISOString().slice(0,10)+'.xls';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function clearAllData(){
-  if(!confirm('⚠️ Delete ALL application records? This cannot be undone.'))return;
-  localStorage.removeItem('gl-submissions');
-  renderDataTable();
-  alert('All records cleared.');
-}
-
-// ══════════════════════════════════════════════════════════════════
-// DECK BREADCRUMB UPDATE
-// ══════════════════════════════════════════════════════════════════
-var deckNames = {'dk1':'Gov & LGUs','dk2':'Weavers','dk3':'Partners'};
-function updateBreadcrumb(id) {
-  var el = document.getElementById('ds-breadcrumb');
-  if (!el) return;
-  var d = document.getElementById(id);
-  var total = d ? d.querySelectorAll('.slide').length : 0;
-  el.textContent = (deckNames[id]||id) + '  ·  Slide ' + (dkState[id]+1) + ' / ' + total;
-}
-
-// Patch openDeck and goSlide to update breadcrumb
-var _origOpenDeck = openDeck;
-openDeck = function(id) { _origOpenDeck(id); updateBreadcrumb(id); };
-var _origGoSlide = goSlide;
-goSlide = function(id, n) { _origGoSlide(id, n); updateBreadcrumb(id); };
-
-// ══════════════════════════════════════════════════════════════════
-// REPOSITORY (inline - replaces admin FAB)
-// ══════════════════════════════════════════════════════════════════
-var repoUnlocked = false;
-
-function repoUnlock() {
-  var pw = document.getElementById('repo-pw').value;
-  if (pw === 'GalingLikha2026Admin' || pw === 'GalingLikha2026') {
-    repoUnlocked = true;
-    document.getElementById('repo-lock-box').style.display = 'none';
-    document.getElementById('repo-pw-err').style.display = 'none';
-    document.getElementById('repo-content').classList.add('unlocked');
-    renderRepoTable(getSubmissions());
-    updateRepoStats();
-  } else {
-    document.getElementById('repo-pw-err').style.display = 'block';
-  }
-}
-
-function updateRepoStats() {
-  var subs = getSubmissions();
-  var total = subs.length;
-  var luzon = subs.filter(function(s){ return s.island_group === 'Luzon'; }).length;
-  var visayas = subs.filter(function(s){ return s.island_group === 'Visayas'; }).length;
-  var mindanao = subs.filter(function(s){ return s.island_group === 'Mindanao'; }).length;
-  var el = function(id){ return document.getElementById(id); };
-  if (el('rs-total')) el('rs-total').textContent = total;
-  if (el('rs-luzon')) el('rs-luzon').textContent = luzon;
-  if (el('rs-visayas')) el('rs-visayas').textContent = visayas;
-  if (el('rs-mindanao')) el('rs-mindanao').textContent = mindanao;
-}
-updateRepoStats();
-
-function repoFilter() {
-  var q = (document.getElementById('repo-search-inp').value || '').toLowerCase();
-  var island = document.getElementById('repo-filter-island').value;
-  var status = document.getElementById('repo-filter-status').value;
-  var subs = getSubmissions().filter(function(s) {
-    var text = [s.lgu_name,s.province,s.region,s.weave_name,s.org_name,s.lce_name,s.island_group,s.refNum].join(' ').toLowerCase();
-    return (!q || text.includes(q))
-      && (!island || s.island_group === island)
-      && (!status || s.status === status);
-  });
-  renderRepoTable(subs);
-}
-
-function islandBadgeClass(ig) {
-  if (!ig) return 'phl';
-  var m = ig.toLowerCase();
-  if (m === 'luzon') return 'luzon';
-  if (m === 'visayas') return 'visayas';
-  if (m === 'mindanao') return 'mindanao';
-  return 'phl';
-}
-
-function renderRepoTable(subs) {
-  var thead = document.getElementById('repo-thead');
-  var tbody = document.getElementById('repo-tbody');
-  if (!thead || !tbody) return;
-
-  if (!subs || subs.length === 0) {
-    thead.innerHTML = '';
-    tbody.innerHTML = '<tr><td colspan="10"><div class="repo-empty"><div class="re-icon">📭</div><div>No applications found' + (getSubmissions().length ? ' matching your filters.' : '.<br>Applications submitted through the form will appear here.') + '</div></div></td></tr>';
-    return;
-  }
-
-  var keyCols = [
-    ['refNum','Ref No.'],['timestamp','Date'],['island_group','Island'],
-    ['lgu_name','LGU'],['province','Province'],['lce_name','LCE'],
-    ['org_name','Community Partner'],['weave_name','Weave Tradition'],['status','Status'],['_detail','']
-  ];
-
-  thead.innerHTML = '<tr>' + keyCols.map(function(c){ return c[1] ? '<th>' + c[1] + '</th>' : '<th></th>'; }).join('') + '</tr>';
-
-  tbody.innerHTML = subs.map(function(s, ri) {
-    var detailId = 'repo-detail-' + ri;
-    var cells = keyCols.map(function(c) {
-      if (c[0] === '_detail') {
-        return '<td><span class="repo-row-expand" onclick="toggleRepoRow('' + detailId + '')">Details ▾</span></td>';
-      }
-      if (c[0] === 'island_group') {
-        var ig = s[c[0]] || '';
-        return '<td><span class="island-badge ' + islandBadgeClass(ig) + '">' + (ig || '—') + '</span></td>';
-      }
-      if (c[0] === 'status') {
-        return '<td><span class="status-badge">' + (s[c[0]] || 'Submitted') + '</span></td>';
-      }
-      if (c[0] === 'timestamp') {
-        var val = s[c[0]] || '';
-        try { val = new Date(val).toLocaleDateString('en-PH', {year:'numeric',month:'short',day:'numeric'}); } catch(e){}
-        return '<td>' + val + '</td>';
-      }
-      var val = String(s[c[0]] || '');
-      return '<td title="' + val.replace(/"/g,'&quot;') + '">' + val.substring(0,32) + (val.length > 32 ? '…' : '') + '</td>';
-    }).join('');
-
-    // Full detail row (hidden initially)
-    var detailFields = [
-      ['Region',s.region],['LGU Class',s.lgu_class],['LCE Email',s.lce_email],['LCE Contact',s.lce_contact],
-      ['Org Type',s.org_type],['Comm Location',s.org_location],['Weavers',s.num_weavers],['Women Weavers',s.num_women_weavers],
-      ['Comm Rep',s.rep_comm_name],['Comm Contact',s.rep_comm_contact],['Weave Local Name',s.weave_local_name],
-      ['Tradition Age',s.tradition_age],['Active Weavers',s.active_weavers],['Youngest Weaver',s.youngest_weaver],
-      ['GAD Program',s.gad_program],['GAD Budget',s.gad_budget],['Weaver Income',s.weaver_income],['Sells Products',s.sells_products]
-    ].filter(function(f){ return f[1]; }).map(function(f){
-      return '<div style="display:flex;gap:.5em;padding:.25em 0;border-bottom:1px solid var(--border);font-size:12px;"><div style="color:var(--muted);min-width:120px;flex-shrink:0;">' + f[0] + '</div><div style="color:var(--ink);">' + f[1] + '</div></div>';
-    }).join('');
-
-    var detailRow = '<tr id="' + detailId + '" style="display:none;"><td colspan="10" style="background:#EBF2FC;padding:.8em 1.2em;">' +
-      '<div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:.5em;">Full Record — ' + (s.refNum||'') + '</div>' +
-      detailFields +
-      '</td></tr>';
-
-    return '<tr>' + cells + '</tr>' + detailRow;
-  }).join('');
-}
-
-function toggleRepoRow(id) {
-  var row = document.getElementById(id);
-  if (!row) return;
-  var btn = row.previousElementSibling.querySelector('.repo-row-expand');
-  if (row.style.display === 'none') {
-    row.style.display = '';
-    if (btn) btn.textContent = 'Details ▴';
-  } else {
-    row.style.display = 'none';
-    if (btn) btn.textContent = 'Details ▾';
-  }
-}
-
-function repoClearConfirm() {
-  if (!confirm('⚠️ Delete ALL application records? This cannot be undone.')) return;
-  localStorage.removeItem('gl-submissions');
-  renderRepoTable([]);
-  updateRepoStats();
-}
-
-// Keep old data admin working too (for modal path)
 
 </script>
 </body>
