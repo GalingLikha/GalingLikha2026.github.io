@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galing Likha · AWDA 2026 Data Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#FAF7F2; --linen:#F3EDE2; --cream:#FDF9F3; --parchment:#EDE4D3; --border:#D9CDB8;
+  --ink:#1A1208; --body:#2C2218; --muted:#6B5C44; --light:#9B8B74;
+  --gold:#9B6A1C; --amber:#C4892A; --amberlt:#E8B254;
+  --weave:#5C2D7A; --yakan:#1A5C8A; --inaul:#6B2D5A;
+  --pinya:#B85C38; --terra:#8B3A1A; --sage:#3D6B4F;
+  --d1:#1A4A7A; --d1l:#2A6AAA; --d1bg:#F0F5FC;
+  --d2:#5C2D7A; --d2l:#7B3FA8; --d2bg:#F5F0FA;
+  --d3:#1A5A32; --d3l:#2A7A4A; --d3bg:#F0F7F2;
+  --success:#27AE60; --warning:#E67E22; --danger:#E74C3C;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.65;}
+
+/* ── WEAVE BAND ─────────────────────────────────── */
+.wb{height:8px;flex-shrink:0;background:repeating-linear-gradient(90deg,
+  #9B6A1C 0,#9B6A1C 7.5%,#5C2D7A 7.5%,#5C2D7A 15%,
+  #C4892A 15%,#C4892A 22.5%,#8B3A1A 22.5%,#8B3A1A 30%,
+  #9B6A1C 30%,#9B6A1C 37.5%,#1A5C8A 37.5%,#1A5C8A 45%,
+  #B85C38 45%,#B85C38 52.5%,#6B2D5A 52.5%,#6B2D5A 60%,
+  #3D6B4F 60%,#3D6B4F 67.5%,#9B6A1C 67.5%,#9B6A1C 75%,
+  #5C2D7A 75%,#5C2D7A 82.5%,#C4892A 82.5%,#C4892A 100%);}
+.wb.lg{height:12px;} .wb.sm{height:4px;}
+
+/* ── STICKY NAV ─────────────────────────────────── */
+#topnav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(250,247,242,.97);border-bottom:1.5px solid var(--border);backdrop-filter:blur(10px);height:56px;display:flex;align-items:center;padding:0 2em;gap:1.5em;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:17px;color:var(--gold);white-space:nowrap;}
+.nav-links{display:flex;gap:1em;margin-left:auto;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:.4em .75em;border-radius:4px;transition:all .2s;}
+.nav-links a:hover{color:var(--gold);background:rgba(155,106,28,.08);}
+.nav-back{background:var(--gold);color:#fff!important;border-radius:4px;padding:.4em 1.1em!important;font-weight:600!important;}
+.nav-back:hover{background:var(--amber)!important;}
+
+/* ── PAGE LAYOUT ─────────────────────────────────── */
+main{margin-top:56px;padding:0;}
+.page-header{background:var(--d1);color:#fff;padding:2em;text-align:center;border-bottom:3px solid var(--gold);}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:2.5em;margin-bottom:.3em;}
+.page-header p{font-size:1.05em;opacity:.95;}
+
+.content{max-width:1400px;margin:0 auto;padding:2em;}
+
+/* ── DASHBOARD GRID ───���─────────────────────────── */
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5em;margin-bottom:2em;}
+.stat-card{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:1.5em;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.stat-card.blue{border-top:4px solid var(--d1);}
+.stat-card.purple{border-top:4px solid var(--d2);}
+.stat-card.green{border-top:4px solid var(--d3);}
+.stat-card.gold{border-top:4px solid var(--gold);}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:3em;font-weight:700;color:var(--ink);line-height:1;}
+.stat-label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:.5em;font-weight:600;}
+
+/* ── FILTER & TOOLBAR ─────────────────────────────── */
+.toolbar{display:flex;gap:1em;flex-wrap:wrap;margin-bottom:1.5em;align-items:center;}
+.toolbar input, .toolbar select{padding:.6em;border:1.5px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:14px;}
+.toolbar input{flex:1;min-width:200px;}
+.toolbar select{min-width:150px;}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.6em 1.2em;border-radius:5px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;transition:all .2s;}
+.btn-primary{background:var(--d1);color:#fff;}
+.btn-primary:hover{background:var(--d1l);}
+.btn-secondary{background:transparent;border:1.5px solid var(--border);color:var(--muted);}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.btn-success{background:var(--success);color:#fff;}
+.btn-success:hover{background:darken(var(--success), 10%);}
+.btn-sm{padding:.4em .8em;font-size:12px;}
+
+/* ── TABLE STYLES ─────────────────────────────────── */
+.table-container{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table thead th{background:var(--d1);color:#fff;padding:.8em 1em;text-align:left;font-weight:600;letter-spacing:.03em;white-space:nowrap;}
+.data-table tbody td{padding:.7em 1em;border-bottom:1px solid var(--border);color:var(--body);}
+.data-table tbody tr:hover{background:var(--linen);}
+.data-table tbody tr:nth-child(even){background:rgba(255,255,255,.5);}
+.data-table .text-muted{color:var(--muted);font-size:12px;}
+.data-table .status{padding:.3em .6em;border-radius:3px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;}
+.data-table .status.submitted{background:#E8F5E9;color:var(--success);}
+.data-table .status.pending{background:#FFF3E0;color:var(--warning);}
+.data-table .badge{display:inline-block;padding:.25em .6em;border-radius:12px;font-size:11px;font-weight:600;}
+.data-table .badge.luzon{background:#E0EDFF;color:var(--d1);}
+.data-table .badge.visayas{background:#F5EDF8;color:var(--d2);}
+.data-table .badge.mindanao{background:#EDF8EE;color:var(--d3);}
+
+/* ── EXPANDABLE ROWS ─────────────────────────────── */
+.expand-btn{background:var(--d1);color:#fff;border:none;padding:.3em .6em;border-radius:3px;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;}
+.expand-btn:hover{background:var(--d1l);}
+.detail-row{display:none;}
+.detail-row.open{display:table-row;}
+.detail-cell{background:var(--linen);padding:1.2em;border-bottom:1px solid var(--border);}
+.detail-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5em;}
+.detail-group{background:var(--cream);padding:1em;border-radius:5px;}
+.detail-group h4{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:var(--d1);margin-bottom:.5em;border-bottom:2px solid var(--gold);padding-bottom:.3em;}
+.detail-item{margin-bottom:.6em;font-size:12px;}
+.detail-item .label{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:10px;}
+.detail-item .value{color:var(--ink);margin-top:.2em;word-break:break-word;}
+
+/* ── EMPTY STATE ─────────────────────────────────── */
+.empty-state{text-align:center;padding:3em 2em;color:var(--muted);}
+.empty-state svg{width:80px;height:80px;opacity:.3;margin-bottom:1em;}
+.empty-state p{font-size:16px;margin-bottom:.5em;}
+
+/* ── MODAL ──────────────────────────────────────── */
+#filter-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
+#filter-modal.open{display:flex;}
+.modal{background:var(--cream);border-radius:10px;padding:2em;max-width:600px;width:90%;box-shadow:0 10px 40px rgba(0,0,0,.2);}
+.modal h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:1em;}
+.modal-close{position:absolute;top:1em;right:1em;background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted);}
+.form-group{margin-bottom:1.2em;}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--body);margin-bottom:.4em;text-transform:uppercase;letter-spacing:.02em;}
+.form-group input, .form-group select{width:100%;padding:.6em;border:1.5px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:14px;}
+.modal-buttons{display:flex;gap:1em;margin-top:1.5em;justify-content:flex-end;}
+
+/* ── PRINT STYLES ─────────────────────────────────── */
+@media print{
+  #topnav, .toolbar, .page-controls{display:none !important;}
+  body{background:#fff;}
+  .page-header{color:#000;border-bottom:2px solid #000;}
+  .data-table{font-size:11px;}
+  .detail-row{display:table-row !important;}
+}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1024px){
+  .dashboard-grid{grid-template-columns:repeat(2,1fr);}
+  .data-table{font-size:12px;}
+  .toolbar{flex-direction:column;}
+  .toolbar input, .toolbar select{width:100%;}
+}
+
+@media(max-width:640px){
+  .page-header h1{font-size:1.8em;}
+  .dashboard-grid{grid-template-columns:1fr;}
+  .data-table{font-size:11px;}
+  .data-table thead{display:none;}
+  .data-table tbody, .data-table tr, .data-table td{display:block;width:100%;}
+  .data-table tr{margin-bottom:1em;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;}
+  .data-table td{padding:.5em;text-align:right;border:none;position:relative;padding-left:50%;}
+  .data-table td::before{content:attr(data-label);position:absolute;left:.5em;font-weight:600;color:var(--muted);text-align:left;text-transform:uppercase;font-size:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav id="topnav">
+  <div class="nav-logo">📊 AWDA 2026 Data Dashboard</div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="wb lg"></div>
+  <h1>AWDA 2026 Submissions Dashboard</h1>
+  <p>Real-time view of all submitted applications</p>
+  <div class="wb lg" style="margin-top:1em;"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="content">
+
+  <!-- STATS CARDS -->
+  <div class="dashboard-grid">
+    <div class="stat-card blue">
+      <div class="stat-number" id="total-count">0</div>
+      <div class="stat-label">Total Applications</div>
+    </div>
+    <div class="stat-card purple">
+      <div class="stat-number" id="luzon-count">0</div>
+      <div class="stat-label">Luzon Submissions</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-number" id="visayas-count">0</div>
+      <div class="stat-label">Visayas Submissions</div>
+    </div>
+    <div class="stat-card gold">
+      <div class="stat-number" id="mindanao-count">0</div>
+      <div class="stat-label">Mindanao Submissions</div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <input type="text" id="search-input" placeholder="🔍 Search by LGU, weave, community..." onkeyup="filterTable()">
+    <select id="island-filter" onchange="filterTable()">
+      <option value="">All Islands</option>
+      <option value="Luzon">Luzon</option>
+      <option value="Visayas">Visayas</option>
+      <option value="Mindanao">Mindanao</option>
+    </select>
+    <button class="btn btn-primary" onclick="exportToCSV()">📥 Export CSV</button>
+    <button class="btn btn-primary" onclick="exportToExcel()">📥 Export Excel</button>
+    <button class="btn btn-secondary" onclick="printPage()">🖨️ Print</button>
+    <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-container">
+    <table class="data-table" id="data-table">
+      <thead>
+        <tr>
+          <th width="5%"></th>
+          <th width="10%">Ref No.</th>
+          <th width="12%">Date Submitted</th>
+          <th width="15%">LGU</th>
+          <th width="8%">Island</th>
+          <th width="15%">Weave Tradition</th>
+          <th width="15%">Community Partner</th>
+          <th width="10%">Status</th>
+          <th width="10%">Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr>
+          <td colspan="9" class="empty-state" style="padding:3em;">
+            <p>📭 No applications submitted yet.</p>
+            <p style="font-size:12px;">Applications will appear here once submitted via the form.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- FILTER MODAL -->
+<div id="filter-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeFilterModal()">×</button>
+    <h2>Advanced Filters</h2>
+    <form id="filter-form">
+      <div class="form-group">
+        <label for="filter-province">Province</label>
+        <input type="text" id="filter-province" placeholder="e.g. South Cotabato">
+      </div>
+      <div class="form-group">
+        <label for="filter-lgu">LGU Name</label>
+        <input type="text" id="filter-lgu" placeholder="e.g. Municipality of Lake Sebu">
+      </div>
+      <div class="form-group">
+        <label for="filter-weave">Weave Tradition</label>
+        <input type="text" id="filter-weave" placeholder="e.g. T'nalak">
+      </div>
+      <div class="form-group">
+        <label for="filter-org">Community Partner</label>
+        <input type="text" id="filter-org" placeholder="e.g. Lake Sebu Weavers Association">
+      </div>
+      <div class="modal-buttons">
+        <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+        <button type="button" class="btn btn-primary" onclick="applyAdvancedFilters()">Apply Filters</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// ── DATA MANAGEMENT ─────────────────────────────────
+function getSubmissions(){
+  return JSON.parse(localStorage.getItem('gl-submissions')||'[]');
+}
+
+let allData = [];
+let filteredData = [];
+
+function initializePage(){
+  allData = getSubmissions();
+  filteredData = allData;
+  updateStats();
+  renderTable();
+  
+  // Auto-refresh every 10 seconds
+  setInterval(()=>{
+    const freshData = getSubmissions();
+    if(freshData.length !== allData.length){
+      allData = freshData;
+      filteredData = allData;
+      updateStats();
+      renderTable();
+    }
+  }, 10000);
+}
+
+// ── STATISTICS ──────────────────────────────────
+function updateStats(){
+  document.getElementById('total-count').textContent = allData.length;
+  document.getElementById('luzon-count').textContent = allData.filter(d => d.island_group === 'Luzon').length;
+  document.getElementById('visayas-count').textContent = allData.filter(d => d.island_group === 'Visayas').length;
+  document.getElementById('mindanao-count').textContent = allData.filter(d => d.island_group === 'Mindanao').length;
+}
+
+// ── FORMATTING ──────────────────────────────────
+function formatDate(isoString){
+  if(!isoString) return '—';
+  try{
+    const date = new Date(isoString);
+    return date.toLocaleDateString('en-PH', {year:'numeric',month:'short',day:'numeric'});
+  }catch(e){
+    return '—';
+  }
+}
+
+function getIslandBadgeClass(island){
+  if(island === 'Luzon') return 'luzon';
+  if(island === 'Visayas') return 'visayas';
+  if(island === 'Mindanao') return 'mindanao';
+  return '';
+}
+
+// ── TABLE RENDERING ─────────────────────────────
+function renderTable(){
+  const tbody = document.getElementById('table-body');
+  
+  if(filteredData.length === 0){
+    tbody.innerHTML = '<tr><td colspan="9" class="empty-state" style="padding:3em;"><p>📭 No applications found.</p></td></tr>';
+    return;
+  }
+  
+  tbody.innerHTML = filteredData.map((item, idx) => `
+    <tr class="data-row">
+      <td><button class="expand-btn" onclick="toggleDetail(${idx})">▼</button></td>
+      <td>${item.refNum || '—'}</td>
+      <td>${formatDate(item.timestamp)}</td>
+      <td><strong>${item.lgu_name || '—'}</strong></td>
+      <td><span class="badge ${getIslandBadgeClass(item.island_group)}">${item.island_group || '—'}</span></td>
+      <td>${item.weave_name || '—'}</td>
+      <td>${item.org_name || '—'}</td>
+      <td><span class="status submitted">Submitted</span></td>
+      <td><button class="btn btn-secondary btn-sm" onclick="viewDetails(${idx})">View</button></td>
+    </tr>
+    <tr class="detail-row" id="detail-${idx}">
+      <td colspan="9">
+        <div class="detail-cell">
+          <div class="detail-content">
+            <div class="detail-group">
+              <h4>🏛️ LGU Information</h4>
+              <div class="detail-item"><div class="label">LGU Name</div><div class="value">${item.lgu_name || '—'}</div></div>
+              <div class="detail-item"><div class="label">Province</div><div class="value">${item.province || '—'}</div></div>
+              <div class="detail-item"><div class="label">Region</div><div class="value">${item.region || '—'}</div></div>
+              <div class="detail-item"><div class="label">LGU Classification</div><div class="value">${item.lgu_class || '—'}</div></div>
+              <div class="detail-item"><div class="label">Local Chief Executive</div><div class="value">${item.lce_name || '—'}</div></div>
+              <div class="detail-item"><div class="label">LCE Email</div><div class="value">${item.lce_email || '—'}</div></div>
+              <div class="detail-item"><div class="label">LCE Contact</div><div class="value">${item.lce_contact || '—'}</div></div>
+            </div>
+            <div class="detail-group">
+              <h4>🧵 Community Partner Information</h4>
+              <div class="detail-item"><div class="label">Organization Name</div><div class="value">${item.org_name || '—'}</div></div>
+              <div class="detail-item"><div class="label">Organization Type</div><div class="value">${item.org_type || '—'}</div></div>
+              <div class="detail-item"><div class="label">Community Location</div><div class="value">${item.org_location || '—'}</div></div>
+              <div class="detail-item"><div class="label">Years Weaving</div><div class="value">${item.years_weaving || '—'}</div></div>
+              <div class="detail-item"><div class="label">Total Weavers</div><div class="value">${item.num_weavers || '—'}</div></div>
+              <div class="detail-item"><div class="label">Women Weavers</div><div class="value">${item.num_women_weavers || '—'}</div></div>
+              <div class="detail-item"><div class="label">Community Rep Name</div><div class="value">${item.rep_comm_name || '—'}</div></div>
+              <div class="detail-item"><div class="label">Community Rep Contact</div><div class="value">${item.rep_comm_contact || '—'}</div></div>
+            </div>
+            <div class="detail-group">
+              <h4>✨ Weave Entry Details</h4>
+              <div class="detail-item"><div class="label">Weave Name</div><div class="value">${item.weave_name || '—'}</div></div>
+              <div class="detail-item"><div class="label">Island Group</div><div class="value">${item.island_group || '—'}</div></div>
+              <div class="detail-item"><div class="label">Weave Classification</div><div class="value">${item.weave_classification || '—'}</div></div>
+              <div class="detail-item"><div class="label">Primary Fiber</div><div class="value">${item.primary_fiber || '—'}</div></div>
+              <div class="detail-item"><div class="label">Weave Type</div><div class="value">${item.weave_type || '—'}</div></div>
+              <div class="detail-item"><div class="label">Indigenous Origin</div><div class="value">${item.indigenous_origin || '—'}</div></div>
+              <div class="detail-item"><div class="label">Weavers Involved</div><div class="value">${item.weavers_involved || '—'}</div></div>
+              <div class="detail-item"><div class="label">Annual Production</div><div class="value">${item.annual_production || '—'} units</div></div>
+            </div>
+            <div class="detail-group">
+              <h4>📋 Reference & Timestamps</h4>
+              <div class="detail-item"><div class="label">Reference Number</div><div class="value"><strong>${item.refNum || '—'}</strong></div></div>
+              <div class="detail-item"><div class="label">Date Submitted</div><div class="value">${formatDate(item.timestamp)}</div></div>
+              <div class="detail-item"><div class="label">Time Submitted</div><div class="value">${item.timestamp ? new Date(item.timestamp).toLocaleTimeString('en-PH') : '—'}</div></div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function toggleDetail(idx){
+  const detailRow = document.getElementById(`detail-${idx}`);
+  detailRow.classList.toggle('open');
+}
+
+function viewDetails(idx){
+  toggleDetail(idx);
+  document.getElementById(`detail-${idx}`).scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// ── FILTERING ───────────────────────────────────
+function filterTable(){
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
+  const islandFilter = document.getElementById('island-filter').value;
+  
+  filteredData = allData.filter(item => {
+    const matchSearch = !searchTerm || 
+      (item.lgu_name && item.lgu_name.toLowerCase().includes(searchTerm)) ||
+      (item.weave_name && item.weave_name.toLowerCase().includes(searchTerm)) ||
+      (item.org_name && item.org_name.toLowerCase().includes(searchTerm)) ||
+      (item.refNum && item.refNum.toLowerCase().includes(searchTerm)) ||
+      (item.province && item.province.toLowerCase().includes(searchTerm));
+    
+    const matchIsland = !islandFilter || item.island_group === islandFilter;
+    
+    return matchSearch && matchIsland;
+  });
+  
+  renderTable();
+}
+
+function resetFilters(){
+  document.getElementById('search-input').value = '';
+  document.getElementById('island-filter').value = '';
+  filteredData = allData;
+  renderTable();
+}
+
+function openFilterModal(){
+  document.getElementById('filter-modal').classList.add('open');
+}
+
+function closeFilterModal(){
+  document.getElementById('filter-modal').classList.remove('open');
+}
+
+function applyAdvancedFilters(){
+  const province = document.getElementById('filter-province').value.toLowerCase();
+  const lgu = document.getElementById('filter-lgu').value.toLowerCase();
+  const weave = document.getElementById('filter-weave').value.toLowerCase();
+  const org = document.getElementById('filter-org').value.toLowerCase();
+  
+  filteredData = allData.filter(item => {
+    const matchProvince = !province || (item.province && item.province.toLowerCase().includes(province));
+    const matchLGU = !lgu || (item.lgu_name && item.lgu_name.toLowerCase().includes(lgu));
+    const matchWeave = !weave || (item.weave_name && item.weave_name.toLowerCase().includes(weave));
+    const matchOrg = !org || (item.org_name && item.org_name.toLowerCase().includes(org));
+    
+    return matchProvince && matchLGU && matchWeave && matchOrg;
+  });
+  
+  closeFilterModal();
+  renderTable();
+}
+
+// ── EXPORT FUNCTIONS ────────────────────────────
+function exportToCSV(){
+  if(filteredData.length === 0){
+    alert('No data to export.');
+    return;
+  }
+  
+  const headers = [
+    'Reference No.',
+    'Date Submitted',
+    'LGU',
+    'Province',
+    'Region',
+    'Island Group',
+    'Weave Tradition',
+    'Community Partner',
+    'Local Chief Executive',
+    'Community Representative',
+    'Number of Weavers',
+    'Women Weavers',
+    'Status'
+  ];
+  
+  const rows = filteredData.map(item => [
+    item.refNum || '',
+    formatDate(item.timestamp),
+    item.lgu_name || '',
+    item.province || '',
+    item.region || '',
+    item.island_group || '',
+    item.weave_name || '',
+    item.org_name || '',
+    item.lce_name || '',
+    item.rep_comm_name || '',
+    item.num_weavers || '',
+    item.num_women_weavers || '',
+    'Submitted'
+  ]);
+  
+  const csv = [headers, ...rows].map(row => 
+    row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+  ).join('\n');
+  
+  const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `AWDA2026_Submissions_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function exportToExcel(){
+  if(filteredData.length === 0){
+    alert('No data to export.');
+    return;
+  }
+  
+  // Simple XLSX-compatible XML
+  const headers = ['Reference No.','Date Submitted','LGU','Province','Region','Island Group','Weave Tradition','Community Partner','LCE','Community Rep','Weavers','Women Weavers','Status'];
+  
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<?mso-application progid="Excel.Sheet"?>\n';
+  xml += '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">\n';
+  xml += '<Worksheet ss:Name="Submissions">\n';
+  xml += '<Table>\n';
+  
+  // Headers
+  xml += '<Row ss:StyleID="header">\n';
+  headers.forEach(h => xml += `<Cell><Data ss:Type="String">${h}</Data></Cell>\n`);
+  xml += '</Row>\n';
+  
+  // Data rows
+  filteredData.forEach(item => {
+    xml += '<Row>\n';
+    xml += `<Cell><Data ss:Type="String">${item.refNum || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${formatDate(item.timestamp)}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.lgu_name || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.province || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.region || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.island_group || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.weave_name || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.org_name || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.lce_name || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">${item.rep_comm_name || ''}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="Number">${item.num_weavers || 0}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="Number">${item.num_women_weavers || 0}</Data></Cell>\n`;
+    xml += `<Cell><Data ss:Type="String">Submitted</Data></Cell>\n`;
+    xml += '</Row>\n';
+  });
+  
+  xml += '</Table>\n';
+  xml += '</Worksheet>\n';
+  xml += '</Workbook>\n';
+  
+  const blob = new Blob([xml], {type:'application/vnd.ms-excel;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `AWDA2026_Submissions_${new Date().toISOString().slice(0,10)}.xls`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function printPage(){
+  window.print();
+}
+
+function refreshData(){
+  allData = getSubmissions();
+  filteredData = allData;
+  updateStats();
+  renderTable();
+}
+
+// ── INITIALIZE ──────────────────────────────────
+document.addEventListener('DOMContentLoaded', initializePage);
+</script>
+
+</body>
+</html>
