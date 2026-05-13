@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Application Form</title>
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for.js"></script>
+    <link href="https://cdn.jotfor.ms/css/styles/new/payment.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/new/base.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-wrapper {
+            margin-top: 30px;
+        }
+
+        /* JotForm Styling */
+        .jotform-form {
+            background: transparent;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-section input,
+        .form-section textarea,
+        .form-section select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-section input:focus,
+        .form-section textarea:focus,
+        .form-section select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-section textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .button-wrapper {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-reset {
+            background: #f0f0f0;
+            color: #333;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .btn-reset:hover {
+            background: #e0e0e0;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .button-wrapper {
+                flex-direction: column;
+            }
+
+            .btn-submit,
+            .btn-reset {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Online Application Form</h1>
+            <p>Please fill out all required fields below</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            ✓ Your application has been submitted successfully!
+        </div>
+
+        <div class="form-wrapper">
+            <form id="applicationForm" name="applicationForm">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <label for="fullName">Full Name <span style="color: red;">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                    <div class="error-message" id="fullNameError">Please enter your full name</div>
+                </div>
+
+                <div class="form-section">
+                    <label for="email">Email Address <span style="color: red;">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-section">
+                    <label for="phone">Phone Number <span style="color: red;">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
+                    <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                </div>
+
+                <!-- Application Details Section -->
+                <div class="form-section">
+                    <label for="position">Position Applied For <span style="color: red;">*</span></label>
+                    <select id="position" name="position" required>
+                        <option value="">-- Select Position --</option>
+                        <option value="position1">Position 1</option>
+                        <option value="position2">Position 2</option>
+                        <option value="position3">Position 3</option>
+                    </select>
+                    <div class="error-message" id="positionError">Please select a position</div>
+                </div>
+
+                <div class="form-section">
+                    <label for="experience">Years of Experience <span style="color: red;">*</span></label>
+                    <select id="experience" name="experience" required>
+                        <option value="">-- Select Experience Level --</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="1-3">1-3 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5+">5+ years</option>
+                    </select>
+                    <div class="error-message" id="experienceError">Please select experience level</div>
+                </div>
+
+                <!-- Additional Information Section -->
+                <div class="form-section">
+                    <label for="coverLetter">Cover Letter <span style="color: red;">*</span></label>
+                    <textarea id="coverLetter" name="coverLetter" required placeholder="Tell us about yourself and why you're interested in this position..."></textarea>
+                    <div class="error-message" id="coverLetterError">Please provide a cover letter</div>
+                </div>
+
+                <div class="form-section">
+                    <label for="additionalInfo">Additional Information</label>
+                    <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information you'd like to share..."></textarea>
+                </div>
+
+                <!-- Checkbox for Agreement -->
+                <div class="form-section" style="display: flex; align-items: center; gap: 10px; margin-bottom: 30px;">
+                    <input type="checkbox" id="agreement" name="agreement" required style="width: auto;">
+                    <label for="agreement" style="margin-bottom: 0;">I confirm that the information provided is accurate <span style="color: red;">*</span></label>
+                    <div class="error-message" id="agreementError">You must agree to continue</div>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div class="button-wrapper">
+                    <button type="reset" class="btn-reset">Clear Form</button>
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
+
+            // Validate form
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const position = document.getElementById('position').value;
+            const experience = document.getElementById('experience').value;
+            const coverLetter = document.getElementById('coverLetter').value.trim();
+            const agreement = document.getElementById('agreement').checked;
+
+            let isValid = true;
+
+            // Validation checks
+            if (!fullName) {
+                document.getElementById('fullNameError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!phone || !phone.match(/^[\d\s\-\(\)]+$/)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!position) {
+                document.getElementById('positionError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!experience) {
+                document.getElementById('experienceError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!coverLetter) {
+                document.getElementById('coverLetterError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!agreement) {
+                document.getElementById('agreementError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Here you would typically send the data to a server
+                // For now, we'll show a success message and log the data
+                console.log('Form Data:', {
+                    fullName,
+                    email,
+                    phone,
+                    position,
+                    experience,
+                    coverLetter,
+                    additionalInfo: document.getElementById('additionalInfo').value.trim()
+                });
+
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Reset form
+                document.getElementById('applicationForm').reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
