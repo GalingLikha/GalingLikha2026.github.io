@@ -354,7 +354,7 @@ textarea{resize:vertical;min-height:90px;}
       </div>
       <p style="font-size:14px;color:var(--body);line-height:1.7;max-width:520px;margin-bottom:1em;">A national search for the Philippines' most outstanding indigenous weaving traditions and ecosystems. Winners receive the <strong>Amazing Weaves Distinction Awards (AWDA)</strong> and are showcased at the <strong>ASEAN Trade Show, Grand Ballroom Hall, Okada Manila — 10-12 November 2026.</strong></p>
       <div class="hero-cta">
-       <a href="#application-form" target="_blank" class="btn btn-gold">
+       <a href="#application-form" class="btn btn-gold">
   Apply Now →
 </a>
         <a href="#presentations" class="btn btn-outline">View Presentations</a>
@@ -931,17 +931,7 @@ textarea{resize:vertical;min-height:90px;}
 <!-- SECTION 5: APPLICATION FORM -->
 
 
-<!-- FOOTER -->
-<footer style="background:var(--parchment);border-top:1.5px solid var(--border);">
-<div class="wb lg"></div>
-<div style="max-width:1100px;margin:0 auto;padding:2em 2em 1.5em;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2em;align-items:start;">
-  <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:.4em;">GALING LIKHA 2026</div><div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6em;">AWDA · Galing Likha 2026 AWDA<br>Philippines ASEAN Chairmanship 2026</div><div style="font-size:12px;color:var(--light);">#GalingLikha2026AWDA · #AmazingWeaves · #WeavingOurFutureTogether · #NavigatingTheFutureTogether</div></div>
-  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Jul 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: ASEAN Pavilion</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
-  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Organisers</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>DTI · PCW</div><div>ASEAN BAC Philippines</div><div>Women's Business Council PH</div><div>DILG · DoST PTRI</div></div></div>
-</div>
-<div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
-<div class="wb lg"></div>
-</footer>
+
 
 <!-- CONFIRMATION MODAL -->
 
@@ -1213,241 +1203,7 @@ function removeDoc(id){
 }
 renderUploadedDocs();
 
-// ═══════════════════════════════════════════════════════
-// FORM HELPERS
-// ═══════════════════════════════════════════════════════
-const islandMap={
-  'NCR':'Luzon','CAR':'Luzon','Region I':'Luzon','Region II':'Luzon',
-  'Region III':'Luzon','Region IV-A':'Luzon','MIMAROPA':'Luzon','Region V':'Luzon',
-  'Region VI':'Visayas','Region VII':'Visayas','Region VIII':'Visayas',
-  'Region IX':'Mindanao','Region X':'Mindanao','Region XI':'Mindanao',
-  'Region XII':'Mindanao','Region XIII':'Mindanao','BARMM':'Mindanao'
-};
-function autoIsland(sel){
-  document.getElementById('island-group').value=islandMap[sel.value]||'';
-  updateProgress();
-}
 
-function countWords(ta,countId){
-  const words=ta.value.trim().split(/\s+/).filter(w=>w.length>0).length;
-  const el=document.getElementById(countId);
-  if(el)el.textContent=words+' words'+(countId==='wn-wc'?' (minimum 200 required)':' (minimum 100 required)');
-  el.style.color=words>=(countId==='wn-wc'?200:100)?'var(--sage)':'var(--muted)';
-  updateProgress();
-}
-
-const uploadedFiles={};
-function handleFiles(input,listId,key){
-  const files=Array.from(input.files);
-  if(!files.length)return;
-  if(!uploadedFiles[key])uploadedFiles[key]=[];
-  files.forEach(f=>{uploadedFiles[key].push(f);});
-  renderFileList(listId,key);
-  updateProgress();
-}
-function renderFileList(listId,key){
-  const list=document.getElementById(listId);
-  if(!list)return;
-  list.innerHTML='';
-  (uploadedFiles[key]||[]).forEach((f,i)=>{
-    const item=document.createElement('div');
-    item.className='file-item';
-    item.innerHTML='<span>'+f.name+' ('+Math.round(f.size/1024)+'KB)</span><button type="button" class="file-remove" onclick="removeFile(\''+key+'\','+i+',\''+listId+'\')">✕</button>';
-    list.appendChild(item);
-  });
-}
-function removeFile(key,idx,listId){
-  uploadedFiles[key].splice(idx,1);
-  renderFileList(listId,key);
-  updateProgress();
-}
-
-function checkDecl(){
-  const allChecked=['decl1','decl2','decl3'].every(id=>document.getElementById(id).checked);
-  document.getElementById('decl-error').style.display=allChecked?'none':'none';
-  ['decl1-box','decl2-box','decl3-box'].forEach((id,i)=>{
-    document.getElementById(id).style.borderColor=document.getElementById('decl'+(i+1)).checked?'var(--sage)':'var(--border)';
-  });
-  updateProgress();
-}
-
-// Progress tracker
-function updateProgress(){
-  const form=document.getElementById('app-form');
-  const required=form.querySelectorAll('[required]');
-  let filled=0;
-  required.forEach(el=>{if(el.value.trim())filled++;});
-  const decls=['decl1','decl2','decl3'].filter(id=>document.getElementById(id).checked).length;
-  const total=required.length+3;
-  const pct=Math.round(((filled+decls)/total)*100);
-  document.getElementById('prog-fill').style.width=pct+'%';
-  document.getElementById('prog-label').textContent='Progress: '+pct+'% complete';
-}
-document.getElementById('app-form').addEventListener('input',updateProgress);
-
-// Auto-save
-function autoSave(){
-  try{
-    const form=document.getElementById('app-form');
-    const data={};
-    new FormData(form).forEach((v,k)=>{if(typeof data[k]==='undefined')data[k]=v;else{if(!Array.isArray(data[k]))data[k]=[data[k]];data[k].push(v);}});
-    localStorage.setItem('gl-form-draft',JSON.stringify(data));
-    console.log('Auto-saved at',new Date().toLocaleTimeString());
-  }catch(e){}
-}
-setInterval(autoSave,30000);
-
-function loadDraft(){
-  try{
-    const draft=JSON.parse(localStorage.getItem('gl-form-draft')||'null');
-    if(!draft)return;
-    const form=document.getElementById('app-form');
-    Object.entries(draft).forEach(([k,v])=>{
-      const els=form.querySelectorAll('[name="'+k+'"]');
-      if(!els.length)return;
-      if(els[0].type==='checkbox'||els[0].type==='radio'){
-        const vals=Array.isArray(v)?v:[v];
-        els.forEach(el=>el.checked=vals.includes(el.value));
-      }else if(els[0].tagName==='SELECT'){
-        els[0].value=v;
-        if(els[0].name==='region')autoIsland(els[0]);
-      }else{els[0].value=v;}
-    });
-    updateProgress();
-  }catch(e){}
-}
-loadDraft();
-
-// ═══════════════════════════════════════════════════════
-// FORM VALIDATION & SUBMISSION
-// ═══════════════════════════════════════════════════════
-document.getElementById('app-form').addEventListener('submit',function(e){
-  e.preventDefault();
-  let valid=true;
-
-  // Clear errors
-  document.querySelectorAll('.form-field').forEach(ff=>{
-    ff.classList.remove('invalid');
-    const inp=ff.querySelector('input,select,textarea');
-    if(inp)inp.classList.remove('err');
-  });
-
-  // Validate required fields
-  const requiredFields=[
-    {id:'ff-lgu_name',name:'lgu_name'},
-    {id:'ff-province',name:'province'},
-    {id:'ff-region',name:'region'},
-    {id:'ff-lgu_class',name:'lgu_class'},
-    {id:'ff-lce_name',name:'lce_name'},
-    {id:'ff-lce_email',name:'lce_email'},
-    {id:'ff-lce_contact',name:'lce_contact'},
-    {id:'ff-org_name',name:'org_name'},
-    {id:'ff-org_type',name:'org_type'},
-    {id:'ff-org_location',name:'org_location'},
-    {id:'ff-rep_comm_name',name:'rep_comm_name'},
-    {id:'ff-rep_comm_contact',name:'rep_comm_contact'},
-    {id:'ff-weave_name',name:'weave_name'},
-    {id:'ff-ecosystem_plan',name:'ecosystem_plan'},
-    {id:'ff-livelihood_desc',name:'livelihood_desc'},
-    {id:'ff-sustainability_plan',name:'sustainability_plan'},
-    {id:'ff-value_chain',name:'value_chain'},
-    {id:'ff-sig_lce',name:'sig_lce'},
-    {id:'ff-sig_lce_date',name:'sig_lce_date'},
-    {id:'ff-sig_comm',name:'sig_comm'},
-    {id:'ff-sig_comm_date',name:'sig_comm_date'},
-  ];
-
-  requiredFields.forEach(f=>{
-    const ff=document.getElementById(f.id);
-    const inp=document.querySelector('[name="'+f.name+'"]');
-    if(!inp||!inp.value.trim()){
-      if(ff){ff.classList.add('invalid');}
-      if(inp)inp.classList.add('err');
-      valid=false;
-    }
-  });
-
-  // Validate narrative word count
-  const narrative=document.querySelector('[name="weave_narrative"]');
-  if(narrative){
-    const words=narrative.value.trim().split(/\s+/).filter(w=>w.length>0).length;
-    if(words<200){
-      const ff=document.getElementById('ff-weave_narrative');
-      if(ff)ff.classList.add('invalid');
-      valid=false;
-    }
-  }
-
-  // Validate email format
-  const emailEl=document.querySelector('[name="lce_email"]');
-  if(emailEl&&emailEl.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)){
-    const ff=document.getElementById('ff-lce_email');
-    if(ff)ff.classList.add('invalid');
-    valid=false;
-  }
-
-  // Validate declarations
-  const declsOk=['decl1','decl2','decl3'].every(id=>document.getElementById(id).checked);
-  if(!declsOk){
-    document.getElementById('decl-error').style.display='block';
-    valid=false;
-  }
-
-  if(!valid){
-    const firstErr=document.querySelector('.form-field.invalid, .err');
-    if(firstErr)firstErr.scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-
-  // Generate reference number
-  const region=document.querySelector('[name="region"]').value;
-  const island=document.getElementById('island-group').value||'LUZ';
-  const islandCode=island==='Luzon'?'LUZ':island==='Visayas'?'VIS':island==='Mindanao'?'MIN':'PHL';
-  const randNum=Math.floor(1000+Math.random()*9000);
-  const refNum='AWDA-2026-'+islandCode+'-'+randNum;
-
-  // Build summary
-  const lguName=document.querySelector('[name="lgu_name"]').value;
-  const weaveName=document.querySelector('[name="weave_name"]').value;
-  const lce=document.querySelector('[name="lce_name"]').value;
-  const org=document.querySelector('[name="org_name"]').value;
-
-  document.getElementById('ref-num-display').textContent=refNum;
-  document.getElementById('summary-section').innerHTML=
-    '<div style="margin-bottom:.6em;font-size:13px;font-weight:700;color:var(--muted);">APPLICATION SUMMARY</div>'+
-    '<div class="summary-row"><div class="sk">Reference No.</div><div class="sv">'+refNum+'</div></div>'+
-    '<div class="summary-row"><div class="sk">LGU</div><div class="sv">'+lguName+'</div></div>'+
-    '<div class="summary-row"><div class="sk">Island Group</div><div class="sv">'+island+'</div></div>'+
-    '<div class="summary-row"><div class="sk">Weave Tradition</div><div class="sv">'+weaveName+'</div></div>'+
-    '<div class="summary-row"><div class="sk">Local Chief Executive</div><div class="sv">'+lce+'</div></div>'+
-    '<div class="summary-row"><div class="sk">Community Partner</div><div class="sv">'+org+'</div></div>'+
-    '<div class="summary-row" style="border:none;"><div class="sk">Date Submitted</div><div class="sv">'+new Date().toLocaleDateString('en-PH',{year:'numeric',month:'long',day:'numeric'})+'</div></div>';
-
-  // Save to localStorage
-  const submissions=JSON.parse(localStorage.getItem('gl-submissions')||'[]');
-  const formData={};
-  new FormData(e.target).forEach((v,k)=>{
-    if(typeof formData[k]==='undefined')formData[k]=v;
-    else{if(!Array.isArray(formData[k]))formData[k]=[formData[k]];formData[k].push(v);}
-  });
-  submissions.push({refNum,timestamp:new Date().toISOString(),...formData});
-  localStorage.setItem('gl-submissions',JSON.stringify(submissions));
-  localStorage.removeItem('gl-form-draft');
-
-  // Show modal
-  document.getElementById('modal-overlay').classList.add('open');
-});
-
-function closeModal(){
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.getElementById('ref-num-display').style.display='';
-  const nextSteps=document.querySelector('#conf-modal div[style*="font-size:13px"]');
-  if(nextSteps)nextSteps.style.display='';
-  document.getElementById('summary-section').innerHTML='';
-}
-document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
-
-function printConf(){window.print();}
 
 </script>
 <section id="application-form" style="padding:4rem 2rem;background:var(--linen);">
@@ -1459,5 +1215,16 @@ function printConf(){window.print();}
     <script type="text/javascript" src="https://form.jotform.com/jsform/261281341780050"></script>
   </div>
 </section>
+<!-- FOOTER -->
+<footer style="background:var(--parchment);border-top:1.5px solid var(--border);">
+<div class="wb lg"></div>
+<div style="max-width:1100px;margin:0 auto;padding:2em 2em 1.5em;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2em;align-items:start;">
+  <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:.4em;">GALING LIKHA 2026</div><div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6em;">AWDA · Galing Likha 2026 AWDA<br>Philippines ASEAN Chairmanship 2026</div><div style="font-size:12px;color:var(--light);">#GalingLikha2026AWDA · #AmazingWeaves · #WeavingOurFutureTogether · #NavigatingTheFutureTogether</div></div>
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Jul 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: ASEAN Pavilion</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Organisers</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>DTI · PCW</div><div>ASEAN BAC Philippines</div><div>Women's Business Council PH</div><div>DILG · DoST PTRI</div></div></div>
+</div>
+<div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
+<div class="wb lg"></div>
+</footer>
 </body>
 </html>
