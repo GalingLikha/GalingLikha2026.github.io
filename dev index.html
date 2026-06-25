@@ -940,7 +940,7 @@ textarea{resize:vertical;min-height:90px;}
 // COUNTDOWN TIMER
 // ═══════════════════════════════════════════════════════
 function updateCountdown(){
-  const target=new Date('2026-11-07T09:00:00+08:00');
+  const target=new Date('2026-08-01T09:00:00+08:00');
   const now=new Date();
   const diff=target-now;
   if(diff<=0){document.querySelectorAll('.cd-num').forEach(el=>el.textContent='0');return;}
