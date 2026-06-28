@@ -16,11 +16,38 @@
   --d2:#5C2D7A; --d2l:#7B3FA8; --d2bg:#F5F0FA;
   --d3:#1A5A32; --d3l:#2A7A4A; --d3bg:#F0F7F2;
 }
+.title-row{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.title-logo{
+    width:300px;      /* adjust size */
+    height:auto;
+    flex-shrink:0;
+}
+
+.title-text{
+    display:flex;
+    flex-direction:column;
+}
+
+@media (max-width:768px){
+    .title-row{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .title-logo{
+        width:55px;
+    }
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.65;}
 
-/* ── WEAVE BAND ─────────────────────────────────── */
+/* ── WEAVE BAND ─────────────────────────────────── */	
 .wb{height:8px;flex-shrink:0;background:repeating-linear-gradient(90deg,
   #9B6A1C 0,#9B6A1C 7.5%,#5C2D7A 7.5%,#5C2D7A 15%,
   #C4892A 15%,#C4892A 22.5%,#8B3A1A 22.5%,#8B3A1A 30%,
@@ -360,7 +387,18 @@ textarea{resize:vertical;min-height:90px;}
   <div class="hero-grid">
     <div>
       <div class="hero-kicker">Philippines · ASEAN Chairmanship 2026</div>
-      <h1 class="hero-title">GALING<br><em>LIKHA</em><br><span style="font-size:.42em;color:var(--amber);letter-spacing:.04em;font-style:normal">2026 AWDA</span></h1>
+      <div class="title-row">
+    <img src="images/logo.png" alt="Amazing Weaves Logo" class="title-logo">
+    <div class="title-text">
+        <h1 class="hero-title">
+            GALING<br>
+            <em>LIKHA</em><br>
+            <span style="font-size:.42em;color:var(--amber);letter-spacing:.04em;font-style:normal">
+                2026 AWDA
+            </span>
+        </h1>
+    </div>
+</div>
       <div class="hero-sub">Galing Likha 2026 Amazing Weaves Distinction Awards (AWDA)<br>"Weaving Our Future Together"</div>
       <div style="display:flex;gap:.45em;flex-wrap:wrap;margin-bottom:.9em;">
         <div class="inaul-bg" style="height:5px;width:120px;border-radius:3px;"></div>
