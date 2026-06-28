@@ -263,6 +263,17 @@ textarea{resize:vertical;min-height:90px;}
 
 /* ── HERO SECTION ───────────────────────────────── */
 #hero{background:var(--paper);padding-top:72px;}
+.hero {
+    background-image: url("images/hero-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .hero-inner{max-width:1100px;margin:0 auto;padding:3em 2em 2.5em;}
 .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5em;align-items:center;}
 @media(max-width:768px){.hero-grid{grid-template-columns:1fr;}}
@@ -302,6 +313,25 @@ textarea{resize:vertical;min-height:90px;}
 .hec-date{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--ink);}
 .hec-sub{font-size:11.5px;color:var(--muted);margin-top:.12em;}
 .hero-cta{display:flex;gap:.7em;flex-wrap:wrap;margin-top:.8em;}
+
+.video-section{
+    background:#faf7f2;
+    padding:70px 20px;
+}
+
+.video-wrapper{
+    max-width:900px;
+    margin:0 auto;
+    aspect-ratio:16/9;
+}
+
+.video-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
 
 /* ── PRESENTATION HUB ───────────────────────────── */
 .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1em;}
@@ -359,8 +389,9 @@ textarea{resize:vertical;min-height:90px;}
 
 <!-- SECTION 1: HERO -->
 <section id="hero" style="padding-top:0;">
+<section class="hero">
 <div class="wb lg"></div>
-<div class="hero-inner pina-bg">
+<div class="hero-inner">
   <div class="hero-grid">
     <div>
       <div class="hero-kicker">Philippines · ASEAN Chairmanship 2026</div>
@@ -407,9 +438,10 @@ textarea{resize:vertical;min-height:90px;}
 	
     <div class="hero-right">
         <div class="hero-image">
-        <img src="images/HenriLamy.png" alt="Artwork by Henri Lamy" width="250" height="400">
+		<a href="https://www.henrilamy.com/" target="_blank" rel="noopener noreferrer">
+        <img src="images/HenriLamy.png" alt="Artwork by Henri Lamy" width="250" height="400"></a>
 		</div>
-		  <div class="hero-event-card"><div class="hec-date">10-12 August 2026</div><div class="hec-sub">SM North EDSA · Manila, Philippines</div></div>
+		<div class="hero-event-card"><div class="hec-date">10-12 August 2026</div><div class="hec-sub">SM North EDSA · Manila, Philippines</div></div>
 	  <div class="hero-event-card"><div class="hec-date">14-16 August 2026</div><div class="hec-sub">SM Cebu Atrium D · Mabolo, Cebu City</div></div>
       <div class="hero-event-card"><div class="hec-date">21 August</div><div class="hec-sub">SM City Zamboanga · Zamboanga City</div></div>
       <div class="hero-event-card"><div class="hec-date">15-17 October 2026</div><div class="hec-sub">Amazing Weaves Distinction Awards (AWDA) · Likhang Filipino Exhibition Halls Trade Center Complex, Roxas Blvd </div></div>
@@ -423,6 +455,40 @@ textarea{resize:vertical;min-height:90px;}
 </div>
 <div class="wb lg"></div>
 </section>
+</section>
+
+<section id="video" class="video-section">
+
+    <div class="section-inner">
+
+        <div class="section-label">
+            Official Video
+        </div>
+
+        <h2 class="section-title">
+            Discover GalingLikha 2026
+        </h2>
+
+        <p class="section-sub">
+            Watch how indigenous weaving traditions connect culture, innovation,
+            and sustainable development across the Philippines.
+        </p>
+
+        <div class="video-wrapper">
+			<iframe
+			width="800"
+			height="450"
+			src="https://www.youtube.com/embed/bkWc2cahd2Q"
+			title="GalingLikha 2026"
+			frameborder="0"
+			allowfullscreen>
+</iframe>
+        </div>
+
+    </div>
+
+</section>
+
 
 <!-- SECTION 2: PRESENTATIONS -->
 <section id="presentations">
@@ -858,12 +924,144 @@ textarea{resize:vertical;min-height:90px;}
     </div>
     <div class="doc-card"><div class="doc-icon">📄</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Programme</span></div><div class="doc-name">Galing Likha 2026 AWDA — Program Overview</div><div class="doc-desc">Full programme concept note, ASEAN Women: UnityWoven, "Navigating the Future Together"</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
     <div class="doc-card"><div class="doc-icon">📚</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#F5EDF8;color:#5C2D7A;">Heritage</span></div><div class="doc-name">Habi: Art and the Order of Nature</div><div class="doc-desc">Mercedes Zobel Collection — 111 indigenous Philippine textiles, Ayala Museum (The Prince of Wales foreword, Clarence House)</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">📑</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex A</span></div><div class="doc-name">AWDA Mechanics &amp; Implementing Guidelines</div><div class="doc-desc">Full AWDA mechanics, eligibility rules, textile sample requirements, selection process and receiving hub details</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+<div class="doc-card">
+    <div class="doc-icon">📑</div>
+
+    <div style="display:flex;gap:.4em;flex-wrap:wrap;">
+        <span class="tag pdf">PDF</span>
+        <span class="tag" style="background:#FEF0E0;color:#8B5A00;">
+            Annex A
+        </span>
+    </div>
+
+    <div class="doc-name">
+        AWDA Mechanics &amp; Implementing Guidelines
+    </div>
+
+    <div class="doc-desc">
+        Full AWDA mechanics, eligibility rules, textile sample requirements,
+        selection process, and receiving hub details.
+    </div>
+
+    <div class="doc-actions">
+
+        <a href="documents/AWDA2026_DocA_Mechanics.pdf"
+           class="btn btn-gold btn-sm"
+           download>
+            ⬇ Download
+        </a>
+
+        <a href="documents/AWDA2026_DocA_Mechanics.pdf"
+           class="btn btn-outline btn-sm"
+           target="_blank"
+           rel="noopener noreferrer">
+            👁 Preview
+        </a>
+
+    </div>
+</div>
     <div class="doc-card"><div class="doc-icon">📝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex B</span></div><div class="doc-name">Official Online Application &amp; Submission Checklist</div><div class="doc-desc">Official application checklist and submission requirements for all island groups (Luzon, Visayas, Mindanao)</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><a href="#apply" class="btn btn-outline btn-sm">📋 Apply Online</a></div></div>
     <div class="doc-card"><div class="doc-icon">📦</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#FEF0E0;color:#8B5A00;">Annex C</span></div><div class="doc-name">Textile Sample Tag Template &amp; Courier Instructions</div><div class="doc-desc">Physical textile sample size/measurement requirements, tagging instructions, and Island Secretariat courier addresses</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">🤝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-1</span></div><div class="doc-name">Community Consent &amp; Endorsement Template</div><div class="doc-desc">Mandatory form — LCE and community representative signatures certifying community consent to participate in the AWDA</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">✅</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-2</span></div><div class="doc-name">Authenticity &amp; Attribution Declaration</div><div class="doc-desc">Mandatory form — certifies weave authenticity, cultural origin, and that restricted/sacred motifs are declared per JMC Section 4.1</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
-    <div class="doc-card"><div class="doc-icon">⚖️</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-3</span></div><div class="doc-name">Benefit-Sharing Statement Template</div><div class="doc-desc">Mandatory form — declares sharing arrangement ensuring weavers receive direct, equitable share of all awards and commercial benefits</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
+<!--    <div class="doc-card"><div class="doc-icon">🤝</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag docx">DOCX</span><span class="tag tmpl">Annex D-1</span></div><div class="doc-name">Community Consent &amp; Endorsement Template</div><div class="doc-desc">Mandatory form — LCE and community representative signatures certifying community consent to participate in the AWDA</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div> -->
+<div class="doc-card">
+    <div class="doc-icon">🤝</div>
+
+    <div style="display:flex;gap:.4em;flex-wrap:wrap;">
+        <span class="tag docx">DOCX</span>
+        <span class="tag tmpl">Annex D-1</span>
+    </div>
+
+    <div class="doc-name">
+        Community Consent &amp; Endorsement Template
+    </div>
+
+    <div class="doc-desc">
+        Mandatory form — LCE and community representative signatures certifying community consent to participate in the AWDA.
+    </div>
+
+    <div class="doc-actions">
+
+        <a href="documents/AWDA2026_DocC_AnnexD1_Consent.pdf"
+           class="btn btn-gold btn-sm"
+           download>
+            ⬇ Download
+        </a>
+
+        <a href="documents/AWDA2026_DocC_AnnexD1_Consent.pdf"
+           class="btn btn-outline btn-sm"
+           target="_blank"
+           rel="noopener noreferrer">
+            👁 Preview
+        </a>
+
+    </div>
+</div>
+<div class="doc-card">
+    <div class="doc-icon">✅</div>
+
+    <div style="display:flex;gap:.4em;flex-wrap:wrap;">
+        <span class="tag docx">DOCX</span>
+        <span class="tag tmpl">Annex D-2</span>
+    </div>
+
+    <div class="doc-name">
+        Authenticity &amp; Attribution Declaration
+    </div>
+
+    <div class="doc-desc">
+        Mandatory form — certifies weave authenticity, cultural origin, and that restricted/sacred motifs are declared per JMC Section 4.1.
+    </div>
+
+    <div class="doc-actions">
+
+        <a href="documents/AWDA2026_DocD_AnnexD2_Attribution.pdf"
+           class="btn btn-gold btn-sm"
+           download>
+            ⬇ Download
+        </a>
+
+        <a href="documents/AWDA2026_DocD_AnnexD2_Attribution.pdf"
+           class="btn btn-outline btn-sm"
+           target="_blank"
+           rel="noopener noreferrer">
+            👁 Preview
+        </a>
+
+    </div>
+</div>
+<div class="doc-card">
+    <div class="doc-icon">⚖️</div>
+
+    <div style="display:flex;gap:.4em;flex-wrap:wrap;">
+        <span class="tag docx">DOCX</span>
+        <span class="tag tmpl">Annex D-3</span>
+    </div>
+
+    <div class="doc-name">
+        Benefit-Sharing Statement Template
+    </div>
+
+    <div class="doc-desc">
+        Mandatory form — declares the sharing arrangement ensuring weavers receive a direct and equitable share of all awards and commercial benefits.
+    </div>
+
+    <div class="doc-actions">
+
+        <a href="documents/AWDA2026_DocE_AnnexD3_BenefitSharing.pdf"
+           class="btn btn-gold btn-sm"
+           download>
+            ⬇ Download
+        </a>
+
+        <a href="documents/AWDA2026_DocE_AnnexD3_BenefitSharing.pdf"
+           class="btn btn-outline btn-sm"
+           target="_blank"
+           rel="noopener noreferrer">
+            👁 Preview
+        </a>
+
+    </div>
+</div>
     <div class="doc-card"><div class="doc-icon">🏆</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#EDF8EE;color:#1A5A32;">Scoring</span></div><div class="doc-name">AWDA Evaluation Criteria Scorecard</div><div class="doc-desc">Official evaluation rubric across all 6 criteria with detailed assessment indicators per JMC Section 5.2</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
     <div class="doc-card"><div class="doc-icon">🌏</div><div style="display:flex;gap:.4em;flex-wrap:wrap;"><span class="tag pdf">PDF</span><span class="tag" style="background:#EDF8EE;color:#1A5A32;">ASEAN</span></div><div class="doc-name">ASEAN Trade Expo 2026 — Exhibitor Guide</div><div class="doc-desc">Grand Ballroom Hall, Okada Manila · November 7–9, 2026 · Buyer matchmaking, digital traceability, ESG procurement dialogues</div><div class="doc-actions"><button class="btn btn-gold btn-sm" onclick="docPlaceholder()">⬇ Download</button><button class="btn btn-outline btn-sm" onclick="docPlaceholder()">👁 Preview</button></div></div>
   </div>
@@ -1257,9 +1455,64 @@ renderUploadedDocs();
 <footer style="background:var(--parchment);border-top:1.5px solid var(--border);">
 <div class="wb lg"></div>
 <div style="max-width:1100px;margin:0 auto;padding:2em 2em 1.5em;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2em;align-items:start;">
-  <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:.4em;">GALING LIKHA 2026</div><div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6em;">AWDA · Galing Likha 2026 AWDA<br>Philippines ASEAN Chairmanship 2026</div><div style="font-size:12px;color:var(--light);">#GalingLikha2026AWDA · #AmazingWeaves · #WeavingOurFutureTogether · #NavigatingTheFutureTogether</div></div>
+<div>
+    <div style="font-family:'Cormorant Garamond',serif;
+                font-size:22px;
+                font-weight:700;
+                color:var(--gold);
+                margin-bottom:15px;">
+        GALING LIKHA 2026
+    </div>
+
+    <div style="font-size:14px;
+                color:var(--muted);
+                line-height:1.9;">
+
+        📧 <strong>Email:</strong>
+        <a href="mailto:AmazingWeaves.ph@gmail.com">
+            AmazingWeaves.ph@gmail.com
+        </a><br>
+
+        📞 <strong>Contact:</strong>
+        <a href="tel:+639565062811">
+            +63 956 506 2811
+        </a><br>
+
+        🌐 <strong>Registration:</strong>
+        <a href="https://bit.ly/awdasignup"
+           target="_blank"
+           rel="noopener noreferrer">
+            bit.ly/awdasignup
+        </a><br>
+
+        👍 <strong>Facebook:</strong>
+        <a href="https://www.facebook.com/amazingweavesph2026"
+           target="_blank"
+           rel="noopener noreferrer">
+            @AmazingWeavesPH2026
+        </a><br>
+
+        📷 <strong>Instagram:</strong>
+        <a href="https://www.instagram.com/amazingweaves.ph/"
+           target="_blank"
+           rel="noopener noreferrer">
+            @AmazingWeaves.ph
+        </a>
+
+    </div>
+
+    <div style="margin-top:18px;
+                font-size:12px;
+                color:var(--light);
+                line-height:1.6;">
+        #GalingLikha2026AWDA &nbsp;|&nbsp;
+        #AmazingWeaves &nbsp;|&nbsp;
+        #WeavingOurFutureTogether &nbsp;|&nbsp;
+        #NavigatingTheFutureTogether
+    </div>
+</div>
   <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Aug 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: Amazing Weaves Distinction Awards 2026</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
-  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Address</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><br><br><div></div><div></div><div>SM Cebu Atrium D, Mabolo Cebu City</div><div>SM City Zamboanga, Zamboanga City</div><div> Likhang Filipino Exhibition Halls, International Trade Center Complex, Roxas Blvd</div></div></div>
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Address</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><br><div>SM North EDSA, Quezon City<div></div><div>SM Cebu Atrium D, Mabolo Cebu City</div><div>SM City Zamboanga, Zamboanga City</div><div> Likhang Filipino Exhibition Halls, International Trade Center Complex, Roxas Blvd</div></div></div>
 </div>
 <div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
 <div class="wb lg"></div>
