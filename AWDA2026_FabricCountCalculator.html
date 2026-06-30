@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWDA 2026 Fabric Count Calculator</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pu:#3D1A6E;--puL:#F0EAF9;--go:#B8860B;--goL:#D4A820;--goPale:#FFF8E7;
+  --gn:#1A5C38;--gnP:#EAF5EE;--gnM:#2E7D52;
+  --te:#0A5764;--teP:#E2F4F7;
+  --nv:#1A2E6B;--nvP:#E5EAFA;
+  --am:#8B5500;--amP:#FFF6DD;--amM:#C47F00;
+  --rd:#8B1A1A;--rdP:#FFF0F0;--rdM:#C0392B;
+  --bk:#1A1A1A;--gr:#555;--grLt:#F5F5F5;--wh:#fff;
+  --bd:#E0E0E0;--bdS:#BBBBBB;
+}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:15px;color:var(--bk);background:var(--wh);line-height:1.5}
+.wrap{max-width:780px;margin:0 auto;padding:1.5rem 1rem 3rem}
+
+/* header */
+.hdr{background:var(--pu);color:#fff;padding:1.25rem 1.5rem;border-radius:12px;margin-bottom:1.5rem}
+.hdr-title{font-size:20px;font-weight:600;margin-bottom:4px}
+.hdr-sub{font-size:13px;opacity:.85}
+
+/* tabs */
+.tabs{display:flex;gap:2px;border-bottom:2px solid var(--bd);margin-bottom:1.5rem}
+.tab{padding:9px 18px;font-size:13px;font-weight:500;color:var(--gr);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer}
+.tab.on{color:var(--pu);border-bottom-color:var(--pu)}
+.pane{display:none}.pane.on{display:block}
+
+/* step */
+.step{display:flex;align-items:flex-start;gap:10px;margin:1.5rem 0 .6rem}
+.num{width:26px;height:26px;border-radius:50%;background:var(--puL);color:var(--pu);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-title{font-size:16px;font-weight:600;color:var(--pu)}
+.step-sub{font-size:13px;color:var(--gr);margin-top:3px;line-height:1.6}
+
+/* inputs */
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.r3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:560px){.r2,.r3{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:4px}
+.lbl{font-size:12px;font-weight:600;color:var(--gr);letter-spacing:.02em;text-transform:uppercase}
+input[type=number],select{padding:8px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:15px;background:var(--wh);color:var(--bk);width:100%;transition:border-color .15s}
+input:focus,select:focus{outline:none;border-color:var(--pu)}
+.hint{font-size:11px;color:var(--gr);line-height:1.45;margin-top:1px}
+
+/* divider */
+.div{height:1px;background:var(--bd);margin:1.25rem 0}
+
+/* results */
+.rg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.rg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:560px){.rg3,.rg2{grid-template-columns:1fr 1fr}}
+.card{background:var(--grLt);border:1.5px solid var(--bd);border-radius:10px;padding:.875rem 1rem}
+.card.ok{border-color:var(--gnM);background:var(--gnP)}
+.card.warn{border-color:var(--amM);background:var(--amP)}
+.card.bad{border-color:var(--rdM);background:var(--rdP)}
+.card.hi{border-color:var(--nv);background:var(--nvP)}
+.ctitle{font-size:10px;font-weight:700;color:var(--gr);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.cval{font-size:26px;font-weight:700;color:var(--bk);line-height:1.1}
+.cval.ok{color:var(--gn)}.cval.warn{color:var(--am)}.cval.bad{color:var(--rd)}.cval.hi{color:var(--nv)}
+.cnote{font-size:12px;color:var(--gr);margin-top:5px;line-height:1.5}
+.cbig{background:var(--grLt);border:1.5px solid var(--bd);border-radius:10px;padding:1rem;margin-bottom:10px}
+.cbig.ok{border-color:var(--gnM);background:var(--gnP)}
+.cbig.warn{border-color:var(--amM);background:var(--amP)}
+.cbig.bad{border-color:var(--rdM);background:var(--rdP)}
+.cbig.hi{border-color:var(--nv);background:var(--nvP)}
+.results-label{font-size:13px;font-weight:700;color:var(--pu);letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+
+/* guide boxes */
+.gbox{background:var(--grLt);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.gbox-title{font-size:13px;font-weight:700;color:var(--bk);margin-bottom:5px}
+.gbox-body{font-size:13px;color:var(--gr);line-height:1.65}
+.tip{background:var(--gnP);border-left:4px solid var(--gnM);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px}
+.tip-label{font-size:10px;font-weight:700;color:var(--gnM);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.tip-body{font-size:13px;color:#333;line-height:1.6}
+.warn-box{background:var(--amP);border-left:4px solid var(--amM);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px}
+.warn-label{font-size:10px;font-weight:700;color:var(--am);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.warn-body{font-size:13px;color:#333;line-height:1.6}
+.info-box{background:var(--nvP);border-left:4px solid var(--nv);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px}
+.info-label{font-size:10px;font-weight:700;color:var(--nv);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.info-body{font-size:13px;color:#333;line-height:1.6}
+.tool-row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bd)}
+.tool-row:last-child{border-bottom:none}
+.tool-icon-wrap{width:36px;height:36px;background:var(--puL);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tool-name{font-size:14px;font-weight:600;color:var(--bk)}
+.tool-desc{font-size:12px;color:var(--gr);margin-top:2px;line-height:1.5}
+.tool-cost{font-size:11px;color:var(--gn);margin-top:3px;font-weight:600}
+
+/* diagram */
+.diagram{background:var(--grLt);border:1px solid var(--bd);border-radius:10px;padding:1rem;text-align:center;margin:10px 0 14px}
+.diagram-note{font-size:12px;color:var(--gr);margin-top:8px}
+
+/* scoring table */
+.stbl{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px}
+.stbl th{text-align:left;padding:8px 10px;background:var(--grLt);color:var(--gr);font-weight:700;border-bottom:2px solid var(--bd);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.stbl td{padding:8px 10px;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.5}
+.stbl tr:last-child td{border-bottom:none}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.p5{background:var(--gnP);color:var(--gn)}.p4{background:var(--nvP);color:var(--nv)}
+.p3{background:#FFF9DB;color:#856404}.p2{background:#FFF0DB;color:var(--am)}.p1{background:var(--rdP);color:var(--rd)}
+.stbl-title{font-size:14px;font-weight:700;color:var(--pu);margin-bottom:8px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="hdr-title">AWDA 2026 / Galing Likha — Fabric Count Calculator</div>
+  <div class="hdr-sub">For LGUs · Weavers · DTI Business Development Focal Persons · DOST-PTRI field staff · Aligned with Doc E v4 mechanics</div>
+</div>
+
+<div class="tabs" role="tablist">
+  <button class="tab on" onclick="go('calc')" role="tab">Calculator</button>
+  <button class="tab" onclick="go('guide')" role="tab">Step-by-step guide</button>
+  <button class="tab" onclick="go('scores')" role="tab">AWDA scoring table</button>
+</div>
+
+<!-- ════ CALCULATOR ════ -->
+<div id="pane-calc" class="pane on">
+
+<div class="step"><span class="num">1</span><div>
+  <div class="step-title">Swatch size</div>
+  <div class="step-sub">AWDA standard is 12 × 12 inches. Measure the woven area <em>inside</em> the selvedge — the two finished border edges.</div>
+</div></div>
+<div class="r2">
+  <div class="field"><label class="lbl" for="sw">Width (inches)</label><input type="number" id="sw" value="12" min="1" max="24" step="0.5" oninput="calc()"><span class="hint">Inside selvedge — not total cloth width</span></div>
+  <div class="field"><label class="lbl" for="sh">Length (inches)</label><input type="number" id="sh" value="12" min="1" max="24" step="0.5" oninput="calc()"><span class="hint">Inside selvedge</span></div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">2</span><div>
+  <div class="step-title">Count warp threads — ends per inch</div>
+  <div class="step-sub">Warp threads run lengthwise (up-down on the loom). Use a pick glass. Count in THREE different spots across the swatch and enter each reading below.</div>
+</div></div>
+<div class="r3">
+  <div class="field"><label class="lbl" for="e1">Reading 1</label><input type="number" id="e1" value="60" min="1" max="500" oninput="calc()"><span class="hint">Top-left corner</span></div>
+  <div class="field"><label class="lbl" for="e2">Reading 2</label><input type="number" id="e2" value="62" min="1" max="500" oninput="calc()"><span class="hint">Center</span></div>
+  <div class="field"><label class="lbl" for="e3">Reading 3</label><input type="number" id="e3" value="61" min="1" max="500" oninput="calc()"><span class="hint">Bottom-right corner</span></div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">3</span><div>
+  <div class="step-title">Count weft threads — picks per inch</div>
+  <div class="step-sub">Weft threads cross the loom from side to side. Rotate pick glass 90° and count. Three readings from the same spots.</div>
+</div></div>
+<div class="r3">
+  <div class="field"><label class="lbl" for="p1">Reading 1</label><input type="number" id="p1" value="55" min="1" max="500" oninput="calc()"><span class="hint">Top-left corner</span></div>
+  <div class="field"><label class="lbl" for="p2">Reading 2</label><input type="number" id="p2" value="57" min="1" max="500" oninput="calc()"><span class="hint">Center</span></div>
+  <div class="field"><label class="lbl" for="p3">Reading 3</label><input type="number" id="p3" value="56" min="1" max="500" oninput="calc()"><span class="hint">Bottom-right corner</span></div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">4</span><div>
+  <div class="step-title">Measure crimp — for fiber verification</div>
+  <div class="step-sub">Unravel one warp thread and one weft thread from the swatch edge. Straighten each gently (do not pull) and measure. Compare to the fabric length and width.</div>
+</div></div>
+<div class="r2">
+  <div class="field"><label class="lbl" for="warpl">Fabric length (inches)</label><input type="number" id="warpl" value="12" min="1" max="30" step="0.1" oninput="calc()"><span class="hint">Measure swatch before unravelling</span></div>
+  <div class="field"><label class="lbl" for="warpt">Unravelled warp thread (inches)</label><input type="number" id="warpt" value="12.6" min="1" max="35" step="0.1" oninput="calc()"><span class="hint">Straighten gently — do not stretch</span></div>
+  <div class="field"><label class="lbl" for="weftl">Fabric width (inches)</label><input type="number" id="weftl" value="12" min="1" max="30" step="0.1" oninput="calc()"><span class="hint">Measure swatch width before unravelling</span></div>
+  <div class="field"><label class="lbl" for="weftt">Unravelled weft thread (inches)</label><input type="number" id="weftt" value="12.4" min="1" max="35" step="0.1" oninput="calc()"><span class="hint">Straighten gently — do not stretch</span></div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">5</span><div>
+  <div class="step-title">Declare fiber composition</div>
+  <div class="step-sub">Self-declare the % of natural fiber in your weave. This goes into Part 3 of the AWDA application form. DOST-PTRI verifies shortlisted entries near a score threshold.</div>
+</div></div>
+<div class="r2">
+  <div class="field"><label class="lbl" for="natpct">Natural fiber % (self-declared)</label><input type="number" id="natpct" value="100" min="0" max="100" step="1" oninput="calc()"><span class="hint">100 = fully natural &nbsp; 0 = fully synthetic</span></div>
+  <div class="field"><label class="lbl" for="ftype">Primary fiber type</label>
+    <select id="ftype" onchange="calc()">
+      <option value="abaca">Abacá (banana fiber)</option>
+      <option value="pina">Piña (pineapple leaf fiber)</option>
+      <option value="cotton">Cotton</option>
+      <option value="silk">Silk</option>
+      <option value="bamboo">Bamboo fiber</option>
+      <option value="jusi">Jusi (abacá–silk blend)</option>
+      <option value="other">Other natural fiber</option>
+      <option value="mixed">Mixed natural + synthetic</option>
+    </select>
+  </div>
+</div>
+
+<div class="div"></div>
+<div class="results-label">&#x2713; Your results</div>
+
+<div class="rg3">
+  <div class="card" id="epi-card"><div class="ctitle">Warp — ends per inch</div><div class="cval" id="epi-v">—</div><div class="cnote">Average of 3 warp readings</div></div>
+  <div class="card" id="ppi-card"><div class="ctitle">Weft — picks per inch</div><div class="cval" id="ppi-v">—</div><div class="cnote">Average of 3 weft readings</div></div>
+  <div class="card" id="tc-card"><div class="ctitle">Total thread count</div><div class="cval" id="tc-v">—</div><div class="cnote">EPI + PPI per square inch</div></div>
+</div>
+<div class="rg2">
+  <div class="card" id="wc-card"><div class="ctitle">Warp crimp %</div><div class="cval" id="wc-v">—</div><div class="cnote" id="wc-n">Enter measurements above</div></div>
+  <div class="card" id="wfc-card"><div class="ctitle">Weft crimp %</div><div class="cval" id="wfc-v">—</div><div class="cnote" id="wfc-n">Enter measurements above</div></div>
+</div>
+<div class="cbig" id="fiber-card"><div class="ctitle">Fiber composition — AWDA score band</div><div class="cval" id="fiber-v" style="font-size:18px">—</div><div class="cnote" id="fiber-n">Enter your natural fiber % above</div></div>
+<div class="cbig" id="density-card"><div class="ctitle">Weave density assessment</div><div class="cval" id="density-v" style="font-size:16px;line-height:1.3">—</div><div class="cnote" id="density-n">Based on total thread count</div></div>
+
+<div class="info-box" style="margin-top:14px">
+  <div class="info-label">How this fits AWDA scoring</div>
+  <div class="info-body">This calculator prepares your <strong>self-declaration</strong> for the application form. In AWDA Doc E v4, fiber authenticity is <strong>not scored by live judges</strong> from the swatch. Instead: (1) you self-declare fiber % in the application, (2) DOST-PTRI independently validates entries near a threshold boundary, and (3) fiber content appears on your product label — scored under sub-criterion c (finishing and labeling). Thread count informs judges assessing pattern complexity under sub-criterion b.</div>
+</div>
+
+</div>
+
+<!-- ════ GUIDE ════ -->
+<div id="pane-guide" class="pane">
+
+<div class="info-box">
+  <div class="info-label">Who this guide is for</div>
+  <div class="info-body"><strong>LGU GAD coordinators</strong> helping their weaving community submit · <strong>Cooperative leaders and master weavers</strong> preparing the application · <strong>DTI Business Development focal persons</strong> supporting applicants in the field · <strong>DOST-PTRI field validators</strong> conducting fiber verification. No mathematics or laboratory background required.</div>
+</div>
+
+<div class="step"><span class="num">A</span><div>
+  <div class="step-title">What is thread count — and why measure it?</div>
+</div></div>
+
+<div class="gbox">
+  <div class="gbox-title">The simple idea</div>
+  <div class="gbox-body">Thread count is just a way of saying <strong>how tightly woven a fabric is</strong>. You count how many threads fit inside one inch of cloth in two directions — the up-and-down threads (called <em>warp</em> or ends) and the side-to-side threads (called <em>weft</em> or picks). Add the two numbers together and you have the thread count per square inch.<br><br>A fine piña cloth may have 200 threads per inch. A coarser abacá mat may have 50. Neither is better — both are correct for their tradition. What matters is that the count is <em>consistent across the swatch</em> and that the level of skill matches what you declare.</div>
+</div>
+<div class="tip">
+  <div class="tip-label">Why AWDA cares</div>
+  <div class="tip-body">AWDA judges assess <strong>pattern complexity and technical difficulty</strong> (Track B sub-criterion b) partly by how dense and even the weave is. They also assess <strong>finishing quality and labeling</strong> (sub-criterion c) — which includes whether the fiber content on the product label matches what your application declares. This calculator helps you prepare an accurate self-declaration and supports DOST-PTRI fiber verification.</div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">B</span><div>
+  <div class="step-title">Tools you need</div>
+  <div class="step-sub">You can do this with very basic tools available at any fabric shop or DTI office.</div>
+</div></div>
+
+<div class="gbox" style="padding:0 14px">
+  <div class="tool-row">
+    <div class="tool-icon-wrap">&#128269;</div>
+    <div>
+      <div class="tool-name">Pick glass (thread counter / linen tester)</div>
+      <div class="tool-desc">A small magnifying glass with a 1-inch square window on the bottom. Place it flat on the fabric and count the threads visible through the window. Also called a weave counter.</div>
+      <div class="tool-cost">Available at: DOST-PTRI offices, DTI provincial offices, fabric supply stores · Cost: PhP 150–500</div>
+    </div>
+  </div>
+  <div class="tool-row">
+    <div class="tool-icon-wrap">&#128207;</div>
+    <div>
+      <div class="tool-name">Steel ruler (showing inches)</div>
+      <div class="tool-desc">For measuring the swatch and the unravelled threads. A 12-inch steel ruler is ideal — it lies flat and does not stretch like a cloth tape measure.</div>
+      <div class="tool-cost">Available at any hardware store · Cost: PhP 50–150</div>
+    </div>
+  </div>
+  <div class="tool-row">
+    <div class="tool-icon-wrap">&#129524;</div>
+    <div>
+      <div class="tool-name">Sewing needle or pin</div>
+      <div class="tool-desc">For carefully unravelling one thread from the edge of the swatch when measuring crimp. Use the tip to loosen — do not pull hard.</div>
+      <div class="tool-cost">Any sewing kit · Cost: PhP 5–20</div>
+    </div>
+  </div>
+  <div class="tool-row">
+    <div class="tool-icon-wrap">&#128221;</div>
+    <div>
+      <div class="tool-name">Pencil and notepad (or this calculator)</div>
+      <div class="tool-desc">Write down each reading immediately after counting — it is easy to lose track. Record all three warp readings and all three weft readings before entering them.</div>
+      <div class="tool-cost">You already have this</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">C</span><div>
+  <div class="step-title">Understand warp and weft first</div>
+</div></div>
+
+<div class="diagram">
+  <svg viewBox="0 0 480 200" width="100%" style="max-width:480px" role="img" aria-label="Diagram of a 12-inch by 12-inch AWDA swatch showing warp threads running vertically along the length and weft threads running horizontally along the width. A pick glass box is shown in the center.">
+    <defs>
+      <pattern id="wv" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+        <rect width="12" height="12" fill="#F5F5F5"/>
+        <rect width="6" height="6" fill="#E0E0E0"/><rect x="6" y="6" width="6" height="6" fill="#E0E0E0"/>
+      </pattern>
+    </defs>
+    <rect x="70" y="15" width="260" height="170" fill="url(#wv)" rx="3" stroke="#888" stroke-width="1.5"/>
+    <line x1="82" y1="15" x2="82" y2="185" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <line x1="318" y1="15" x2="318" y2="185" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <rect x="170" y="72" width="60" height="60" fill="none" stroke="#1A2E6B" stroke-width="2" rx="3"/>
+    <text x="200" y="108" text-anchor="middle" font-size="10" fill="#1A2E6B" font-family="system-ui">1 inch</text>
+    <text x="200" y="65" text-anchor="middle" font-size="11" fill="#1A2E6B" font-family="system-ui">Pick glass</text>
+    <line x1="45" y1="25" x2="45" y2="175" stroke="#1A5C38" stroke-width="2"/>
+    <polygon points="45,18 41,28 49,28" fill="#1A5C38"/>
+    <polygon points="45,182 41,172 49,172" fill="#1A5C38"/>
+    <text x="38" y="105" text-anchor="middle" font-size="11" fill="#1A5C38" font-family="system-ui" transform="rotate(-90,38,105)">WARP (ends)</text>
+    <line x1="82" y1="193" x2="318" y2="193" stroke="#8B1A1A" stroke-width="2"/>
+    <polygon points="323,193 313,189 313,197" fill="#8B1A1A"/>
+    <polygon points="77,193 87,189 87,197" fill="#8B1A1A"/>
+    <text x="200" y="200" text-anchor="middle" font-size="11" fill="#8B1A1A" font-family="system-ui">WEFT (picks)</text>
+    <text x="200" y="11" text-anchor="middle" font-size="11" fill="#555" font-family="system-ui">12&quot; × 12&quot; AWDA swatch</text>
+    <text x="88" y="30" font-size="9" fill="#555" font-family="system-ui">selvedge</text>
+    <text x="316" y="30" text-anchor="end" font-size="9" fill="#555" font-family="system-ui">selvedge</text>
+  </svg>
+  <div class="diagram-note">Blue box = pick glass on swatch. Green arrows = warp direction. Red arrows = weft direction. Count inside the 1-inch square window.</div>
+</div>
+
+<div class="gbox">
+  <div class="gbox-title">Memory tip — warp vs. weft</div>
+  <div class="gbox-body">
+    <strong>WARP</strong> = the threads that are <em>warped</em> (stretched tight) on the loom before weaving begins. They run the length of the cloth — up and down on a standing loom.<br><br>
+    <strong>WEFT</strong> = the thread that goes <em>weft and right</em> (left and right). It is the weaver's shuttle thread that crosses back and forth during weaving. It runs across the width of the cloth.<br><br>
+    If you hold the swatch up to light and tilt it at an angle, the warp threads usually catch the light more evenly because they are under more tension. The weft threads often show the pattern.
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">D</span><div>
+  <div class="step-title">How to count — step by step</div>
+</div></div>
+
+<div class="gbox"><div class="gbox-title">Step 1 — Choose your first spot</div>
+<div class="gbox-body">Place the pick glass near the top-left corner of the swatch. Stay at least 1 cm away from the selvedge (the finished border edge) — thread density near the edge can be slightly different from the body of the cloth.</div></div>
+
+<div class="gbox"><div class="gbox-title">Step 2 — Count the warp threads</div>
+<div class="gbox-body">Look through the pick glass. Count each individual thread that runs vertically through the 1-inch square window. Count from left to right. If a thread sits exactly on the window's edge, count it as 0.5. Write the number down immediately.</div></div>
+
+<div class="tip">
+  <div class="tip-label">Tip — count in groups of 10</div>
+  <div class="tip-body">Use a pin to mark your starting thread. Count 10 threads, then make a mark on paper. Count another 10 and mark again. This prevents losing your place in fine fabrics. For piña cloth (very fine), count in groups of 5.</div>
+</div>
+
+<div class="warn-box">
+  <div class="warn-label">Common mistake — counting gaps instead of threads</div>
+  <div class="warn-body">In a plain weave, threads and gaps alternate — it is easy to accidentally count both and get a result twice as high as the real count. Only count the threads themselves, not the spaces between them. When in doubt, try counting a small section of 5 threads with your needle pointing at each one as you count.</div>
+</div>
+
+<div class="gbox"><div class="gbox-title">Step 3 — Rotate and count weft threads</div>
+<div class="gbox-body">Turn the pick glass 90 degrees so the 1-inch window now measures across the width of the cloth. Count the horizontal (weft/pick) threads through the window. Write this number down. The warp count and weft count are separate numbers — do not add them until the calculator does it.</div></div>
+
+<div class="gbox"><div class="gbox-title">Step 4 — Repeat at two more spots</div>
+<div class="gbox-body">Move the pick glass to the center of the swatch. Count warp and weft. Then move to the bottom-right corner. Count warp and weft. You should now have 3 warp readings and 3 weft readings. Enter all six numbers in the calculator — it averages them automatically.</div></div>
+
+<div class="tip">
+  <div class="tip-label">Tip — why three readings?</div>
+  <div class="tip-body">Thread count can vary slightly across a swatch due to tension differences during weaving. Three readings from different spots give you a more accurate average. A very large difference between readings (e.g. 60 threads in one spot and 40 in another) indicates uneven tension — worth noting in your AWDA submission as a craftsmanship observation.</div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">E</span><div>
+  <div class="step-title">How to measure crimp</div>
+  <div class="step-sub">Crimp is the extra length a thread has from weaving over and under other threads — like a zigzag path is longer than a straight line. This matters for fiber content verification.</div>
+</div></div>
+
+<div class="diagram">
+  <svg viewBox="0 0 480 120" width="100%" style="max-width:480px" role="img" aria-label="Comparison diagram: top shows a crimped thread inside fabric taking a wavy path over 12 inches; bottom shows the same thread straightened out measuring 12.6 inches">
+    <text x="10" y="16" font-size="11" fill="#555" font-family="system-ui">Thread INSIDE the fabric — wavy path:</text>
+    <path d="M10,40 Q38,22 66,40 Q94,58 122,40 Q150,22 178,40 Q206,58 234,40 Q262,22 290,40 Q318,58 346,40 Q374,22 402,40" fill="none" stroke="#8B1A1A" stroke-width="2.5"/>
+    <line x1="10" y1="40" x2="402" y2="40" stroke="#bbb" stroke-width="0.8" stroke-dasharray="5,4"/>
+    <text x="206" y="65" text-anchor="middle" font-size="10" fill="#555" font-family="system-ui">12 inches (fabric length)</text>
+    <text x="10" y="85" font-size="11" fill="#555" font-family="system-ui">Same thread STRAIGHTENED:</text>
+    <line x1="10" y1="110" x2="430" y2="110" stroke="#8B1A1A" stroke-width="2.5"/>
+    <text x="220" y="102" text-anchor="middle" font-size="10" fill="#8B1A1A" font-family="system-ui">12.6 inches (thread length)</text>
+  </svg>
+  <div class="diagram-note">Crimp % = ((12.6 − 12) ÷ 12) × 100 = 5% — a typical result for abacá cloth</div>
+</div>
+
+<div class="gbox"><div class="gbox-title">Warp crimp — how to measure</div>
+<div class="gbox-body">
+  1. Measure the swatch from top to bottom (inside selvedge). Write this down as the <em>fabric length</em> — e.g. 12 inches.<br><br>
+  2. At the top edge, use a needle to gently loosen one warp thread. Work from the edge inward, teasing it free slowly.<br><br>
+  3. Pull the thread free. Do not pull it tight — let it lie naturally.<br><br>
+  4. Lay the thread on your ruler without stretching it. Measure its natural length — e.g. 12.6 inches.<br><br>
+  5. Enter both numbers in the calculator. Formula: ((12.6 − 12) ÷ 12) × 100 = <strong>5% warp crimp</strong>.
+</div></div>
+
+<div class="gbox"><div class="gbox-title">Weft crimp — same method, different direction</div>
+<div class="gbox-body">Measure the swatch width. At one side edge, unravel one weft thread. Measure its straightened length. Enter both in the calculator. The weft crimp % is calculated separately from the warp crimp %.</div></div>
+
+<div class="tip">
+  <div class="tip-label">Tip — piña fiber is very delicate</div>
+  <div class="tip-body">Piña fibers are extremely fine and brittle — finer than human hair. When unravelling a piña thread, work millimeter by millimeter with the needle tip. Never grab the thread and pull from the middle. If the thread breaks, try again at a different spot along the edge. Work in good lighting.</div>
+</div>
+<div class="tip">
+  <div class="tip-label">Tip — what crimp values to expect</div>
+  <div class="tip-body">
+    <strong>Piña cloth:</strong> 1–3% (stiff fiber bends less)<br>
+    <strong>Abacá cloth:</strong> 3–6%<br>
+    <strong>Cotton and silk weaves:</strong> 3–7%<br>
+    <strong>Above 8%:</strong> May indicate loose weave structure or measurement error — recheck.<br><br>
+    The AWDA / DOST-PTRI standard applies a <strong>5% crimp correction</strong> when verifying fiber content near a threshold boundary.
+  </div>
+</div>
+<div class="warn-box">
+  <div class="warn-label">Do not pull the thread taut when measuring</div>
+  <div class="warn-body">If you stretch the thread before measuring, you will get a longer length than the natural crimp length. This makes the crimp appear smaller than it actually is and can affect fiber % calculations. Lay the thread on the ruler and let it fall naturally — do not smooth it out with your fingers.</div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">F</span><div>
+  <div class="step-title">Writing your fiber declaration for the application form</div>
+  <div class="step-sub">The fiber % you enter in Part 3 of the AWDA application is a self-declaration. Write it clearly and honestly — DOST-PTRI verifies shortlisted entries.</div>
+</div></div>
+
+<div class="gbox"><div class="gbox-title">Examples — how to write your declaration</div>
+<div class="gbox-body">
+  <strong>"100% abacá fiber; natural indigo dye; sourced from Lake Sebu weavers"</strong> → Score 5 band<br><br>
+  <strong>"85% piña fiber, 15% silk; natural dye predominant; synthetic highlight color disclosed"</strong> → Score 4 band<br><br>
+  <strong>"70% cotton, 30% polyester; mixed dye — natural bark for base, synthetic for bright accent"</strong> → Score 3 band<br><br>
+  <strong>"50% abacá, 50% nylon; synthetic dye"</strong> → Score 2 band
+</div></div>
+
+<div class="tip">
+  <div class="tip-label">Tip — use your supplier invoice</div>
+  <div class="tip-body">The best source for fiber % is your yarn or thread supplier's invoice or fiber composition certificate. If you process your own raw fiber you know exactly what goes in. If you buy pre-dyed yarn, ask the supplier for a written statement of fiber composition. Keep this document — DOST-PTRI may request it during verification.</div>
+</div>
+<div class="warn-box">
+  <div class="warn-label">Be honest — do not overstate natural fiber content</div>
+  <div class="warn-body">If you are genuinely unsure of your fiber %, write your best honest estimate and label it as an estimate. Overstating natural fiber % and having it contradict DOST-PTRI test results will raise questions about the entry's credibility across the scorecard — not just on fiber. Honesty in documentation is itself a mark of good practice that the AWDA program rewards.</div>
+</div>
+
+<div class="div"></div>
+
+<div class="step"><span class="num">G</span><div>
+  <div class="step-title">Notes for DTI business development focal persons</div>
+</div></div>
+<div class="gbox"><div class="gbox-body">
+  Bring a pick glass to every weaving community visit during the AWDA application period. Document thread count readings with a photo of the pick glass placed on the swatch — this supports the Secretariat verification process and helps communities build their documentation package.<br><br>
+  For entries near a fiber % threshold boundary — e.g. a community declares 78% natural fiber and the next threshold is 80% — flag these early for DOST-PTRI priority validation. Do not wait until after the island judging event to raise the issue.<br><br>
+  The AWDA application form now requires a fiber composition field in Part 3 (added after the June 2026 gap analysis). Assist weavers in completing this accurately. A blank or vague entry (e.g. "natural fiber") will slow Secretariat processing and may prevent the entry from reaching IWSC scoring.<br><br>
+  Thread count measurements are most useful for entries near a technique threshold — e.g. a community claiming supplementary weft technique. Help the weaver document the thread count and technique description together for a stronger sub-criterion b case.
+</div></div>
+
+</div>
+
+<!-- ════ SCORING TABLE ════ -->
+<div id="pane-scores" class="pane">
+
+<div class="info-box">
+  <div class="info-label">How to read this table</div>
+  <div class="info-body">Fiber % thresholds are AWDA reference bands used by DOST-PTRI during validation — they are <strong>not scored by live judges from the swatch</strong> in Doc E v4. Thread count ranges give judges context for assessing pattern complexity. They are not strict cutoffs — judges assess quality within each tradition's own standard.</div>
+</div>
+
+<div class="stbl-title">Fiber % score bands — AWDA Doc E v4 reference</div>
+<table class="stbl">
+  <thead><tr><th>Score</th><th>Natural fiber %</th><th>Dye requirement</th><th>What to write on the application</th></tr></thead>
+  <tbody>
+    <tr><td><span class="pill p5">5 — Exceptional</span></td><td>100%</td><td>100% natural dyes; source community named</td><td>"100% abacá; natural indigo + talisay-bark dye; sourced from [community name]"</td></tr>
+    <tr><td><span class="pill p4">4 — Strong</span></td><td>≥80% natural</td><td>Natural dyes predominant; minor synthetic disclosed</td><td>"85% abacá, 15% cotton; natural dye predominant; synthetic highlight color disclosed"</td></tr>
+    <tr><td><span class="pill p3">3 — Satisfactory</span></td><td>≥60% natural</td><td>Mixed dyes disclosed; effort toward natural evident</td><td>"70% piña, 30% silk; natural for base color, synthetic for accent"</td></tr>
+    <tr><td><span class="pill p2">2 — Developing</span></td><td>≥40% natural</td><td>Mostly synthetic dyes; partial disclosure</td><td>"50% abacá, 50% polyester; primarily synthetic dye"</td></tr>
+    <tr><td><span class="pill p1">1 — Insufficient</span></td><td>&lt;40% natural</td><td>Synthetic dominant or undisclosed</td><td>Entry scores 1 for fiber band; DOST-PTRI may flag discrepancy if claim overstated</td></tr>
+  </tbody>
+</table>
+
+<div class="stbl-title">Thread count context by Philippine weaving tradition</div>
+<table class="stbl">
+  <thead><tr><th>Tradition</th><th>Typical EPI</th><th>Typical PPI</th><th>Total TC range</th><th>Technique note</th></tr></thead>
+  <tbody>
+    <tr><td>Piña (pure pineapple fiber, Aklan)</td><td>80–120</td><td>70–100</td><td>150–220+</td><td>Gauze / leno weave — finest Philippine textile</td></tr>
+    <tr><td>Yakan (Basilan)</td><td>50–80</td><td>45–70</td><td>95–150</td><td>Supplementary weft; intricate geometric patterning</td></tr>
+    <tr><td>Hablon (Iloilo, Visayas)</td><td>50–80</td><td>45–70</td><td>95–150</td><td>Floor loom; silk or cotton blend</td></tr>
+    <tr><td>Inaul (Maguindanao)</td><td>45–75</td><td>40–65</td><td>85–140</td><td>Silk / abacá ikat variant</td></tr>
+    <tr><td>T'nalak (T'boli, Lake Sebu)</td><td>40–70</td><td>35–60</td><td>75–130</td><td>Backstrap loom warp ikat on abacá</td></tr>
+    <tr><td>Inabel (Ilocano, Ilocos Norte / Sur)</td><td>40–60</td><td>35–55</td><td>75–115</td><td>Wooden treadle floor loom; cotton</td></tr>
+    <tr><td>Coarser abacá / utility textile</td><td>20–45</td><td>18–40</td><td>38–85</td><td>Plain weave; functional cloth</td></tr>
+  </tbody>
+</table>
+
+<div class="stbl-title">Crimp quick reference</div>
+<table class="stbl">
+  <thead><tr><th>Crimp %</th><th>What it suggests</th><th>What to do</th></tr></thead>
+  <tbody>
+    <tr><td>&lt;1%</td><td>Very low — may be a stiff fiber (piña, sinamay) or a measurement error</td><td>Piña at 1–3% is correct. If another fiber shows <1%, re-measure.</td></tr>
+    <tr><td>1–5%</td><td>Normal range for most fine Philippine weaves</td><td>No action needed. DOST-PTRI applies 5% standard correction.</td></tr>
+    <tr><td>5–8%</td><td>Moderate — typical for thicker yarns or looser weave structures</td><td>Acceptable for coarser traditions (abacá mat-quality). Document.</td></tr>
+    <tr><td>&gt;8%</td><td>High — may indicate loose weave, bulky yarn, or measurement error</td><td>Recheck measurement. Note in submission if genuine.</td></tr>
+  </tbody>
+</table>
+
+<div class="warn-box" style="margin-top:10px">
+  <div class="warn-label">Important reminder for LGUs and weavers</div>
+  <div class="warn-body">Thread count is a reference tool — not a competition score input. AWDA judges assess quality <strong>within the tradition's own standard</strong>. A T'nalak with 80 threads per inch is not better than one with 60 — what matters is flawless execution of the correct technique for the tradition. Use this table to understand your weave's density range, not to set a target number to chase.</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function go(id){
+  ['calc','guide','scores'].forEach(t=>{
+    document.getElementById('pane-'+t).classList.toggle('on',t===id);
+  });
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    const ids=['calc','guide','scores'];
+    t.classList.toggle('on',ids[i]===id);
+    t.setAttribute('aria-selected',ids[i]===id?'true':'false');
+  });
+}
+function n(id){return parseFloat(document.getElementById(id).value)||0;}
+function el(id){return document.getElementById(id);}
+function setC(id,cls,val,noteTxt){
+  const c=el(id+'-card'),v=el(id+'-v'),nt=el(id+'-n');
+  if(!c)return;
+  c.className='card '+(cls||'');
+  v.className='cval '+(cls||'');
+  if(val!==undefined)v.textContent=val;
+  if(nt&&noteTxt!==undefined)nt.textContent=noteTxt;
+}
+function calc(){
+  const e1=n('e1'),e2=n('e2'),e3=n('e3'),p1=n('p1'),p2=n('p2'),p3=n('p3');
+  const epi=e1&&e2&&e3?Math.round((e1+e2+e3)/3):0;
+  const ppi=p1&&p2&&p3?Math.round((p1+p2+p3)/3):0;
+  const tc=epi+ppi;
+  el('epi-v').textContent=epi||'—';
+  el('ppi-v').textContent=ppi||'—';
+  el('tc-v').textContent=tc||'—';
+
+  const warpl=n('warpl'),warpt=n('warpt');
+  if(warpl&&warpt&&warpt>warpl){
+    const wc=+((warpt-warpl)/warpl*100).toFixed(1);
+    setC('wc',wc>8?'warn':wc<1?'warn':'',wc+'%',
+      wc>8?'High crimp — recheck measurement, or note in your submission if genuine (may indicate loose weave or bulky yarn).':
+      wc<1?'Very low crimp — normal for stiff fibers like piña (1–3% expected). Verify your measurement.':
+      'Normal range (1–5%). DOST-PTRI applies a 5% standard correction for fiber % verification.');
+  } else {el('wc-v').textContent='—';}
+
+  const weftl=n('weftl'),weftt=n('weftt');
+  if(weftl&&weftt&&weftt>weftl){
+    const wfc=+((weftt-weftl)/weftl*100).toFixed(1);
+    setC('wfc',wfc>8?'warn':wfc<1?'warn':'',wfc+'%',
+      wfc>8?'High crimp — recheck measurement or note in submission.':
+      wfc<1?'Very low crimp — make sure you did not pull the thread taut before measuring.':
+      'Normal range for most Philippine weaves.');
+  } else {el('wfc-v').textContent='—';}
+
+  const pct=n('natpct');
+  const ftypes={abaca:'Abacá (banana fiber)',pina:'Piña (pineapple leaf fiber)',cotton:'Cotton',silk:'Silk',bamboo:'Bamboo fiber',jusi:'Jusi (abacá–silk blend)',other:'Other natural fiber',mixed:'Mixed natural + synthetic'};
+  const ft=ftypes[el('ftype').value]||'fiber';
+  let fband,fcls,fbcls;
+  if(pct>=100){fband='Score 5 — 100% natural fiber (maximum band)';fcls='ok';fbcls='cbig ok';}
+  else if(pct>=80){fband='Score 4 — '+pct+'% natural fiber (≥80% band)';fcls='hi';fbcls='cbig hi';}
+  else if(pct>=60){fband='Score 3 — '+pct+'% natural fiber (≥60% band)';fcls='';fbcls='cbig';}
+  else if(pct>=40){fband='Score 2 — '+pct+'% natural fiber (≥40% band)';fcls='warn';fbcls='cbig warn';}
+  else{fband='Score 1 — '+pct+'% natural fiber (<40% band)';fcls='bad';fbcls='cbig bad';}
+  const fc=el('fiber-card'),fv=el('fiber-v'),fn=el('fiber-n');
+  fc.className=fbcls;fv.className='cval '+fcls;
+  fv.textContent=fband;
+  fn.textContent=ft+' — self-declared. Enter this in Part 3 of your AWDA application form (fiber composition field). DOST-PTRI validates shortlisted entries near a threshold boundary (e.g. 78% declared near the 80% threshold).';
+
+  if(tc>0){
+    let d;
+    if(tc>=160)d='Very fine weave — top-tier craft density (piña / fine gauze range)';
+    else if(tc>=100)d='Fine weave — high skill level (Yakan, Hablon, fine piña range)';
+    else if(tc>=70)d="Medium-fine weave — good quality (T'nalak, Inabel, Inaul range)";
+    else if(tc>=40)d='Moderate density — appropriate for utility or coarser traditional weaves';
+    else d='Coarse weave — verify this matches the declared tradition standard';
+    el('density-v').textContent=d;
+    el('density-n').textContent='EPI '+epi+' + PPI '+ppi+' = '+tc+' threads per square inch. Compare to the tradition range in the AWDA Scoring Table tab. Context matters — judges assess quality within each tradition\'s own standard, not against a universal count benchmark.';
+  }
+}
+calc();
+</script>
+</body>
+</html>
