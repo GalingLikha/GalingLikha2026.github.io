@@ -399,6 +399,79 @@ textarea{resize:vertical;min-height:90px;}
   .snav{display:none!important;}
   .slide.active{page-break-after:always;height:auto!important;min-height:100vh;}
   .wb{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  
+  
+/* ===== AWDA POPUP ===== */
+
+#awdaPopup {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.80);
+}
+
+.awda-modal {
+    position: relative;
+
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.awda-modal img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#awdaClose {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: white;
+    color: #222;
+
+    font-size: 30px;
+    line-height: 38px;
+
+    cursor: pointer;
+    z-index: 1000000;
+}
+
+@media (max-width: 600px) {
+
+    #awdaPopup {
+        padding: 10px;
+    }
+
+    .awda-modal {
+        width: 95vw;
+    }
+
+    #awdaClose {
+        top: -10px;
+        right: 0;
+    }
+}
 
 </style>
 </head>
@@ -1728,8 +1801,6 @@ function removeDoc(id){
 }
 renderUploadedDocs();
 
-
-
 </script>
 <section id="application-form" style="padding:4rem 2rem;background:var(--linen);">
   <div class="section-inner">
@@ -1806,5 +1877,34 @@ renderUploadedDocs();
 <div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
 <div class="wb lg"></div>
 </footer>
+
+<!-- AWDA POPUP -->
+<div id="awdaPopup">
+    <div class="awda-modal">
+
+        <button type="button" id="awdaClose">&times;</button>
+
+        <img src="images/AwdaExtend.jpg"
+             alt="Amazing Weaves Distinction Awards 2026">
+
+    </div>
+</div>
+
+
+<script>
+const awdaPopup = document.getElementById("awdaPopup");
+const awdaClose = document.getElementById("awdaClose");
+
+awdaClose.addEventListener("click", function () {
+    awdaPopup.style.display = "none";
+});
+
+awdaPopup.addEventListener("click", function (event) {
+    if (event.target === awdaPopup) {
+        awdaPopup.style.display = "none";
+    }
+});
+</script>
+
 </body>
 </html>
