@@ -333,6 +333,40 @@ textarea{resize:vertical;min-height:90px;}
     box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
+/* ── AWDA extension  ───────────────────────────── */
+
+.awda-feature {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.awda-poster img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+.awda-info h2 {
+    font-size: 3rem;
+    margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+    .awda-feature {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .awda-info h2 {
+        font-size: 2.2rem;
+    }
+}
 /* ── PRESENTATION HUB ───────────────────────────── */
 .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1em;}
 @media(max-width:768px){.aud-grid{grid-template-columns:1fr;}}
@@ -442,9 +476,10 @@ textarea{resize:vertical;min-height:90px;}
 		<a href="https://www.henrilamy.com/" target="_blank" rel="noopener noreferrer">
         <img src="images/HenriLamy.png" alt="Artwork by Henri Lamy" width="250" height="400"></a>
 		</div>
-		<div class="hero-event-card"><div class="hec-date">10-12 August 2026</div><div class="hec-sub">SM Megamall, Mandaluyong City</div></div>
+	<!--	<div class="hero-event-card"><div class="hec-date">10-12 August 2026</div><div class="hec-sub">SM Megamall, Mandaluyong City</div></div>
 	  <div class="hero-event-card"><div class="hec-date">14-16 August 2026</div><div class="hec-sub">SM Cebu Atrium D · Mabolo, Cebu City</div></div>
-      <div class="hero-event-card"><div class="hec-date">21 August</div><div class="hec-sub">SM City Zamboanga · Zamboanga City</div></div>
+      <div class="hero-event-card"><div class="hec-date">21 August</div><div class="hec-sub">SM City Zamboanga · Zamboanga City</div></div> -->
+      <div class="hero-event-card"><div class="hec-date">21 August</div><div class="hec-sub">Regional Selection</div></div> 
       <div class="hero-event-card"><div class="hec-date">15-17 October 2026</div><div class="hec-sub">Amazing Weaves Distinction Awards (AWDA) · Likhang Filipino Exhibition Halls Trade Center Complex, Roxas Blvd </div></div>
       <div class="hero-event-card"><div class="hec-date">10-12 November 2026</div><div class="hec-sub">ASEAN Trade Show · Sinag Room, Okada Manila</div></div>
       <div class="hero-event-card"><div class="hec-date">2nd ASEAN Women Economic Summit</div><div class="hec-sub">10 November 2026 · Grand Ballroom, Okada Manila · Philippines ASEAN Chairpersonship</div></div>
@@ -458,6 +493,29 @@ textarea{resize:vertical;min-height:90px;}
 </section>
 </section>
 
+<section class="awda-feature">
+  <div class="awda-poster">
+    <img src="images/AwdaExtend.jpg"
+         alt="Amazing Weaves Distinction Awards 2026">
+  </div>
+
+  <div class="awda-info">
+    <span class="eyebrow">AMAZING WEAVES DISTINCTION AWARDS</span>
+
+    <h2>AWDA 2026</h2>
+
+    <h3>Extended Deadline: September 30, 2026</h3>
+
+    <p>
+      Honoring the hands that weave the Filipino story—
+      recognizing outstanding weaving communities, women artisans,
+      cooperatives, cultural champions, and LGUs.
+    </p>
+
+    <a href="#awda" class="btn">View Award Details</a>
+  </div>
+</section>
+	
 <section id="video" class="video-section">
 
     <div class="section-inner">
@@ -1745,9 +1803,11 @@ renderUploadedDocs();
         #NavigatingTheFutureTogether
     </div>
 </div>
-  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Aug 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: Amazing Weaves Distinction Awards 2026</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
-  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Address</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><br><div>SM Megamall, Mandaluyong City<div></div><div>SM Cebu Atrium D, Mabolo Cebu City</div><div>SM City Zamboanga, Zamboanga City</div><div> Likhang Filipino Exhibition Halls, International Trade Center Complex, Roxas Blvd</div></div></div>
-</div>
+ <!-- <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div>Aug 10–12: Luzon Selection</div><div>Aug 14–16: Visayas Selection</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: Amazing Weaves Distinction Awards 2026</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Address</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><br><div>SM Megamall, Mandaluyong City<div></div><div>SM Cebu Atrium D, Mabolo Cebu City</div><div>SM City Zamboanga, Zamboanga City</div><div> Likhang Filipino Exhibition Halls, International Trade Center Complex, Roxas Blvd</div></div></div> -->
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Key Dates</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><div>Mar 12–14: Mindanao Launch</div><div> Aug 21: Mindanao Selection</div><div>Oct 15–17: Amazing Weaves Distinction Awards 2026</div><div><strong>Nov 10-12: Grand Ballroom, Okada</strong></div></div></div>
+  <div><div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6em;">Address</div><div style="font-size:12.5px;color:var(--body);line-height:1.8;"><br><div>Regional Selection</div><div> Likhang Filipino Exhibition Halls, International Trade Center Complex, Roxas Blvd</div></div></div>
+  </div>
 <div style="text-align:center;padding:.75em 2em 1em;font-size:11.5px;color:var(--light);">© 2026 Galing Likha 2026 AWDA — Amazing Weaves Distinction Awards (AWDA) · amazingweaves2026.ph</div>
 <div class="wb lg"></div>
 </footer>
