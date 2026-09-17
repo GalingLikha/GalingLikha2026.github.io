@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Management Resources</title>
+<style>
+  :root {
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #7a1f3d;
+    --border: #e5e5e5;
+    --bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --text: #e8e8e8;
+      --muted: #a0a0a0;
+      --accent: #d98aa8;
+      --border: #333333;
+      --bg: #121212;
+    }
+  }
+  :root[data-theme="dark"] {
+    --text: #e8e8e8;
+    --muted: #a0a0a0;
+    --accent: #d98aa8;
+    --border: #333333;
+    --bg: #121212;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 0 8px;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 40px;
+  }
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-top: 40px;
+  }
+  .resource {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .resource:last-child { border-bottom: none; }
+  .resource-name {
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .resource-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  a.link-btn {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  a.link-btn:hover { background: var(--accent); color: var(--bg); }
+  footer {
+    margin-top: 64px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Knowledge Management Resources</h1>
+  <p class="subtitle">Amazing Weaves Distinction Awards (AWDA) 2026 &middot; Galing Likha</p>
+
+  <h2>Program Repository</h2>
+  <div class="resource">
+    <div>
+      <div class="resource-name">AWDA / Galing Likha Knowledge Base</div>
+      <div class="resource-desc">Shared Google Drive folder — program documents, briefs, and working files</div>
+    </div>
+    <a class="link-btn" href="https://drive.google.com/drive/folders/1ltAcs-832jIHSuB1n3nb475tQ8DcanfO" target="_blank" rel="noopener">Open folder</a>
+  </div>
+
+  <footer>
+    Women's Business Council Philippines (WomenBizPH) — AWDA 2026
+  </footer>
+</div>
+</body>
+</html>
